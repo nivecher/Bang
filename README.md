@@ -1,0 +1,4 @@
+Bang
+====
+
+BANG! card game
