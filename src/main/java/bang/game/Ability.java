@@ -6,7 +6,7 @@
 package bang.game;
 
 /**
- *
+ * 
  * @author Morgan
  */
 public enum Ability {
@@ -30,7 +30,7 @@ public enum Ability {
     MAY_DISCARD_TWO_CARDS_FOR_ONE_LIFE("He may discard 2 cards to regain one life point."), 
     NEED_TWO_MISSED_TO_CANCEL_BANG("Players need 2 Missed! cards to cancel his BANG! card."), 
     DRAWS_WHEN_HAND_IS_EMPTY("As soon as she has no cards in hand, she draws a card."), 
-    TAKE_CADS_ON_ELIMINATION("Whenever a player is eliminated from play, "
+    TAKE_CARDS_ON_ELIMINATION("Whenever a player is eliminated from play, "
             + "he takes in hand all the cards of that player."), 
     CAN_PLAY_ANY_NUMBER_OF_BANG_CARDS("He can play any number of BANG! cards.");
 

@@ -63,7 +63,7 @@ public interface StandardGame {
         charList.add(new Character("Suzy Lafayette",
                 Ability.DRAWS_WHEN_HAND_IS_EMPTY, 4));
         charList.add(new Character("Vulture Sam",
-                Ability.TAKE_CADS_ON_ELIMINATION, 4));
+                Ability.TAKE_CARDS_ON_ELIMINATION, 4));
         charList.add(new Character("Willy the Kid",
                 Ability.CAN_PLAY_ANY_NUMBER_OF_BANG_CARDS, 4));
 

@@ -5,9 +5,7 @@
  */
 package bang.game;
 
-import bang.game.cards.ViewableDistanceModifier;
 import bang.game.cards.PlayingCard;
-import bang.game.cards.ReachableDistanceModifier;
 import bang.game.cards.WeaponCard;
 import java.util.HashSet;
 import java.util.Set;

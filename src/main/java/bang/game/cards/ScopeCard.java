@@ -6,6 +6,8 @@
 
 package bang.game.cards;
 
+import bang.game.ReachableDistanceModifier;
+
 /**
  *
  * @author Morgan

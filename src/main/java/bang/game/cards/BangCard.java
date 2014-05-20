@@ -10,7 +10,7 @@ import bang.game.Player;
 import bang.game.IPlayerEffect;
 
 /**
- * BANG! card is played to reduce other players' life points
+ * BANG! card is played to reduce other player's life points
  * @author Morgan
  */
 public class BangCard extends PlayingCard implements IPlayerEffect {

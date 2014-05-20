@@ -111,8 +111,34 @@ public class Player {
         return board.addCard(card);
     }
 
+    /**
+     * Determine the distance the player can reach or "see" based on his/her
+     * current weapon, cards in play on the playing board and character ability
+     * @return positive integer representing the distance a player can reach
+     */
+    public int getReachableDistance() {
+        return board.getWeapon().getDistance() + board.reachableDistDelta() +
+                (character != null ? character.getDecrease() : 0);
+    }
+    
+    /**
+     * Determine the distance the player is viewable or can be "seen" from 
+     * relative to other players based on cards in play on the playing board 
+     * and character ability
+     * @return positive integer representing the delta in distance a player 
+     * can be seen by another player
+     */
+    public int getViewableDistanceDelta() {
+        return board.viewableDistanceDelta() + 
+                (character != null ? character.getIncrease() : 0);
+    }
+    
     public boolean discardCard(PlayingCard card, List<PlayingCard> discardPile) {
         return hand.remove(card) && discardPile.add(card);
+    }
+    
+    public boolean discardFromBoard(PlayingCard card, List<PlayingCard> discardPile) {
+        return board.removeCard(card) && discardPile.add(card);
     }
 
     public List<PlayingCard> getHand() {
