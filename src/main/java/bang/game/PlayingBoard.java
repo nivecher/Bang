@@ -23,17 +23,12 @@ public class PlayingBoard implements Consumer<PlayingCard> {
      * Cards played on the board. Only one of each type can be played.
      */
     private final Set<PlayingCard> objectCards = new HashSet<>();
-    
-    /**
-     * Cards placed on the board that have an effect on the player
-     * (perhaps on the next turn).
-     */
-    private final Set<PlayingCard> effectCards = new HashSet<>();
 
     /**
-     * Optional weapon added to replace the Colt .45
+     * Cards placed on the board that have an effect on the player (perhaps on
+     * the next turn).
      */
-    private WeaponCard weapon;
+    private final Set<PlayingCard> effectCards = new HashSet<>();
 
     /**
      * Add the playing card to the playing board
@@ -53,6 +48,7 @@ public class PlayingBoard implements Consumer<PlayingCard> {
 
     /**
      * Return the change in reach based on cards on the playing board
+     *
      * @return positive number representing the decrease in reachable distance
      */
     public int reachableDistDelta() {
@@ -63,7 +59,9 @@ public class PlayingBoard implements Consumer<PlayingCard> {
     }
 
     /**
-     * Return the change in viewable distance based on cards on the playing board
+     * Return the change in viewable distance based on cards on the playing
+     * board
+     *
      * @return positive number representing the increase in viewable distance
      */
     public int viewableDistanceDelta() {
@@ -81,9 +79,6 @@ public class PlayingBoard implements Consumer<PlayingCard> {
      * @return true if board contained the card
      */
     public boolean removeCard(PlayingCard card) {
-        if (card.equals(this.weapon)) {
-            this.weapon = null;
-        }
         return objectCards.remove(card);
     }
 
@@ -93,32 +88,47 @@ public class PlayingBoard implements Consumer<PlayingCard> {
      * @return WeaponCard added or the default weapon (a Colt .45)
      */
     public WeaponCard getWeapon() {
-        if (weapon == null) {
-            return new WeaponCard("Colt .45", 1);
+        WeaponCard weapon = findObjectCard(WeaponCard.class);
+        if (weapon != null) {
+            return weapon;
         }
 
-        return weapon;
+        return new WeaponCard("Colt .45", 1); // default weapon
     }
 
     /**
-     * Sets the weapon to the specified weapon card and discards the previous
-     * weapon card (if any)
+     * Finds any instance of a given PlayingCard class
+     *
+     * @param <C> type of PlayingCard
+     * @param clazz class of PlayingCard to find
+     * @return return any instance matching the specified PlayingCard type or
+     * null if no instances found in object cards
+     */
+    public <C extends PlayingCard> C findObjectCard(Class<C> clazz) {
+        return (C) objectCards.stream().filter(c -> clazz.isInstance(c)).findAny().orElse(null);
+    }
+
+    /**
+     * Removes the weapon card from the object cards (if set) and adds the new
+     * weapon to the object cards
      *
      * @param weapon new weapon
+     * @return previous weapon card or null if not previously set
      */
-    protected void setWeapon(WeaponCard weapon) {
-        if (this.weapon != null) {
-            objectCards.remove(this.weapon); // discard previous weapon
+    protected WeaponCard setWeapon(WeaponCard weapon) {
+        WeaponCard existing = findObjectCard(WeaponCard.class);
+        if (existing != null) {
+            objectCards.remove(existing); // discard previous weapon
         }
+        objectCards.add(weapon);
 
-        this.weapon = weapon;
+        return existing;
     }
 
     /**
      * Reset the playing board back to its original state.
      */
     public void reset() {
-        this.weapon = null;
         this.objectCards.clear();
         this.effectCards.clear();
     }

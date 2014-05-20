@@ -48,7 +48,7 @@ public class BangCard extends PlayingCard implements IPlayerEffect {
         // Based on the strength of the bang effect, player needs so many misses
         // otherwise the player is hit
         for (int i = 0; i < this.strength; i++) {
-            if (p.hitOrMiss()) {
+            if (p.bang()) {
                 hit = false;
             } else {
                 hit = true;
