@@ -18,8 +18,6 @@ public interface IAllPlayersEffect extends IPlayerEffect {
      * @param players left in the game
      */
     default void apply(List<Player> players) {
-        players.stream().forEach((p) -> {
-            this.apply(p);
-        });
+        players.forEach(this::apply);
     }
 }

@@ -20,7 +20,7 @@ public class MustangCard extends PlayingCard implements ViewableDistanceModifier
 
     /**
      * Viewable distance increased by 1
-     * @return 
+     * @return the amount of increase
      */
     @Override
     public int getIncrease() {

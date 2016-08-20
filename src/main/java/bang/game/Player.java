@@ -153,6 +153,12 @@ public class Player {
     public List<PlayingCard> getHand() {
         return new ArrayList<>(hand);
     }
+    
+    public List<PlayingCard> getCards() {
+        List<PlayingCard> cards = new ArrayList<>(hand);
+        cards.addAll(board.getCards());
+        return cards;
+    }
 
     /**
      * Add a life to the player's lives if not already at max lives

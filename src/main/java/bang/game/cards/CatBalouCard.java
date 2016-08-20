@@ -8,6 +8,7 @@ package bang.game.cards;
 
 import bang.game.IPlayerEffect;
 import bang.game.Player;
+import bang.ui.controller.ISelector;
 import java.util.List;
 
 /**
@@ -21,14 +22,19 @@ public class CatBalouCard extends PlayingCard implements IPlayerEffect {
     }
 
     private List<PlayingCard> discardPile;
+    private ISelector<PlayingCard> selector;
     
     public void setDiscardPile(List<PlayingCard> discardPile) {
         this.discardPile = discardPile;
     }
     
+    public void setCardSelector(ISelector<PlayingCard> selector) {
+        this.selector = selector;
+    }
+    
     @Override
     public boolean apply(Player p) {
-        return p.discardCard(p.selectDiscard(), discardPile);
+        return p.discardCard(selector.select(p.getCards()), discardPile);
     }
 
 }

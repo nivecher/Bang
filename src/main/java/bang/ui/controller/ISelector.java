@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bang.ui.controller;
 
-import bang.game.cards.PlayingCard;
+import java.util.Collection;
 
 /**
  *
  * @author Morgan
+ * @param <E> type of selector
  */
-public interface PlayerController extends ISelector<PlayingCard> {
+public interface ISelector<E> {
     
-    PlayingCard drawCard();
-    
+    E select(Collection<E> collection);
 }

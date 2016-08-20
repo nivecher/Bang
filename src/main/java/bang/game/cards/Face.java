@@ -6,15 +6,12 @@
 
 package bang.game.cards;
 
-import java.util.EnumSet;
-import java.util.Iterator;
-
 /**
  *
  * @author Morgan
  */
 public enum Face {
-    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King;
+    Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King
     
 //    public int number() {
 //        return ordinal();

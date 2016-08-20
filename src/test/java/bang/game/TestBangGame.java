@@ -5,25 +5,16 @@
  */
 package bang.game;
 
-import static bang.game.BangGame.MAX_PLAYERS;
-import static bang.game.BangGame.MIN_PLAYERS;
-import bang.game.cards.Face;
-import bang.game.cards.MustangCard;
-import bang.game.cards.PlayingCard;
-import bang.game.cards.ScopeCard;
-import bang.game.cards.Suit;
-import bang.game.cards.WeaponCard;
+import bang.game.cards.*;
+import org.junit.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
-import org.junit.After;
-import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import static bang.game.BangGame.MAX_PLAYERS;
+import static bang.game.BangGame.MIN_PLAYERS;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -57,15 +48,13 @@ public class TestBangGame {
             System.out.println("Num Players: " + i);
             List<Player> player1List = game.getPlayers();
             List<Player> player2List = game.getPlayers();
-            player1List.stream().forEach((p1) -> {
-                player2List.stream().forEach((p2) -> {
-                    System.out.println("Player x: " + player1List.indexOf(p1));
-                    System.out.println("Player y: " + player1List.indexOf(p2));
-                    System.out.println("Distance: " + game.getPositionDistance(p1, p2));
-                    assertEquals(game.getPositionDistance(p1, p2),
-                            game.getViewableDistance(p1, p2));
-                });
-            });
+            player1List.forEach((p1) -> player2List.forEach((p2) -> {
+                System.out.println("Player x: " + player1List.indexOf(p1));
+                System.out.println("Player y: " + player1List.indexOf(p2));
+                System.out.println("Distance: " + game.getPositionDistance(p1, p2));
+                assertEquals(game.getPositionDistance(p1, p2),
+                             game.getViewableDistance(p1, p2));
+            }));
         });
 
     }

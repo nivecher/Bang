@@ -76,26 +76,16 @@ public interface StandardGame {
      */
     default List<PlayingCard> buildPlayingDeck() {
         List<PlayingCard> deck = new ArrayList<>();
-        EnumSet.range(Face.Two, Face.Nine).stream().forEach((f) -> {
-            deck.add(new BangCard(Suit.Clubs, f));
-        });
-        EnumSet.range(Face.Ace, Face.King).stream().forEach((f) -> {
-            deck.add(new BangCard(Suit.Diamonds, f));
-        });
-        EnumSet.of(Face.Queen, Face.King, Face.Ace).stream().forEach((f) -> {
-            deck.add(new BangCard(Suit.Hearts, f));
-        });
+        EnumSet.range(Face.Two, Face.Nine).forEach((f) -> deck.add(new BangCard(Suit.Clubs, f)));
+        EnumSet.range(Face.Ace, Face.King).forEach((f) -> deck.add(new BangCard(Suit.Diamonds, f)));
+        EnumSet.of(Face.Queen, Face.King, Face.Ace).forEach((f) -> deck.add(new BangCard(Suit.Hearts, f)));
         deck.add(new BangCard(Suit.Spades, Face.Ace));
         
-        EnumSet.range(Face.Six, Face.Jack).stream().forEach((f) -> {
-            deck.add(new BeerCard(Suit.Hearts, f));
-        });
+        EnumSet.range(Face.Six, Face.Jack).forEach((f) -> deck.add(new BeerCard(Suit.Hearts, f)));
         
         deck.add(new CatBalouCard(Suit.Hearts, Face.King));
         
-        EnumSet.range(Face.Nine, Face.Jack).stream().forEach((f) -> {
-            deck.add(new CatBalouCard(Suit.Diamonds, f));
-        });
+        EnumSet.range(Face.Nine, Face.Jack).forEach((f) -> deck.add(new CatBalouCard(Suit.Diamonds, f)));
         
         deck.add(new DuelCard(Suit.Clubs, Face.Eight));
         deck.add(new DuelCard(Suit.Spades, Face.Jack));

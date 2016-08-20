@@ -6,8 +6,6 @@
 
 package bang.game;
 
-import java.util.function.Consumer;
-
 /**
  *
  * @author Morgan
@@ -16,7 +14,7 @@ public interface IPlayerEffect /*TODO extends Consumer<Player>*/ {
     
     /**
      * Apply the affect to the specified player
-     * @param p 
+     * @param p player to which affect is applied
      * @return true if effect applied successfully, false otherwise
      */
     boolean apply(Player p);

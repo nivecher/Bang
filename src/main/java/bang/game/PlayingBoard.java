@@ -7,7 +7,9 @@ package bang.game;
 
 import bang.game.cards.PlayingCard;
 import bang.game.cards.WeaponCard;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -53,9 +55,7 @@ public class PlayingBoard implements Consumer<PlayingCard> {
      */
     public int reachableDistDelta() {
         return objectCards.stream().filter(c -> c instanceof ReachableDistanceModifier).
-                mapToInt(c -> {
-                    return ((ReachableDistanceModifier) c).getDecrease();
-                }).sum();
+                mapToInt(c -> ((ReachableDistanceModifier) c).getDecrease()).sum();
     }
 
     /**
@@ -66,9 +66,7 @@ public class PlayingBoard implements Consumer<PlayingCard> {
      */
     public int viewableDistanceDelta() {
         return objectCards.stream().filter(c -> c instanceof ViewableDistanceModifier).
-                mapToInt(c -> {
-                    return ((ViewableDistanceModifier) c).getIncrease();
-                }).sum();
+                mapToInt(c -> ((ViewableDistanceModifier) c).getIncrease()).sum();
     }
 
     /**
@@ -105,7 +103,7 @@ public class PlayingBoard implements Consumer<PlayingCard> {
      * null if no instances found in object cards
      */
     public <C extends PlayingCard> C findObjectCard(Class<C> clazz) {
-        return (C) objectCards.stream().filter(c -> clazz.isInstance(c)).findAny().orElse(null);
+        return (C) objectCards.stream().filter(clazz::isInstance).findAny().orElse(null);
     }
 
     /**
@@ -136,5 +134,9 @@ public class PlayingBoard implements Consumer<PlayingCard> {
     @Override
     public void accept(PlayingCard c) {
         addCard(c);
+    }
+    
+    public List<PlayingCard> getCards() {
+        return new ArrayList<>(objectCards);
     }
 }

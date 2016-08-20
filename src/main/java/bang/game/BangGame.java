@@ -39,12 +39,12 @@ public class BangGame implements StandardGame {
     /**
      * Player card draw pile
      */
-    private List<PlayingCard> drawPile;
+    private List<PlayingCard> drawPile = new ArrayList<>();
 
     /**
      * Player card discard pile
      */
-    private final List<PlayingCard> discardPile;
+    private final List<PlayingCard> discardPile = new ArrayList<>();
 
     /**
      * Construct a new game with the specified number of players
@@ -57,9 +57,6 @@ public class BangGame implements StandardGame {
             throw new IllegalArgumentException("Number of players must be "
                     + "[" + MIN_PLAYERS + " - " + MAX_PLAYERS + "]");
         }
-
-        drawPile = new ArrayList<>();
-        discardPile = new ArrayList<>();
 
         players = new ArrayList<>(numPlayers);
         players.add(new Player(Role.Sheriff));
