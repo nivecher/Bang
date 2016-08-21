@@ -8,12 +8,33 @@ package bang.ui.controller;
 
 import bang.game.cards.PlayingCard;
 
+import java.util.List;
+
 /**
  *
  * @author Morgan
  */
-public interface PlayerController extends ISelector<PlayingCard> {
-    
-    PlayingCard drawCard();
-    
+public interface PlayerController {
+
+    void takeTurn();
+
+    void setDiscardSelector(ISelector<PlayingCard> selector);
+
+    /**
+     * Draw the appropriate number of cards to start phase 1 of turn
+     * @return list of cards drawn
+     */
+    List<PlayingCard> draw();
+
+    /**
+     * Pass play and discard excess cards
+     * @return list of discards or empty list if none
+     */
+    List<PlayingCard> pass();
+
+    /**
+     * Select and discard a card
+     * @return card discarded
+     */
+    PlayingCard discard();
 }

@@ -43,7 +43,7 @@ public interface StandardGame {
         charList.add(new Character("El Gringo",
                 Ability.DRAW_FROM_PLAYER_ON_HIT, 3));
         charList.add(new Character("Jesse Jones",
-                Ability.DRAW_1ST_FROM_PLAYER, 4));
+                Ability.DRAW_FIRST_FROM_PLAYER, 4));
         charList.add(new Character("Jourdonnais",
                 Ability.DRAW_ON_BANG_FOR_HEART_TO_MISS, 4));
         charList.add(new Character("Kit Carlson",

@@ -7,7 +7,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Bang" level="project" />
     <orderEntry type="module" module-name="main" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">
@@ -19,5 +18,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="TEST" name="org.mockito:mockito-all:1.10.19" level="application" />
   </component>
 </module>

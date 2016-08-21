@@ -19,6 +19,11 @@ public class BeerCard extends PlayingCard implements IPlayerEffect {
         super("Beer", Color.Brown, suit, face);
     }
 
+    /**
+     * Player regains one life point
+     * @param p player to which affect is applied
+     * @return true if player regained a life point
+     */
     @Override
     public boolean apply(Player p) {
         return p.regainLife();

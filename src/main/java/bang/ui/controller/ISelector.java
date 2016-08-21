@@ -5,7 +5,7 @@
  */
 package bang.ui.controller;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -14,5 +14,5 @@ import java.util.Collection;
  */
 public interface ISelector<E> {
     
-    E select(Collection<E> collection);
+    E select(List<E> list);
 }

@@ -41,6 +41,14 @@ public class BangGame implements StandardGame {
      */
     private List<PlayingCard> drawPile = new ArrayList<>();
 
+    public List<PlayingCard> getDrawPile() {
+        return drawPile;
+    }
+
+    public List<PlayingCard> getDiscardPile() {
+        return discardPile;
+    }
+
     /**
      * Player card discard pile
      */

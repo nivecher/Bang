@@ -67,7 +67,7 @@ public class TestBangGame {
         Player p1 = players.get(0);
         p1.setCharacter(new Character("p1-character", Ability.SEEN_AT_DISTANCE_PLUS_ONE, 3));
         Player p2 = players.get(1);
-        p2.setCharacter(new Character("p2-character", Ability.DRAW_1ST_FROM_PLAYER, 4));
+        p2.setCharacter(new Character("p2-character", Ability.DRAW_FIRST_FROM_PLAYER, 4));
         Player p3 = players.get(2);
         p3.setCharacter(new Character("p3-character", Ability.BANGS_ARE_MISSED, 4));
         Player p4 = players.get(3);

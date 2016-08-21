@@ -49,10 +49,10 @@ public class BangCard extends PlayingCard implements IPlayerEffect {
         // otherwise the player is hit
         for (int i = 0; i < this.strength; i++) {
             if (p.bang()) {
-                hit = false;
-            } else {
                 hit = true;
                 break; // do not try again if hit
+            } else {
+                hit = false;
             }
         }
         return hit;

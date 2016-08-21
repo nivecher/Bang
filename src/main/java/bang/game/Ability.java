@@ -17,7 +17,7 @@ public enum Ability {
     BANGS_ARE_MISSED("She can play BANG! cards as Missed! cards and vice versa."),
     DRAW_FROM_PLAYER_ON_HIT("Each time he is hit by a player, "
             + "he draws a card from the hand of that player."), 
-    DRAW_1ST_FROM_PLAYER("He may draw his first card from the hand of a player."), 
+    DRAW_FIRST_FROM_PLAYER("He may draw his first card from the hand of a player."),
     DRAW_ON_BANG_FOR_HEART_TO_MISS("Whenever he is the target of a BANG!, "
             + "he may \"draw!\": on a Heart, he is missed."), 
     LOOK_AT_THREE_DRAW_TWO("He looks at the top three cards of the deck and "
@@ -32,7 +32,8 @@ public enum Ability {
     DRAWS_WHEN_HAND_IS_EMPTY("As soon as she has no cards in hand, she draws a card."), 
     TAKE_CARDS_ON_ELIMINATION("Whenever a player is eliminated from play, "
             + "he takes in hand all the cards of that player."), 
-    CAN_PLAY_ANY_NUMBER_OF_BANG_CARDS("He can play any number of BANG! cards.");
+    CAN_PLAY_ANY_NUMBER_OF_BANG_CARDS("He can play any number of BANG! cards."),
+    CAN_KEEP_TEN_CARDS("He may hold in his hand up to 10 cards");
 
     private final String description;
 
