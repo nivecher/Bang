@@ -7,40 +7,39 @@
 package bang.game.cards;
 
 import bang.game.IPlayerEffect;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+
+import java.util.*;
 
 /**
  * Playing card that can be drawn and played by a player and has some effect(s)
+ *
  * @author Morgan
  */
 public class PlayingCard {
-    
+
     /**
      * Card;s name
      */
     private final String name;
-    
+
     /**
      * Card's color
      */
     private final Color color;
-    
+
     /**
      * Card's suit
      */
     private final Suit suit;
-    
+
     /**
      * Card's face (rank or number)
      */
     private final Face face;
-    
+
     /**
      * Set of effects that this card has in the game
+     *
      * @deprecated effects added to cards instead
      */
     @Deprecated
@@ -48,10 +47,11 @@ public class PlayingCard {
 
     /**
      * Construct a new playing card
-     * @param name card's name
+     *
+     * @param name  card's name
      * @param color card's color
-     * @param suit card's suit
-     * @param face card's face
+     * @param suit  card's suit
+     * @param face  card's face
      */
     public PlayingCard(String name, Color color, Suit suit, Face face) {
         this.name = name;
@@ -62,6 +62,7 @@ public class PlayingCard {
 
     /**
      * Return the card's name
+     *
      * @return name of the card
      */
     public String getName() {
@@ -70,6 +71,7 @@ public class PlayingCard {
 
     /**
      * Return the card's color
+     *
      * @return color of the Card
      */
     public Color getColor() {
@@ -78,6 +80,7 @@ public class PlayingCard {
 
     /**
      * Return the card's suit
+     *
      * @return suit of the card
      */
     public Suit getSuit() {
@@ -86,14 +89,16 @@ public class PlayingCard {
 
     /**
      * Return the card's face
+     *
      * @return face (i.e. rank/number) of the card
      */
     public Face getFace() {
         return face;
     }
-    
+
     /**
      * Return the list of effects this card has
+     *
      * @return new list of effects
      * @deprecated effects added to cards instead
      */
@@ -101,9 +106,10 @@ public class PlayingCard {
     public List<IPlayerEffect> getEffects() {
         return new ArrayList<>(effects);
     }
-    
+
     /**
      * Add an effect to this card's effects
+     *
      * @param effect added
      * @return true if effects changed
      * @deprecated effects added to cards instead
@@ -129,8 +135,9 @@ public class PlayingCard {
             return false;
         }
         final PlayingCard other = (PlayingCard) obj;
-        return Objects.equals(this.name, other.name);
+        return this == other;
+// TODO correct?       return Objects.equals(this.name, other.name) && Objects.equals(this.suit, other.suit) && Objects.equals(this.face, other.face);
     }
-    
-    
+
+
 }

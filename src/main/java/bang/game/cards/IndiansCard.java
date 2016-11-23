@@ -14,4 +14,6 @@ public class IndiansCard extends PlayingCard {
     public IndiansCard(Suit suit, Face face) {
         super("Indians!", Color.Brown, suit, face);
     }
+
+    // TODO implement
 }

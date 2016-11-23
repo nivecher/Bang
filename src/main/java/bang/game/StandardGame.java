@@ -5,17 +5,8 @@
  */
 package bang.game;
 
-import bang.game.cards.PlayingCard;
-import bang.game.cards.Suit;
-import bang.game.cards.BangCard;
-import bang.game.cards.BeerCard;
-import bang.game.cards.CatBalouCard;
-import bang.game.cards.DuelCard;
-import bang.game.cards.Face;
-import bang.game.cards.GatlingCard;
-import bang.game.cards.GeneralStoreCard;
-import bang.game.cards.IndiansCard;
-import bang.game.cards.WeaponCard;
+import bang.game.cards.*;
+
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -76,32 +67,78 @@ public interface StandardGame {
      */
     default List<PlayingCard> buildPlayingDeck() {
         List<PlayingCard> deck = new ArrayList<>();
+
+        // BANG! cards
         EnumSet.range(Face.Two, Face.Nine).forEach((f) -> deck.add(new BangCard(Suit.Clubs, f)));
         EnumSet.range(Face.Ace, Face.King).forEach((f) -> deck.add(new BangCard(Suit.Diamonds, f)));
         EnumSet.of(Face.Queen, Face.King, Face.Ace).forEach((f) -> deck.add(new BangCard(Suit.Hearts, f)));
         deck.add(new BangCard(Suit.Spades, Face.Ace));
-        
+
+        // barrel cards
+        EnumSet.of(Face.Queen, Face.King).forEach((f) -> deck.add(new BarrelCard(Suit.Spades, f)));
+
+        // beer cards
         EnumSet.range(Face.Six, Face.Jack).forEach((f) -> deck.add(new BeerCard(Suit.Hearts, f)));
-        
-        deck.add(new CatBalouCard(Suit.Hearts, Face.King));
-        
+
+        // cat balou cards
         EnumSet.range(Face.Nine, Face.Jack).forEach((f) -> deck.add(new CatBalouCard(Suit.Diamonds, f)));
-        
+        deck.add(new CatBalouCard(Suit.Hearts, Face.King));
+
+        // duel cards
         deck.add(new DuelCard(Suit.Clubs, Face.Eight));
         deck.add(new DuelCard(Suit.Spades, Face.Jack));
         deck.add(new DuelCard(Suit.Diamonds, Face.Queen));
-        
+
+        // dynamite card
+        deck.add(new DynamiteCard(Suit.Hearts, Face.Two));
+
+        // gatling cards
         deck.add(new GatlingCard(Suit.Hearts, Face.Ten));
-        
+
+        // general store cards
         deck.add(new GeneralStoreCard(Suit.Clubs, Face.Nine));
         deck.add(new GeneralStoreCard(Suit.Spades, Face.Queen));
-        
-        deck.add(new IndiansCard(Suit.Diamonds, Face.King));
-        deck.add(new IndiansCard(Suit.Diamonds, Face.Ace));
-        
-        // TODO add rest of deck
-        
-        deck.add(new WeaponCard("Volcanic", 1, Suit.Clubs, Face.Five));
+
+        // indians cards
+        EnumSet.of(Face.King, Face.Ace).forEach((f) -> deck.add(new IndiansCard(Suit.Diamonds, f)));
+
+        // jail cards
+        EnumSet.range(Face.Ten, Face.Jack).forEach((f) -> deck.add(new JailCard(Suit.Diamonds, f)));
+        deck.add(new JailCard(Suit.Hearts, Face.Four));
+
+        // missed cards
+        EnumSet.range(Face.Two, Face.Eight).forEach((f) -> deck.add(new MissedCard(Suit.Spades, f)));
+        EnumSet.range(Face.Ten, Face.King).forEach((f) -> deck.add(new MissedCard(Suit.Clubs, f)));
+        deck.add(new MissedCard(Suit.Clubs, Face.Ace));
+
+        // mustang cards
+        EnumSet.range(Face.Eight, Face.Nine).forEach((f) -> deck.add(new MustangCard(Suit.Hearts, f)));
+
+        // panic cards
+        EnumSet.of(Face.Jack, Face.Queen, Face.Ace).forEach((f) -> deck.add(new PanicCard(Suit.Hearts, f)));
+        deck.add(new PanicCard(Suit.Diamonds, Face.Eight));
+
+        // saloon card
+        deck.add(new SaloonCard(Suit.Hearts, Face.Five));
+
+        // scope card
+        deck.add(new ScopeCard(Suit.Spades, Face.Ace));
+
+        // stagecoarch cards
+        deck.add(new StagecoachCard(Suit.Spades, Face.Nine));
+        deck.add(new StagecoachCard(Suit.Spades, Face.Nine));
+
+        // wells fargo card
+        deck.add(new WellsFargoCard(Suit.Hearts, Face.Three));
+
+        // weapons
+        EnumSet.of(Suit.Clubs, Suit.Spades).forEach((s) -> deck.add(new WeaponCard("Volcanic", 1, s, Face.Ten)));
+        deck.add(new WeaponCard("Schofield", 2, Suit.Clubs, Face.Jack));
+        deck.add(new WeaponCard("Schofield", 2, Suit.Clubs, Face.Queen));
+        deck.add(new WeaponCard("Schofield", 2, Suit.Spades, Face.King));
+        deck.add(new WeaponCard("Remington", 3, Suit.Clubs, Face.King));
+        deck.add(new WeaponCard("Revolutionary Carabine", 4, Suit.Clubs, Face.Ace));
+        deck.add(new WeaponCard("Winchester", 5, Suit.Spades, Face.Eight));
         return deck;
     }
     

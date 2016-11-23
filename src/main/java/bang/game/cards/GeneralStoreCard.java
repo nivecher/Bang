@@ -15,5 +15,6 @@ public class GeneralStoreCard extends PlayingCard {
     public GeneralStoreCard(Suit suit, Face face) {
         super("General Store", Color.Brown, suit, face);
     }
-    
+
+    // TODO implement
 }
