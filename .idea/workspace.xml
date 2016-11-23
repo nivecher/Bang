@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="31813f60-1cb7-47dd-9175-28ae11e10d3e" name="Default" comment="Update tests and change reachable to target">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_mockito_mockito_all_1_10_19.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/bang/game/ReachableDistanceModifier.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="31813f60-1cb7-47dd-9175-28ae11e10d3e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/BangGame.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/BangGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/Character.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/Character.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/Player.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/PlayingBoard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/PlayingBoard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/ScopeCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/ScopeCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/main.iml" afterPath="$PROJECT_DIR$/src/main/main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/bang/game/PlayerTest.java" afterPath="$PROJECT_DIR$/src/test/java/bang/game/PlayerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/bang/game/TestBangGame.java" afterPath="$PROJECT_DIR$/src/test/java/bang/game/TestBangGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/test.iml" afterPath="$PROJECT_DIR$/src/test/test.iml" />
     </list>
     <ignored path="Bang.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -615,6 +603,14 @@
       <option name="presentableId" value="Default" />
       <updated>1470610411388</updated>
     </task>
+    <task id="LOCAL-00001" summary="Update tests and change reachable to target">
+      <created>1479868612411</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1479868612411</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
