@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bang.game;
 
+import bang.PlayerController;
+import bang.game.cards.BangCard;
 import bang.game.cards.BarrelCard;
+import bang.game.cards.MissedCard;
 import bang.game.cards.PlayingCard;
 
 import java.util.ArrayList;
@@ -22,6 +20,7 @@ public class Player {
     private final Role role;
     private final List<PlayingCard> hand;
     private final PlayingBoard board;
+    private PlayerController controller;
     private Character character;
     private int numLives; // bullets
     private int drawsPerTurn = 2; // default
@@ -94,11 +93,11 @@ public class Player {
 
         isUnderAttack = true;
         // Has miss ability (character, cards)?
-        if (character.getAbility() == Ability.DRAW_ON_BANG_FOR_HEART_TO_MISS) {
-//           drawCard(); // TODO get drawPile
+        if (controller.avoidHit()) {
+            return false;
         }
-//        loseLife();
-        return false; // TODO implement bang (hit or miss)
+        loseLife();
+        return true; // hit
     }
 
     public PlayingCard drawCard(List<PlayingCard> cards) {
@@ -113,8 +112,8 @@ public class Player {
         isTurn = true;
     }
 
-    private final int getDrawsPerTurn() {
-        return drawsPerTurn; // TODO handle others
+    private int getDrawsPerTurn() {
+        return drawsPerTurn; // TODO handle other characters
     }
 
     public boolean canDraw() {
@@ -123,6 +122,7 @@ public class Player {
 
     /**
      * Returns whether the player can play cards
+     *
      * @return true if the player has started his/her turn and has drawn
      */
     public boolean canPlay() {
@@ -136,6 +136,7 @@ public class Player {
 
     /**
      * Returns whether the player can pass
+     *
      * @return true if this player has started his/her turn and is not passing and can or is under attack
      */
     public boolean canPass() {
@@ -144,6 +145,7 @@ public class Player {
 
     /**
      * Returns whether the player can discard
+     *
      * @return true if this player has started his/her turn and has cards to discard
      */
     public boolean canDiscard() {
@@ -158,6 +160,7 @@ public class Player {
 
     /**
      * Return the number of cards to discard in order to pass
+     *
      * @return
      */
     public int cardsToDiscard() {
@@ -170,17 +173,6 @@ public class Player {
         }
         isTurn = false;
         isPassing = false;
-    }
-
-    /**
-     *
-     * @param card
-     * @param player
-     */
-    public void playAndDiscardCard(PlayingCard card, Consumer<PlayingCard> player) {
-        player.accept(card);
-        hand.remove(card);
-        // TODO finish this
     }
 
     /**
@@ -229,7 +221,7 @@ public class Player {
     public List<PlayingCard> getHand() {
         return new ArrayList<>(hand);
     }
-    
+
     public List<PlayingCard> getCards() {
         List<PlayingCard> cards = new ArrayList<>(hand);
         cards.addAll(board.getCards());
@@ -252,16 +244,12 @@ public class Player {
 
     /**
      * Loses one life point
+     *
      * @return true if still alive, false otherwise
      */
     public boolean loseLife() {
         numLives--;
         return numLives > 0;
-    }
-
-    public PlayingCard selectDiscard() {
-        // TODO delegate to player controller (discard selector?)
-        return hand.get(0);
     }
 
     public List<BarrelCard> getBarrels() {
@@ -278,5 +266,18 @@ public class Player {
 
     public boolean hasDrawn() {
         return cardsToDraw < getDrawsPerTurn();
+    }
+
+    public PlayerController getController() {
+        return controller;
+    }
+
+    public boolean forceDiscard(Class<? extends PlayingCard> clazz, List<PlayingCard> discardPile) {
+        PlayingCard card = PlayingCard.findCard(clazz, hand);
+
+        if (card != null) {
+            discardCard(card, discardPile);
+        }
+        return false;
     }
 }

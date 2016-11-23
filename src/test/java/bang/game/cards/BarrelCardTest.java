@@ -1,14 +1,14 @@
 package bang.game.cards;
 
 import bang.game.Player;
+import bang.game.PlayingContext;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
-import static junit.framework.TestCase.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 /**
@@ -17,6 +17,7 @@ import static org.mockito.Mockito.*;
 public class BarrelCardTest {
 
     private BarrelCard barrelCard = new BarrelCard(Suit.Diamonds, Face.Five);
+    private PlayingContext mockContext = mock(PlayingContext.class);
     private Player mockPlayer = mock(Player.class);
     private List<PlayingCard> mockDiscardPile = mock(List.class);
     private List<PlayingCard> mockDrawPile = mock(List.class);
@@ -25,11 +26,11 @@ public class BarrelCardTest {
 
     @Before
     public void setUp() throws Exception {
+        reset(mockContext);
         reset(mockPlayer);
         reset(mockDiscardPile);
-        barrelCard.setDiscardPile(mockDiscardPile);
         reset(mockDrawPile);
-        barrelCard.setDrawPile(mockDrawPile);
+        barrelCard.setContext(mockContext);
     }
 
     @After

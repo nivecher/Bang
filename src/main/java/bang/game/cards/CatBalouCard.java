@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * 
- * @author Morgan
+ * @author Morgan-
  */
 public class CatBalouCard extends PlayingCard implements IPlayerEffect {
     
@@ -21,20 +21,11 @@ public class CatBalouCard extends PlayingCard implements IPlayerEffect {
         super("Cat Balou", Color.Brown, suit, face);
     }
 
-    private List<PlayingCard> discardPile;
-    private ISelector<PlayingCard> selector;
-    
-    public void setDiscardPile(List<PlayingCard> discardPile) {
-        this.discardPile = discardPile;
-    }
-    
-    public void setCardSelector(ISelector<PlayingCard> selector) {
-        this.selector = selector;
-    }
-    
     @Override
     public boolean apply(Player p) {
-        return p.discardCard(selector.select(p.getCards()), discardPile);
+        List<PlayingCard> discardPile = context.getDiscardPile();
+        PlayingCard card = context.getCardSelector().select(p.getCards());
+        return p.discardCard(card, discardPile);
     }
 
 }

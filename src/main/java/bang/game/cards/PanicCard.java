@@ -13,6 +13,7 @@ public class PanicCard extends PlayingCard implements IPlayerEffect {
 
     @Override
     public boolean apply(Player p) {
-        return false; // TODO implement
+        PlayingCard card = context.getCardSelector().select(p.getHand());
+        return p.discardCard(card, context.getPlayer().getHand());
     }
 }

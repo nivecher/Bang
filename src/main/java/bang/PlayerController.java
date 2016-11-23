@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 
-package bang.ui.controller;
+package bang;
 
+import bang.game.Player;
 import bang.game.cards.PlayingCard;
+import bang.ui.controller.ISelector;
 
 import java.util.List;
 
@@ -19,6 +21,8 @@ public interface PlayerController {
     void takeTurn();
 
     void setDiscardSelector(ISelector<PlayingCard> selector);
+
+    void setPlayerSelector(ISelector<Player> selector);
 
     /**
      * Draw the appropriate number of cards to start phase 1 of turn
@@ -37,4 +41,10 @@ public interface PlayerController {
      * @return card discarded
      */
     PlayingCard discard();
+
+    /**
+     * Attempt to avoid a hit (i.e. bang) from an opponent
+     * @return true if avoided
+     */
+    boolean avoidHit();
 }

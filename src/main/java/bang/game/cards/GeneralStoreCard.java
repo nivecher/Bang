@@ -6,15 +6,31 @@
 
 package bang.game.cards;
 
+import bang.game.IAllPlayersEffect;
+import bang.game.Player;
+
+import java.util.List;
+
 /**
- *
+ * General store
  * @author Morgan
  */
-public class GeneralStoreCard extends PlayingCard {
+public class GeneralStoreCard extends PlayingCard implements IAllPlayersEffect {
+
+    private List<PlayingCard> cards;
 
     public GeneralStoreCard(Suit suit, Face face) {
         super("General Store", Color.Brown, suit, face);
     }
 
-    // TODO implement
+    public void setCards(List<PlayingCard> cards) {
+        this.cards = cards;
+    }
+
+    @Override
+    public boolean apply(Player p) {
+        p.drawCard(cards);
+        return true;
+    }
+
 }
