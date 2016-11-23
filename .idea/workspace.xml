@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31813f60-1cb7-47dd-9175-28ae11e10d3e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/DynamiteCard.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/PanicCard.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/StagecoachCard.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/WellsFargoCard.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/StandardGame.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/StandardGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/GeneralStoreCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/GeneralStoreCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/IndiansCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/IndiansCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/bang/game/StandardGameTest.java" afterPath="$PROJECT_DIR$/src/test/java/bang/game/StandardGameTest.java" />
     </list>
     <ignored path="Bang.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -832,7 +823,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479868791673</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add missing cards from Standard Deck">
+      <created>1479878576664</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1479878576664</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -927,7 +925,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update tests and change reachable to target" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update tests and change reachable to target" />
+    <MESSAGE value="Add missing cards from Standard Deck" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add missing cards from Standard Deck" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
