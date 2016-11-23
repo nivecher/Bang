@@ -30,6 +30,8 @@ public class BarrelCardTest {
         reset(mockPlayer);
         reset(mockDiscardPile);
         reset(mockDrawPile);
+        when(mockContext.getDiscardPile()).thenReturn(mockDiscardPile);
+        when(mockContext.getDrawPile()).thenReturn(mockDrawPile);
         barrelCard.setContext(mockContext);
     }
 

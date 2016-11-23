@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31813f60-1cb7-47dd-9175-28ae11e10d3e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/bang/game/PlayingContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/bang/ui/controller/CommandLinePlayerController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/bang/game/cards/BeerCardTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/bang/game/cards/DynamiteCardTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/bang/game/cards/GatlingCardTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/bang/ui/controller/PlayerController.java" afterPath="$PROJECT_DIR$/src/main/java/bang/PlayerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_mockito_mockito_all_1_10_19.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_mockito_mockito_all_1_10_19.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/Bang.java" afterPath="$PROJECT_DIR$/src/main/java/bang/Bang.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/BangGame.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/BangGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/IPlayerEffect.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/IPlayerEffect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/Player.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/PlayingBoard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/PlayingBoard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/BarrelCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/BarrelCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/CatBalouCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/CatBalouCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/DuelCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/DuelCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/DynamiteCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/DynamiteCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/GatlingCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/GatlingCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/GeneralStoreCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/GeneralStoreCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/IndiansCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/IndiansCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/PanicCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/PanicCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/StagecoachCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/StagecoachCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/ui/controller/DefaultPlayerController.java" afterPath="$PROJECT_DIR$/src/main/java/bang/ui/controller/DefaultPlayerController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java" afterPath="$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/bang/ui/controller/DefaultPlayerControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/bang/ui/controller/DefaultPlayerControllerTest.java" />
     </list>
     <ignored path="Bang.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,16 +91,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BeerCardTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/BeerCardTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="StagecoachCard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/StagecoachCard.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -135,14 +101,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarrelCardTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BarrelCardTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="28" column="25" lean-forward="false" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+            <state relative-caret-position="349">
+              <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BarrelCard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BarrelCard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -167,7 +143,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultPlayerController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DefaultPlayerController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bang/ui/controller/DefaultPlayerController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="606">
@@ -249,8 +225,8 @@
         <option value="$PROJECT_DIR$/src/main/java/bang/game/PlayingContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/bang/game/cards/StagecoachCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java" />
-        <option value="$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/bang/ui/controller/DefaultPlayerController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java" />
       </list>
     </option>
   </component>
@@ -411,72 +387,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cards" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -924,15 +834,22 @@
       <option name="project" value="LOCAL" />
       <updated>1479878576664</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add support for playing context">
+      <created>1479940686285</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1479940686285</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_test - 2016.11.23 at 15h 44m 56s.xml">
+    <history-entry file="All_in_test - 2016.11.23 at 16h 38m 30s.xml">
       <configuration name="All in test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DefaultPlayerControllerTest_takeTurn - 2016.11.23 at 10h 40m 57s.xml">
-      <configuration name="DefaultPlayerControllerTest.takeTurn" configurationId="JUnit" />
+    <history-entry file="All_in_test - 2016.11.23 at 16h 40m 41s.xml">
+      <configuration name="All in test" configurationId="JUnit" />
     </history-entry>
     <history-entry file="DynamiteCardTest - 2016.11.23 at 11h 34m 48s.xml">
       <configuration name="DynamiteCardTest" configurationId="JUnit" />
@@ -973,7 +890,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25903225" sideWeight="0.5206372" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26806453" sideWeight="0.5587229" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729906" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -982,15 +899,15 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36495292" sideWeight="0.5012903" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294714" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36495292" sideWeight="0.49870968" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36495292" sideWeight="0.49870968" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294714" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26806453" sideWeight="0.44532946" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26806453" sideWeight="0.4412771" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802317" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25903225" sideWeight="0.4793628" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25903225" sideWeight="0.4793628" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24956872" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1020,7 +937,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update tests and change reachable to target" />
     <MESSAGE value="Add missing cards from Standard Deck" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add missing cards from Standard Deck" />
+    <MESSAGE value="Add support for playing context" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add support for playing context" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1222,6 +1140,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="457">
           <caret line="48" column="9" lean-forward="false" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1347,14 +1266,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BarrelCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/BeerCardTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -1415,16 +1326,16 @@
           <caret line="79" column="26" lean-forward="false" selection-start-line="79" selection-start-column="26" selection-end-line="79" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1453#1454#0" expanded="true" />
-            <element signature="e#1488#1489#0" expanded="true" />
-            <element signature="e#1553#1554#0" expanded="true" />
-            <element signature="e#1599#1600#0" expanded="true" />
-            <element signature="e#1645#1646#0" expanded="true" />
-            <element signature="e#1676#1677#0" expanded="true" />
-            <element signature="e#1735#1736#0" expanded="true" />
-            <element signature="e#1775#1776#0" expanded="true" />
-            <element signature="e#1821#1822#0" expanded="true" />
-            <element signature="e#1867#1868#0" expanded="true" />
+            <element signature="e#1453#1454#0" expanded="false" />
+            <element signature="e#1488#1489#0" expanded="false" />
+            <element signature="e#1553#1554#0" expanded="false" />
+            <element signature="e#1599#1600#0" expanded="false" />
+            <element signature="e#1645#1646#0" expanded="false" />
+            <element signature="e#1676#1677#0" expanded="false" />
+            <element signature="e#1735#1736#0" expanded="false" />
+            <element signature="e#1775#1776#0" expanded="false" />
+            <element signature="e#1821#1822#0" expanded="false" />
+            <element signature="e#1867#1868#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1445,16 +1356,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="28" column="25" lean-forward="false" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="764">
@@ -1472,6 +1373,24 @@
           <folding>
             <element signature="e#2485#2486#0" expanded="true" />
             <element signature="e#2531#2532#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BarrelCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
