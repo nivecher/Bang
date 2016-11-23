@@ -134,12 +134,20 @@ public class Player {
         return numLives;
     }
 
+    /**
+     * Returns whether the player can pass
+     * @return true if this player has started his/her turn and is not passing and can or is under attack
+     */
     public boolean canPass() {
         return isTurn && !isPassing && hand.size() <= getMaxCards() || isUnderAttack;
     }
 
+    /**
+     * Returns whether the player can discard
+     * @return true if this player has started his/her turn and has cards to discard
+     */
     public boolean canDiscard() {
-        return isTurn && isPassing && cardsToDiscard() > 1;
+        return isTurn && isPassing && cardsToDiscard() > 0;
     }
 
     public int pass() {
@@ -187,13 +195,13 @@ public class Player {
     }
 
     /**
-     * Determine the distance the player can reach or "see" based on his/her
+     * Determine the distance the player can target based on his/her
      * current weapon, cards in play on the playing board and character ability
      *
      * @return positive integer representing the distance a player can reach
      */
-    public int getReachableDistance() {
-        return board.getWeapon().getDistance() + board.reachableDistDelta()
+    public int getTargetDistance() {
+        return board.getWeapon().getDistance() + board.getTargetModDelta()
                 + (character != null ? character.getDecrease() : 0);
     }
 
@@ -206,7 +214,7 @@ public class Player {
      * be seen by another player
      */
     public int getViewableDistanceDelta() {
-        return board.viewableDistanceDelta()
+        return board.getViewableModDelta()
                 + (character != null ? character.getIncrease() : 0);
     }
 

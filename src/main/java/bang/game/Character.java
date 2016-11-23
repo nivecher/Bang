@@ -10,7 +10,7 @@ package bang.game;
  *
  * @author Morgan
  */
-public class Character implements ViewableDistanceModifier, ReachableDistanceModifier {
+public class Character implements ViewableDistanceModifier, TargetDistanceModifier {
 
     private final String name;
     private final Ability ability;

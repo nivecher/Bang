@@ -163,7 +163,7 @@ public class BangGame implements StandardGame {
      * target player including modifications
      */
     public boolean canReach(Player source, Player target) {
-        return source.getReachableDistance() >= getViewableDistance(source, target);
+        return source.getTargetDistance() >= getViewableDistance(source, target);
     }
 
 }

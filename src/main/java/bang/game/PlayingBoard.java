@@ -49,13 +49,13 @@ public class PlayingBoard implements Consumer<PlayingCard> {
     }
 
     /**
-     * Return the change in reach based on cards on the playing board
+     * Return the change in target distance based on cards on the playing board
      *
      * @return positive number representing the decrease in reachable distance
      */
-    public int reachableDistDelta() {
-        return objectCards.stream().filter(c -> c instanceof ReachableDistanceModifier).
-                mapToInt(c -> ((ReachableDistanceModifier) c).getDecrease()).sum();
+    public int getTargetModDelta() {
+        return objectCards.stream().filter(c -> c instanceof TargetDistanceModifier).
+                mapToInt(c -> ((TargetDistanceModifier) c).getDecrease()).sum();
     }
 
     /**
@@ -64,7 +64,7 @@ public class PlayingBoard implements Consumer<PlayingCard> {
      *
      * @return positive number representing the increase in viewable distance
      */
-    public int viewableDistanceDelta() {
+    public int getViewableModDelta() {
         return objectCards.stream().filter(c -> c instanceof ViewableDistanceModifier).
                 mapToInt(c -> ((ViewableDistanceModifier) c).getIncrease()).sum();
     }

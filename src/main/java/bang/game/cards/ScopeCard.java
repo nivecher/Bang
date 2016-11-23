@@ -6,13 +6,13 @@
 
 package bang.game.cards;
 
-import bang.game.ReachableDistanceModifier;
+import bang.game.TargetDistanceModifier;
 
 /**
  *
  * @author Morgan
  */
-public class ScopeCard extends PlayingCard implements ReachableDistanceModifier {
+public class ScopeCard extends PlayingCard implements TargetDistanceModifier {
 
     public ScopeCard(Suit suit, Face face) {
         super("Scope", Color.Blue, suit, face);

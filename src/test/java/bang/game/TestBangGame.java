@@ -99,14 +99,14 @@ public class TestBangGame {
         assertFalse(game.canReach(p2, p1)); // based on char mod to target
         
         p2.playCardOnBoard(gun2);
-        assertEquals(2, p2.getReachableDistance());
+        assertEquals(2, p2.getTargetDistance());
         assertEquals(2, game.getViewableDistance(p2, p1));
         assertTrue(game.canReach(p2, p1)); // based on weapon mod
         
         // verify no change based on object mod to increase target reach
-        assertEquals(1, p1.getReachableDistance());
+        assertEquals(1, p1.getTargetDistance());
         p1.playCardOnBoard(scope1);
-        assertEquals(2, p1.getReachableDistance());
+        assertEquals(2, p1.getTargetDistance());
         // scope applied, no change to viewable distance
         assertEquals(1, game.getViewableDistance(p1, p2));
         assertEquals(2, game.getViewableDistance(p2, p1)); // no effect
@@ -123,15 +123,15 @@ public class TestBangGame {
         assertEquals(3, game.getViewableDistance(p2, p1)); // scope + char
         assertTrue(game.canReach(p2, p1)); // based on weapon mod
         
-        assertEquals(2, p4.getReachableDistance()); // based on char
+        assertEquals(2, p4.getTargetDistance()); // based on char
         p4.playCardOnBoard(scope2);
-        assertEquals(3, p4.getReachableDistance()); // plus scope
+        assertEquals(3, p4.getTargetDistance()); // plus scope
         p4.playCardOnBoard(gun3); // dist 3 weapon
-        assertEquals(5, p4.getReachableDistance()); // new weapon
+        assertEquals(5, p4.getTargetDistance()); // new weapon
         assertTrue(p4.discardFromBoard(gun3, discardPile)); // default weapon
-        assertEquals(3, p4.getReachableDistance()); // default weapon
+        assertEquals(3, p4.getTargetDistance()); // default weapon
         assertTrue(p4.discardFromBoard(scope2, discardPile)); // discard scope
-        assertEquals(2, p4.getReachableDistance()); // minus scope
+        assertEquals(2, p4.getTargetDistance()); // minus scope
         
     }
 }

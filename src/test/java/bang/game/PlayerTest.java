@@ -1,6 +1,9 @@
 package bang.game;
 
+import bang.game.cards.Color;
+import bang.game.cards.Face;
 import bang.game.cards.PlayingCard;
+import bang.game.cards.Suit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,8 +30,28 @@ public class PlayerTest {
     private Character calamityJanet = new Character("Calamity Janet", Ability.BANGS_ARE_MISSED, 4);
     private Character suzyLafayette = new Character("Suzy Lafayette", Ability.DRAWS_WHEN_HAND_IS_EMPTY, 4);
 
-    List<PlayingCard> mockDrawPile = mock(List.class);
-    List<PlayingCard> mockDiscardPile = mock(List.class);
+    private List<PlayingCard> mockDrawPile = mock(List.class);
+    private List<PlayingCard> mockDiscardPile = mock(List.class);
+
+    /**
+     * Fake card that acts as a scope and mustang
+     */
+    private class DistModCard extends PlayingCard implements TargetDistanceModifier, ViewableDistanceModifier {
+
+        public DistModCard() {
+            super("Distance modifier Card", Color.Blue, Suit.Diamonds, Face.Seven);
+        }
+
+        @Override
+        public int getDecrease() {
+            return 1;
+        }
+
+        @Override
+        public int getIncrease() {
+            return 1;
+        }
+    }
 
     @Before
     public void setUp() throws Exception {
@@ -92,13 +115,29 @@ public class PlayerTest {
     }
 
     @Test
-    public void getReachableDistance() throws Exception {
+    public void testTargetDistance() throws Exception {
+        assertEquals(1, sheriffPlayer.getTargetDistance());
+        Character mockCharacter = mock(Character.class);
+        when(mockCharacter.getDecrease()).thenReturn(1);
+        sheriffPlayer.setCharacter(mockCharacter);
+        assertEquals(2, sheriffPlayer.getTargetDistance());
 
+        when(mockDrawPile.remove(0)).thenReturn(new DistModCard());
+        sheriffPlayer.playCardOnBoard(sheriffPlayer.drawCard(mockDrawPile));
+        assertEquals(3, sheriffPlayer.getTargetDistance());
     }
 
     @Test
-    public void getViewableDistanceDelta() throws Exception {
+    public void testViewableDistanceDelta() throws Exception {
+        assertEquals(0, sheriffPlayer.getViewableDistanceDelta());
+        Character mockCharacter = mock(Character.class);
+        when(mockCharacter.getIncrease()).thenReturn(1);
+        sheriffPlayer.setCharacter(mockCharacter);
+        assertEquals(1, sheriffPlayer.getViewableDistanceDelta());
 
+        when(mockDrawPile.remove(0)).thenReturn(new DistModCard());
+        sheriffPlayer.playCardOnBoard(sheriffPlayer.drawCard(mockDrawPile));
+        assertEquals(2, sheriffPlayer.getViewableDistanceDelta());
     }
 
     @Test
@@ -145,15 +184,23 @@ public class PlayerTest {
 
     @Test
     public void testCanDiscard() throws Exception {
-        assertFalse(rengegadePlayer.canDiscard());
+        assertFalse(rengegadePlayer.canDiscard()); // not turn
         rengegadePlayer.startTurn();
         assertFalse(rengegadePlayer.canDiscard());
         rengegadePlayer.pass();
-        for (int i = 0; i < rengegadePlayer.getNumLives(); i++) {
-//            rengegadePlayer.drawCard()
+        when(mockDrawPile.remove(0)).thenReturn(createCard());
+
+        for (int i = 0; i < rengegadePlayer.getNumLives() + 1; i++) {
+            rengegadePlayer.drawCard(mockDrawPile);
         }
+        assertEquals(1, rengegadePlayer.cardsToDiscard());
         assertTrue(rengegadePlayer.canDiscard());
-        assertTrue(rengegadePlayer.canDiscard());
+    }
+
+    @Test
+    public void testMaxLives() throws Exception {
+        assertEquals(rengegadePlayer.getCharacter().getNumBullets(), rengegadePlayer.getMaxLives());
+        assertEquals(sheriffPlayer.getCharacter().getNumBullets() + 1, sheriffPlayer.getMaxLives());
     }
 
     @Test
@@ -161,4 +208,7 @@ public class PlayerTest {
         outlawPlayer.getBarrels(); // TODO
     }
 
+    private PlayingCard createCard() {
+        return new PlayingCard("Test card", Color.Brown, Suit.Hearts, Face.Jack);
+    }
 }
