@@ -6,8 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
@@ -20,8 +18,6 @@ public class BarrelCardTest {
     private BarrelCard barrelCard = new BarrelCard(Suit.Diamonds, Face.Five);
     private PlayingContext mockContext = mock(PlayingContext.class);
     private Player mockPlayer = mock(Player.class);
-    private List<PlayingCard> mockDiscardPile = mock(List.class);
-    private List<PlayingCard> mockDrawPile = mock(List.class);
     private PlayingCard diamondCard = new PlayingCard("diamond", Color.Brown, Suit.Diamonds, Face.Queen);
     private PlayingCard heartCard = new PlayingCard("diamond", Color.Brown, Suit.Hearts, Face.Two);
 
@@ -29,10 +25,6 @@ public class BarrelCardTest {
     public void setUp() throws Exception {
         reset(mockContext);
         reset(mockPlayer);
-        reset(mockDiscardPile);
-        reset(mockDrawPile);
-        when(mockContext.getDiscardPile()).thenReturn(mockDiscardPile);
-        when(mockContext.getDrawPile()).thenReturn(mockDrawPile);
         barrelCard.setContext(mockContext);
     }
 
@@ -45,24 +37,22 @@ public class BarrelCardTest {
     public void testDefaultBarrel() throws Exception {
         barrelCard = new BarrelCard();
         setUp();
-        when(mockPlayer.drawCard(mockDrawPile)).thenReturn(diamondCard);
+        when(mockContext.flipCard()).thenReturn(diamondCard);
         assertFalse(barrelCard.apply(mockPlayer));
     }
 
     @Test
     public void testApplyHeart() throws Exception {
-        when(mockPlayer.drawCard(mockDrawPile)).thenReturn(heartCard);
+        when(mockContext.flipCard()).thenReturn(heartCard);
         assertTrue(barrelCard.apply(mockPlayer));
-        verify(mockPlayer).drawCard(mockDrawPile);
-        verify(mockPlayer).discardCard(heartCard, mockDiscardPile);
+        verify(mockContext).flipCard();
     }
 
     @Test
     public void testApplyDiamond() throws Exception {
-        when(mockPlayer.drawCard(mockDrawPile)).thenReturn(diamondCard);
+        when(mockContext.flipCard()).thenReturn(diamondCard);
         assertFalse(barrelCard.apply(mockPlayer));
-        verify(mockPlayer).drawCard(mockDrawPile);
-        verify(mockPlayer).discardCard(diamondCard, mockDiscardPile);
+        verify(mockContext).flipCard();
     }
 
 }

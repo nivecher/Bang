@@ -31,12 +31,7 @@ public class BarrelCard extends PlayingCard implements IPlayerEffect {
      */
     @Override
     public boolean apply(Player p) {
-        List<PlayingCard> drawPile = context.getDrawPile();
-        List<PlayingCard> discardPile = context.getDiscardPile();
-
-        PlayingCard draw = p.drawCard(drawPile);
-        p.discardCard(draw, discardPile); // flip = draw + discard
-        return (draw.getSuit() == Suit.Hearts);
+        return (context.flipCard().getSuit() == Suit.Hearts);
     }
 
 }
