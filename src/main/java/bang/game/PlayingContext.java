@@ -79,5 +79,15 @@ public class PlayingContext {
     public List<Player> getActivePlayers() {
         return game.getActivePlayers();
     }
+
+    /**
+     * Draws a and discards a card
+     * @return card drawn / discarded
+     */
+    public PlayingCard flipCard() {
+        PlayingCard card = drawPile.remove(0);
+        discardPile.add(card);
+        return card;
+    }
 }
 

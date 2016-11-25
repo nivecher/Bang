@@ -22,6 +22,11 @@ public class CommandLinePlayerController implements PlayerController {
     }
 
     @Override
+    public void setCardSelector(ISelector<PlayingCard> selector) {
+
+    }
+
+    @Override
     public void setPlayerSelector(ISelector<Player> selector) {
 
     }
@@ -38,6 +43,11 @@ public class CommandLinePlayerController implements PlayerController {
 
     @Override
     public PlayingCard discard() {
+        return null;
+    }
+
+    @Override
+    public PlayingCard select(List<PlayingCard> cards) {
         return null;
     }
 

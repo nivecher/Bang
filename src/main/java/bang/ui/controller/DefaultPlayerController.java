@@ -29,6 +29,13 @@ public class DefaultPlayerController implements PlayerController {
         }
     };
 
+    private ISelector<PlayingCard> cardSelector = new ISelector<PlayingCard>() {
+        @Override
+        public PlayingCard select(List<PlayingCard> list) {
+            return list.get(0); // default implementation
+        }
+    };
+
     private ISelector<Player> playerSelector = new ISelector<Player>() {
         @Override
         public Player select(List<Player> list) {
@@ -76,6 +83,10 @@ public class DefaultPlayerController implements PlayerController {
     @Override
     public void setDiscardSelector(ISelector<PlayingCard> selector) {
         this.discardSelector = selector;
+    }    @Override
+
+    public void setCardSelector(ISelector<PlayingCard> selector) {
+        this.cardSelector = selector;
     }
 
     @Override
@@ -87,6 +98,14 @@ public class DefaultPlayerController implements PlayerController {
     public PlayingCard discard() {
         PlayingCard card = discardSelector.select(player.getHand());
         player.discardCard(card, game.getDiscardPile());
+        return card;
+    }
+
+    @Override
+    public PlayingCard select(List<PlayingCard> cards) {
+        PlayingCard card = cardSelector.select(cards);
+        player.acceptCard(card);
+        cards.remove(card);
         return card;
     }
 

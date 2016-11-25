@@ -20,15 +20,13 @@ public class IndiansCard extends PlayingCard implements IAllPlayersEffect {
         super("Indians!", Color.Brown, suit, face);
     }
 
-    private List<PlayingCard> discardPile;
-
-    public void setDiscardPile(List<PlayingCard> discardPile) {
-        this.discardPile = discardPile;
-    }
-
     @Override
     public boolean apply(Player p) {
-        return !p.forceDiscard(BangCard.class, discardPile);
+        if (!p.forceDiscard(BangCard.class, context.getDiscardPile())) {
+            p.loseLife();
+            return true; // hit
+        }
+        return false; // miss
     }
 
 }

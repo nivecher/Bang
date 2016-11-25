@@ -30,10 +30,12 @@ public class DuelCard extends PlayingCard implements IPlayerEffect {
             if (opponentHasBang) {
                 playerHasBang = context.getPlayer().forceDiscard(BangCard.class, context.getDiscardPile());
             } else {
-                return true; // opponent beaten
+                p.loseLife();
+                return true; // opponent hit
             }
         } while (opponentHasBang && playerHasBang);
 
-        return false; // player beaten
+        context.getPlayer().loseLife();
+        return false; // player hit
     }
 }

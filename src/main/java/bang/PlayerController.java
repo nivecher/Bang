@@ -20,7 +20,11 @@ public interface PlayerController {
 
     void takeTurn();
 
+    // TODO remove these selectors
+
     void setDiscardSelector(ISelector<PlayingCard> selector);
+
+    void setCardSelector(ISelector<PlayingCard> selector);
 
     void setPlayerSelector(ISelector<Player> selector);
 
@@ -41,6 +45,13 @@ public interface PlayerController {
      * @return card discarded
      */
     PlayingCard discard();
+
+    /**
+     * Select and keep a card from the list of cards
+     * @param cards list of cards from which card is selected
+     * @return selected card
+     */
+    PlayingCard select(List<PlayingCard> cards);
 
     /**
      * Attempt to avoid a hit (i.e. bang) from an opponent

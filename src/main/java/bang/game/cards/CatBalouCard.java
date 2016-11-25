@@ -23,9 +23,8 @@ public class CatBalouCard extends PlayingCard implements IPlayerEffect {
 
     @Override
     public boolean apply(Player p) {
-        List<PlayingCard> discardPile = context.getDiscardPile();
         PlayingCard card = context.getCardSelector().select(p.getCards());
-        return p.discardCard(card, discardPile);
+        return p.discardCard(card, context.getDiscardPile());
     }
 
 }

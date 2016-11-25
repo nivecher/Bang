@@ -114,11 +114,11 @@ public class PlayingCard {
      */
     public boolean play () {
         Player player = context.getPlayer();
-        ISelector<Player> playerSelector = context.getPlayerSelector();
         if (this instanceof IAllPlayersEffect) {
             ((IAllPlayersEffect) this).apply(context.getActivePlayers());
             return true; // TODO always true?
         } else if (this instanceof IPlayerEffect) {
+            ISelector<Player> playerSelector = context.getPlayerSelector();
             return ((IPlayerEffect) this).apply(playerSelector.select(context.getActivePlayers()));
         } else if (color == Color.Blue) {
             return player.playCardOnBoard(this);

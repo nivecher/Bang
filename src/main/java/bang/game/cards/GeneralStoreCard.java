@@ -9,6 +9,7 @@ package bang.game.cards;
 import bang.game.IAllPlayersEffect;
 import bang.game.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,14 +24,19 @@ public class GeneralStoreCard extends PlayingCard implements IAllPlayersEffect {
         super("General Store", Color.Brown, suit, face);
     }
 
-    public void setCards(List<PlayingCard> cards) {
-        this.cards = cards;
+    @Override
+    public boolean play() {
+        cards = new ArrayList<>();
+        // flip a car from
+        for (int i = 0; i <  context.getActivePlayers().size(); i++) {
+            cards.add(context.getDrawPile().remove(0));
+        }
+        return super.play();
     }
 
     @Override
     public boolean apply(Player p) {
-        p.drawCard(cards);
-        return true;
+        return p.selectCard(cards);
     }
 
 }

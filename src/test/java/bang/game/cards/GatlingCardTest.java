@@ -35,6 +35,8 @@ public class GatlingCardTest {
 
         when(mockPlayer.bang()).thenReturn(false);
         assertFalse(cut.apply(mockPlayer));
+
+        // TODO test that all players get shot
     }
 
 }
