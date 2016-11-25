@@ -95,27 +95,6 @@ public class PlayingCard {
         return face;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.name);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final PlayingCard other = (PlayingCard) obj;
-        return this == other;
-// TODO correct?       return Objects.equals(this.name, other.name) && Objects.equals(this.suit, other.suit) && Objects.equals(this.face, other.face);
-    }
-
-
     public static <C extends PlayingCard> C findCard(Class<C> clazz, Collection<PlayingCard> cards) {
         return (C) cards.stream().filter(clazz::isInstance).findAny().orElse(null);
     }

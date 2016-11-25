@@ -8,7 +8,8 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 /**
@@ -38,6 +39,14 @@ public class BarrelCardTest {
     @After
     public void tearDown() throws Exception {
 
+    }
+
+    @Test
+    public void testDefaultBarrel() throws Exception {
+        barrelCard = new BarrelCard();
+        setUp();
+        when(mockPlayer.drawCard(mockDrawPile)).thenReturn(diamondCard);
+        assertFalse(barrelCard.apply(mockPlayer));
     }
 
     @Test

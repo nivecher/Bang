@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31813f60-1cb7-47dd-9175-28ae11e10d3e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/bang/game/cards/StagecoachCardTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/bang/game/cards/WellsFargoCardTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bang/game/cards/WellsFargoCard.java" afterPath="$PROJECT_DIR$/src/main/java/bang/game/cards/WellsFargoCard.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java" afterPath="$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java" />
     </list>
     <ignored path="Bang.iws" />
@@ -18,8 +22,12 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Bang$All_in_test.coverage" NAME="All in test Coverage Results" MODIFIED="1471765405670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bang$All_in_test__2_.coverage" NAME="All in test (2) Coverage Results" MODIFIED="1479994157598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Bang$All_in_test__1_.coverage" NAME="All in test (1) Coverage Results" MODIFIED="1471765775900" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Bang$BangCardTest_testStrength.coverage" NAME="BangCardTest.testStrength Coverage Results" MODIFIED="1471748465072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>bang.game.cards.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/bang$BarrelCardTest.coverage" NAME="BarrelCardTest Coverage Results" MODIFIED="1479994574668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>bang.game.cards.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Bang$All_in_test__3_.coverage" NAME="All in test (3) Coverage Results" MODIFIED="1479868817790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
@@ -27,6 +35,7 @@
       <FILTER>bang.game.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Bang$All_in_test__2_.coverage" NAME="All in test (2) Coverage Results" MODIFIED="1472250817313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/bang$All_in_test__3_.coverage" NAME="All in test (3) Coverage Results" MODIFIED="1479994597543" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Bang$PlayerTest.coverage" NAME="PlayerTest Coverage Results" MODIFIED="1479868923773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>bang.game.*</FILTER>
     </SUITE>
@@ -46,8 +55,8 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7425">
-              <caret line="274" column="19" lean-forward="false" selection-start-line="274" selection-start-column="19" selection-end-line="274" selection-end-column="19" />
+            <state relative-caret-position="2112">
+              <caret line="91" column="19" lean-forward="false" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
               <folding>
                 <element signature="method#getMaxLives#0;class#Player#0" expanded="false" />
                 <element signature="method#setCharacter#0;class#Player#0" expanded="false" />
@@ -57,21 +66,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CatBalouCard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/CatBalouCard.java">
+      <file leaf-file-name="WellsFargoCard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/WellsFargoCard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="25" column="59" lean-forward="false" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
+            <state relative-caret-position="495">
+              <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DuelCard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/DuelCard.java">
+      <file leaf-file-name="TestBangGame.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/TestBangGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="891">
-              <caret line="34" column="9" lean-forward="false" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+            <state relative-caret-position="1617">
+              <caret line="62" column="16" lean-forward="false" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StandardGameTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/StandardGameTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,14 +98,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayingCard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java">
+      <file leaf-file-name="StandardGame.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/StandardGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
-              <caret line="135" column="19" lean-forward="false" selection-start-line="135" selection-start-column="19" selection-end-line="135" selection-end-column="19" />
+            <state relative-caret-position="4191">
+              <caret line="135" column="69" lean-forward="false" selection-start-line="135" selection-start-column="69" selection-end-line="135" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WellsFargoCardTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/WellsFargoCardTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BangCard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BangCard.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1287">
+              <caret line="50" column="20" lean-forward="false" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,18 +133,18 @@
       <file leaf-file-name="StagecoachCard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/StagecoachCard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="17" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarrelCardTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java">
+      <file leaf-file-name="StagecoachCardTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/StagecoachCardTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+            <state relative-caret-position="957">
+              <caret line="39" column="34" lean-forward="false" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,45 +152,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarrelCard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BarrelCard.java">
+      <file leaf-file-name="BarrelCardTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="396">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="36" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DynamiteCardTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/DynamiteCardTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1584">
-              <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BeerCard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BeerCard.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultPlayerController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bang/ui/controller/DefaultPlayerController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="606">
-              <caret line="111" column="9" lean-forward="true" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
-              <folding>
-                <element signature="e#2485#2486#0" expanded="true" />
-                <element signature="e#2531#2532#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -161,8 +167,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -197,7 +203,6 @@
         <option value="$PROJECT_DIR$/src/main/java/bang/game/TargetDistanceModifier.java" />
         <option value="$PROJECT_DIR$/src/test/java/bang/game/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/bang/game/StagecoachCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bang/game/cards/WellsFargoCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/bang/game/StandardGame.java" />
         <option value="$PROJECT_DIR$/src/test/java/bang/game/StandardGameTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/bang/ui/controller/ISelector.java" />
@@ -224,9 +229,12 @@
         <option value="$PROJECT_DIR$/src/main/java/bang/game/cards/DuelCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/bang/game/PlayingContext.java" />
         <option value="$PROJECT_DIR$/src/main/java/bang/game/cards/StagecoachCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/bang/ui/controller/DefaultPlayerController.java" />
         <option value="$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bang/game/cards/WellsFargoCard.java" />
+        <option value="$PROJECT_DIR$/src/test/java/bang/game/cards/WellsFargoCardTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/bang/game/cards/StagecoachCardTest.java" />
       </list>
     </option>
   </component>
@@ -295,9 +303,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -380,18 +386,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -413,8 +411,9 @@
       <recent name="bang.game" />
       <recent name="bang.ui.controller" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Programming\Projects\Bang\src\main\java\bang\game\cards" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="bang.game" />
+      <recent name="bang.game.cards" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="bang" />
@@ -422,13 +421,12 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="bang.game" />
-      <recent name="bang.game.cards" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Programming\Projects\Bang\src\main\java\bang\game\cards" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in test">
-    <configuration default="false" name="DynamiteCardTest.testDynamiteExplodes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="BarrelCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="bang.game.cards.*" />
@@ -439,33 +437,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="bang.game.cards" />
-      <option name="MAIN_CLASS_NAME" value="bang.game.cards.DynamiteCardTest" />
-      <option name="METHOD_NAME" value="testDynamiteExplodes" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="DynamiteCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="bang.game.cards.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="bang.game.cards" />
-      <option name="MAIN_CLASS_NAME" value="bang.game.cards.DynamiteCardTest" />
+      <option name="MAIN_CLASS_NAME" value="bang.game.cards.BarrelCardTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -480,7 +452,28 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="GatlingCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="All in test (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="WellsFargoCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="bang.game.cards.*" />
@@ -491,7 +484,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="bang.game.cards" />
-      <option name="MAIN_CLASS_NAME" value="bang.game.cards.GatlingCardTest" />
+      <option name="MAIN_CLASS_NAME" value="bang.game.cards.WellsFargoCardTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -506,24 +499,30 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="Bang" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="StagecoachCardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="bang.*" />
+          <option name="PATTERN" value="bang.game.cards.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="bang.Bang" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" value="bang.game.cards" />
+      <option name="MAIN_CLASS_NAME" value="bang.game.cards.StagecoachCardTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="main" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
       <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="false" name="All in test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -752,19 +751,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.DynamiteCardTest.testDynamiteExplodes" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.DynamiteCardTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.GatlingCardTest" />
-      <item index="3" class="java.lang.String" itemvalue="Application.Bang" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.BarrelCardTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.All in test (3)" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.WellsFargoCardTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.StagecoachCardTest" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.All in test" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.All in test" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Bang" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.GatlingCardTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.DynamiteCardTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.DynamiteCardTest.testDynamiteExplodes" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.StagecoachCardTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.WellsFargoCardTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.All in test (3)" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.BarrelCardTest" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -841,39 +840,46 @@
       <option name="project" value="LOCAL" />
       <updated>1479940686285</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add support for playing context">
+      <created>1479940867377</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1479940867377</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_test - 2016.11.23 at 16h 38m 30s.xml">
+    <history-entry file="All_in_test - 2016.11.25 at 12h 34m 01s.xml">
       <configuration name="All in test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_test - 2016.11.23 at 16h 40m 41s.xml">
-      <configuration name="All in test" configurationId="JUnit" />
+    <history-entry file="BarrelCardTest - 2016.11.24 at 07h 34m 25s.xml">
+      <configuration name="BarrelCardTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DynamiteCardTest - 2016.11.23 at 11h 34m 48s.xml">
-      <configuration name="DynamiteCardTest" configurationId="JUnit" />
+    <history-entry file="BarrelCardTest - 2016.11.24 at 07h 35m 42s.xml">
+      <configuration name="BarrelCardTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DynamiteCardTest_testDynamiteExplodes - 2016.11.23 at 11h 28m 20s.xml">
-      <configuration name="DynamiteCardTest.testDynamiteExplodes" configurationId="JUnit" />
+    <history-entry file="BarrelCardTest - 2016.11.24 at 07h 35m 56s.xml">
+      <configuration name="BarrelCardTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DynamiteCardTest_testDynamiteExplodes - 2016.11.23 at 11h 30m 38s.xml">
-      <configuration name="DynamiteCardTest.testDynamiteExplodes" configurationId="JUnit" />
+    <history-entry file="BarrelCardTest - 2016.11.24 at 07h 36m 16s.xml">
+      <configuration name="BarrelCardTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DynamiteCardTest_testDynamiteExplodes - 2016.11.23 at 11h 31m 20s.xml">
-      <configuration name="DynamiteCardTest.testDynamiteExplodes" configurationId="JUnit" />
+    <history-entry file="StagecoachCardTest - 2016.11.24 at 08h 37m 14s.xml">
+      <configuration name="StagecoachCardTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DynamiteCardTest_testDynamiteExplodes - 2016.11.23 at 11h 33m 11s.xml">
-      <configuration name="DynamiteCardTest.testDynamiteExplodes" configurationId="JUnit" />
+    <history-entry file="StagecoachCardTest - 2016.11.24 at 08h 37m 28s.xml">
+      <configuration name="StagecoachCardTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DynamiteCardTest_testDynamiteExplodes - 2016.11.23 at 11h 34m 41s.xml">
-      <configuration name="DynamiteCardTest.testDynamiteExplodes" configurationId="JUnit" />
+    <history-entry file="WellsFargoCardTest - 2016.11.24 at 08h 32m 35s.xml">
+      <configuration name="WellsFargoCardTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GatlingCardTest - 2016.11.23 at 11h 41m 39s.xml">
-      <configuration name="GatlingCardTest" configurationId="JUnit" />
+    <history-entry file="WellsFargoCardTest - 2016.11.24 at 08h 33m 22s.xml">
+      <configuration name="WellsFargoCardTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StandardGameTest - 2016.11.23 at 08h 31m 30s.xml">
-      <configuration name="StandardGameTest" configurationId="JUnit" />
+    <history-entry file="WellsFargoCardTest - 2016.11.24 at 08h 33m 56s.xml">
+      <configuration name="WellsFargoCardTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -887,10 +893,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3232" height="1732" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26806453" sideWeight="0.5587229" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25903225" sideWeight="0.52353364" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32729906" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -898,21 +904,20 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36495292" sideWeight="0.5012903" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294714" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36495292" sideWeight="0.49870968" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294714" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294714" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26806453" sideWeight="0.4412771" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27645162" sideWeight="0.43301955" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802317" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25903225" sideWeight="0.4793628" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25903225" sideWeight="0.47646633" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24956872" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39761904" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -920,7 +925,8 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33743665" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29675516" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29612902" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802317" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -951,20 +957,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/Assert.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="225" column="0" lean-forward="false" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/TargetDistanceModifier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -976,7 +968,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1030,25 +1021,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/StandardGameTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/WellsFargoCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1066,27 +1042,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/StandardGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4191">
-          <caret line="135" column="69" lean-forward="false" selection-start-line="135" selection-start-column="69" selection-end-line="135" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/TestBangGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="62" column="16" lean-forward="false" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/util/logging/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="217" column="13" lean-forward="false" selection-start-line="217" selection-start-column="13" selection-end-line="217" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1127,11 +1086,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#887#0" expanded="false" />
-            <element signature="e#562#563#0" expanded="false" />
-            <element signature="e#588#589#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1140,7 +1094,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="457">
           <caret line="48" column="9" lean-forward="false" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1235,13 +1188,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BangCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="44" column="3" lean-forward="true" selection-start-line="44" selection-start-column="3" selection-end-line="44" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/GeneralStoreCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -1260,9 +1206,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="16" column="16" lean-forward="false" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#538#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1274,30 +1217,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/DynamiteCardTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/CatBalouCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
           <caret line="25" column="59" lean-forward="false" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7425">
-          <caret line="274" column="19" lean-forward="false" selection-start-line="274" selection-start-column="19" selection-end-line="274" selection-end-column="19" />
           <folding>
-            <element signature="method#getMaxLives#0;class#Player#0" expanded="false" />
-            <element signature="method#setCharacter#0;class#Player#0" expanded="false" />
-            <element signature="method#getCards#0;class#Player#0" expanded="false" />
+            <element signature="e#0#797#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#485#486#0" expanded="false" />
+            <element signature="e#544#545#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1307,7 +1235,9 @@
         <state relative-caret-position="891">
           <caret line="34" column="9" lean-forward="false" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#1028#0" expanded="false" />
+            <element signature="e#411#412#0" expanded="false" />
+            <element signature="e#465#466#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1340,6 +1270,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bang/ui/controller/DefaultPlayerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3036">
+          <caret line="111" column="9" lean-forward="false" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BeerCard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1348,50 +1285,119 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/StagecoachCard.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/DynamiteCardTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="1084">
+          <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BarrelCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/PlayingCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="135" column="19" lean-forward="false" selection-start-line="135" selection-start-column="19" selection-end-line="135" selection-end-column="19" />
+        <state relative-caret-position="853">
+          <caret line="124" column="15" lean-forward="false" selection-start-line="124" selection-start-column="15" selection-end-line="124" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bang/ui/controller/DefaultPlayerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="111" column="9" lean-forward="true" selection-start-line="111" selection-start-column="9" selection-end-line="111" selection-end-column="9" />
-          <folding>
-            <element signature="e#2485#2486#0" expanded="true" />
-            <element signature="e#2531#2532#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BarrelCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/BarrelCardTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="31" column="28" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+        <state relative-caret-position="396">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/BangCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1287">
+          <caret line="50" column="20" lean-forward="false" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2112">
+          <caret line="91" column="19" lean-forward="false" selection-start-line="91" selection-start-column="19" selection-end-line="91" selection-end-column="19" />
+          <folding>
+            <element signature="method#getMaxLives#0;class#Player#0" expanded="false" />
+            <element signature="method#setCharacter#0;class#Player#0" expanded="false" />
+            <element signature="method#getCards#0;class#Player#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/StagecoachCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="17" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/StagecoachCardTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="957">
+          <caret line="39" column="34" lean-forward="false" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/cards/WellsFargoCardTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/cards/WellsFargoCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/TestBangGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1617">
+          <caret line="62" column="16" lean-forward="false" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/bang/game/StandardGameTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bang/game/StandardGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4191">
+          <caret line="135" column="69" lean-forward="false" selection-start-line="135" selection-start-column="69" selection-end-line="135" selection-end-column="69" />
+          <folding />
         </state>
       </provider>
     </entry>
