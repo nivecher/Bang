@@ -11,7 +11,7 @@ import bang.game.Player;
 import java.util.List;
 
 /**
- *
+ * Jail card
  * @author Morgan
  */
 public class JailCard extends PlayingCard implements IPlayerEffect {
@@ -37,7 +37,7 @@ public class JailCard extends PlayingCard implements IPlayerEffect {
      */
     @Override
     public boolean apply(Player p) { // draw a card
-        return p.acceptCard(this); // TODO add to board
+        return p.acceptCard(this);
     }
     
 }

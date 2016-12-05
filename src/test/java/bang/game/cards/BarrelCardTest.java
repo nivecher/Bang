@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
  */
 public class BarrelCardTest {
 
-    private BarrelCard barrelCard = new BarrelCard(Suit.Diamonds, Face.Five);
+    private BarrelCard cut = new BarrelCard(Suit.Diamonds, Face.Five);
     private PlayingContext mockContext = mock(PlayingContext.class);
     private Player mockPlayer = mock(Player.class);
     private PlayingCard diamondCard = new PlayingCard("diamond", Color.Brown, Suit.Diamonds, Face.Queen);
@@ -25,33 +25,28 @@ public class BarrelCardTest {
     public void setUp() throws Exception {
         reset(mockContext);
         reset(mockPlayer);
-        barrelCard.setContext(mockContext);
-    }
-
-    @After
-    public void tearDown() throws Exception {
-
+        cut.setContext(mockContext);
     }
 
     @Test
     public void testDefaultBarrel() throws Exception {
-        barrelCard = new BarrelCard();
+        cut = new BarrelCard();
         setUp();
         when(mockContext.flipCard()).thenReturn(diamondCard);
-        assertFalse(barrelCard.apply(mockPlayer));
+        assertFalse(cut.apply(mockPlayer));
     }
 
     @Test
     public void testApplyHeart() throws Exception {
         when(mockContext.flipCard()).thenReturn(heartCard);
-        assertTrue(barrelCard.apply(mockPlayer));
+        assertTrue(cut.apply(mockPlayer));
         verify(mockContext).flipCard();
     }
 
     @Test
     public void testApplyDiamond() throws Exception {
         when(mockContext.flipCard()).thenReturn(diamondCard);
-        assertFalse(barrelCard.apply(mockPlayer));
+        assertFalse(cut.apply(mockPlayer));
         verify(mockContext).flipCard();
     }
 

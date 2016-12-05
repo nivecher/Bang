@@ -6,11 +6,13 @@
 
 package bang.game.cards;
 
-import bang.game.*;
+import bang.game.IAllPlayersEffect;
+import bang.game.IPlayerEffect;
+import bang.game.Player;
+import bang.game.PlayingContext;
 import bang.ui.controller.ISelector;
 
 import java.util.Collection;
-import java.util.Objects;
 
 /**
  * Playing card that can be drawn and played by a player and has some effect(s)
@@ -95,25 +97,33 @@ public class PlayingCard {
         return face;
     }
 
+    /**
+     * Finds a card of a certain class
+     * @param clazz type of card to find
+     * @param cards list of cards to search
+     * @param <C> any PlayingCard
+     * @return first card found with class clazz or null if not found
+     */
     public static <C extends PlayingCard> C findCard(Class<C> clazz, Collection<PlayingCard> cards) {
         return (C) cards.stream().filter(clazz::isInstance).findAny().orElse(null);
     }
 
     /**
      * Sets the playing context
+     *
      * @param context
      */
-    public void setContext (PlayingContext context) {
+    public void setContext(PlayingContext context) {
         this.context = context;
     }
 
     /**
      * Plays the card within the established context
+     *
      * @return true if the play accomplished its intended goal, false otherwise
      * @throws NullPointerException if context is null
      */
-    public boolean play () {
-        Player player = context.getPlayer();
+    public boolean play() {
         if (this instanceof IAllPlayersEffect) {
             ((IAllPlayersEffect) this).apply(context.getActivePlayers());
             return true; // TODO always true?
@@ -121,6 +131,7 @@ public class PlayingCard {
             ISelector<Player> playerSelector = context.getPlayerSelector();
             return ((IPlayerEffect) this).apply(playerSelector.select(context.getActivePlayers()));
         } else if (color == Color.Blue) {
+            Player player = context.getPlayer();
             return player.playCardOnBoard(this);
             // TODO support green cards
 //        } else if (card.getColor() == Color.Brown) {

@@ -7,7 +7,6 @@ package bang.game.cards;
 
 import bang.game.IAllPlayersEffect;
 import bang.game.Player;
-import java.util.List;
 
 /**
  *
@@ -17,6 +16,14 @@ public class GatlingCard extends PlayingCard implements IAllPlayersEffect {
 
     public GatlingCard(Suit suit, Face face) {
         super("Gatling", Color.Brown, suit, face);
+    }
+
+    @Override
+    public boolean play() {
+        for (Player player : context.getActiveOpponents()) {
+            apply(player);
+        }
+        return true;
     }
 
     @Override

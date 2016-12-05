@@ -37,6 +37,7 @@ public class IndiansCardTest {
 
     @Test
     public void testPlay() throws Exception {
+        when(mockPlayer2.forceDiscard(eq(BangCard.class), any())).thenReturn(true); // has Bang
         assertTrue(cut.play());
         verify(mockPlayer1, times(1)).forceDiscard(eq(BangCard.class), any());
         verify(mockPlayer2, times(1)).forceDiscard(eq(BangCard.class), any());

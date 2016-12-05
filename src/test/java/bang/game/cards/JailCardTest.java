@@ -29,6 +29,7 @@ public class JailCardTest {
 
     @Test
     public void testApply() throws Exception {
+        when(mockPlayer.acceptCard(cut)).thenReturn(true);
         assertTrue(cut.apply(mockPlayer));
         verify(mockPlayer, times(1)).acceptCard(cut);
     }
