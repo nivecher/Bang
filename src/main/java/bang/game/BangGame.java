@@ -30,7 +30,7 @@ public class BangGame implements StandardGame {
     /**
      * Maximum number of players in the game
      */
-    public static final int MAX_PLAYERS = 7;
+    public static final int MAX_PLAYERS = 7; // TODO support 8 players
 
     /**
      * List of players
@@ -59,6 +59,7 @@ public class BangGame implements StandardGame {
      * Construct a new game with the specified number of players
      *
      * @param numPlayers number of players
+     * @throws IllegalArgumentException if numPlayers is out of range
      */
     public BangGame(int numPlayers) {
 
@@ -97,7 +98,9 @@ public class BangGame implements StandardGame {
 
         players.stream().forEach((p) -> {
             p.setCharacter(characters.remove(0));
-            p.drawCard(drawPile);
+            for (int i = 0; i < p.getMaxLives(); i++) {
+                p.drawCard(drawPile);
+            }
         });
 
     }

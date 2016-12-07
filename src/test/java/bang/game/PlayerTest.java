@@ -1,5 +1,6 @@
 package bang.game;
 
+import bang.PlayerController;
 import bang.game.cards.Color;
 import bang.game.cards.Face;
 import bang.game.cards.PlayingCard;
@@ -93,9 +94,19 @@ public class PlayerTest {
     }
 
     @Test
-    public void testBang() throws Exception {
-        // TODO implement
-//        assertTrue(outlawPlayer.bang());
+    public void testBangHit() throws Exception {
+        PlayerController controller = mock(PlayerController.class);
+        outlawPlayer.setController(controller);
+        when(controller.avoidHit()).thenReturn(false);
+        assertTrue(outlawPlayer.bang());
+    }
+
+    @Test
+    public void testBangMissed() throws Exception {
+        PlayerController controller = mock(PlayerController.class);
+        rengegadePlayer.setController(controller);
+        when(controller.avoidHit()).thenReturn(true);
+        assertFalse(rengegadePlayer.bang());
     }
 
     @Test

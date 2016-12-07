@@ -22,23 +22,37 @@ import static org.junit.Assert.*;
  */
 public class TestBangGame {
 
-    public TestBangGame() {
+    @Test
+    public void testConstructors() throws Exception {
+        try {
+            new BangGame(-1);
+            fail("Did not throw exception for -1 players");
+        } catch (IllegalArgumentException ex) {
+            assertNotNull(ex.getMessage());
+        }
+        try {
+            new BangGame(9);
+            fail("Did not throw exception for 9 players");
+        } catch (IllegalArgumentException ex) {
+            assertNotNull(ex.getMessage());
+        }
     }
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
+    @Test
+    public void testGameSetup() throws Exception {
+        BangGame cut = new BangGame(4);
+        cut.setup();
+        assertEquals(4, cut.getActivePlayers().size());
+        assertTrue(cut.getDiscardPile().isEmpty());
+        assertFalse(cut.getDrawPile().isEmpty());
+        assertEquals(4, cut.getPlayers().size());
+        for (Player p : cut.getPlayers()) {
+            assertNotNull(p.getCharacter());
+            assertNotNull(p.getCharacter().getName());
+            assertNotNull(p.getRole());
+            assertEquals(p.getMaxLives(), p.getNumLives());
+            assertEquals(p.getMaxLives(), p.getHand().size());
+        }
     }
 
     @Test

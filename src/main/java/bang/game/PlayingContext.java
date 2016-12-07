@@ -23,6 +23,7 @@ public class PlayingContext {
     private final Player player;
 
     private List<PlayingCard> drawPile;
+
     private List<PlayingCard> discardPile;
 
     private ISelector<PlayingCard> cardSelector;
@@ -58,6 +59,14 @@ public class PlayingContext {
 
     public ISelector<Player> getPlayerSelector() {
         return playerSelector;
+    }
+
+    public void setPlayerSelector(ISelector<Player> playerSelector) {
+        this.playerSelector = playerSelector;
+    }
+
+    public void setCardSelector(ISelector<PlayingCard> cardSelector) {
+        this.cardSelector = cardSelector;
     }
 
     public List<PlayingCard> getDiscardPile() {

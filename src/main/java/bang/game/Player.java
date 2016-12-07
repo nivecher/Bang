@@ -55,9 +55,6 @@ public class Player {
      * @return max lives (bullets)
      */
     public int getMaxLives() {
-        if (character == null) {
-            throw new IllegalStateException("Character not set");
-        }
         int lives = character.getNumBullets();
         if (role == Role.Sheriff) {
             lives++;
@@ -84,6 +81,7 @@ public class Player {
 
     public void setCharacter(Character character) {
         this.character = character;
+        // TODO move to set role?
         if (role == Role.Sheriff) this.isTurn = true; // sheriff starts
         this.numLives = getMaxLives(); // reset lives
     }
@@ -94,7 +92,6 @@ public class Player {
      * @return true if hit, false if missed
      */
     public boolean bang() {
-
         isUnderAttack = true;
         // Has miss ability (character, cards)?
         if (controller.avoidHit()) {
@@ -347,5 +344,13 @@ public class Player {
         PlayingCard card = controller.select(cards);
         cards.remove(card);
         return hand.add(card);
+    }
+
+    /**
+     * Set the player controller
+     * @param controller
+     */
+    public void setController(PlayerController controller) {
+        this.controller = controller;
     }
 }
