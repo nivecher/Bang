@@ -10,7 +10,7 @@ package bang.game;
  *
  * @author Morgan
  */
-public interface IPlayerEffect /*TODO extends Consumer<Player>*/ {
+public interface IPlayerEffect {
     
     /**
      * Apply the affect to the specified player

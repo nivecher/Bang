@@ -6,9 +6,13 @@
 
 package bang.game.cards;
 
+import bang.game.IAllPlayersEffect;
 import bang.game.IPlayerEffect;
+import bang.game.Player;
+import bang.game.PlayingContext;
+import bang.ui.controller.ISelector;
 
-import java.util.*;
+import java.util.Collection;
 
 /**
  * Playing card that can be drawn and played by a player and has some effect(s)
@@ -38,12 +42,9 @@ public class PlayingCard {
     private final Face face;
 
     /**
-     * Set of effects that this card has in the game
-     *
-     * @deprecated effects added to cards instead
+     * Context when played
      */
-    @Deprecated
-    private final Set<IPlayerEffect> effects = new HashSet<>();
+    protected PlayingContext context;
 
     /**
      * Construct a new playing card
@@ -97,47 +98,45 @@ public class PlayingCard {
     }
 
     /**
-     * Return the list of effects this card has
-     *
-     * @return new list of effects
-     * @deprecated effects added to cards instead
+     * Finds a card of a certain class
+     * @param clazz type of card to find
+     * @param cards list of cards to search
+     * @param <C> any PlayingCard
+     * @return first card found with class clazz or null if not found
      */
-    @Deprecated
-    public List<IPlayerEffect> getEffects() {
-        return new ArrayList<>(effects);
+    public static <C extends PlayingCard> C findCard(Class<C> clazz, Collection<PlayingCard> cards) {
+        return (C) cards.stream().filter(clazz::isInstance).findAny().orElse(null);
     }
 
     /**
-     * Add an effect to this card's effects
+     * Sets the playing context
      *
-     * @param effect added
-     * @return true if effects changed
-     * @deprecated effects added to cards instead
+     * @param context
      */
-    @Deprecated
-    protected boolean addEffect(IPlayerEffect effect) {
-        return this.effects.add(effect);
+    public void setContext(PlayingContext context) {
+        this.context = context;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.name);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
+    /**
+     * Plays the card within the established context
+     *
+     * @return true if the play accomplished its intended goal, false otherwise
+     * @throws NullPointerException if context is null
+     */
+    public boolean play() {
+        if (this instanceof IAllPlayersEffect) {
+            ((IAllPlayersEffect) this).apply(context.getActivePlayers());
+            return true; // TODO always true?
+        } else if (this instanceof IPlayerEffect) {
+            ISelector<Player> playerSelector = context.getPlayerSelector();
+            return ((IPlayerEffect) this).apply(playerSelector.select(context.getActivePlayers()));
+        } else if (color == Color.Blue) {
+            Player player = context.getPlayer();
+            return player.playCardOnBoard(this);
+            // TODO support green cards
+//        } else if (card.getColor() == Color.Brown) {
+        } else {
+            throw new IllegalArgumentException("Card has no effect: " + this);
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final PlayingCard other = (PlayingCard) obj;
-        return this == other;
-// TODO correct?       return Objects.equals(this.name, other.name) && Objects.equals(this.suit, other.suit) && Objects.equals(this.face, other.face);
     }
-
-
 }

@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bang.game;
 
-import bang.game.cards.BarrelCard;
-import bang.game.cards.PlayingCard;
+import bang.PlayerController;
+import bang.game.cards.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +17,7 @@ public class Player {
     private final Role role;
     private final List<PlayingCard> hand;
     private final PlayingBoard board;
+    private PlayerController controller;
     private Character character;
     private int numLives; // bullets
     private int drawsPerTurn = 2; // default
@@ -30,12 +26,19 @@ public class Player {
     private boolean isPassing = false;
     private boolean isUnderAttack = false;
 
+    /**
+     * Construct a new player with a specific role
+     * @param role
+     */
     public Player(Role role) {
         this.role = role;
         this.hand = new ArrayList<>();
         this.board = new PlayingBoard();
     }
 
+    /**
+     * Resets the player to its initial state (at the beginning of the game)
+     */
     public void reset() {
         hand.clear();
         board.reset();
@@ -86,7 +89,7 @@ public class Player {
     }
 
     /**
-     * Player is shot (once)
+     * Player is shot (once) and if hit, loses one life
      *
      * @return true if hit, false if missed
      */
@@ -94,13 +97,18 @@ public class Player {
 
         isUnderAttack = true;
         // Has miss ability (character, cards)?
-        if (character.getAbility() == Ability.DRAW_ON_BANG_FOR_HEART_TO_MISS) {
-//           drawCard(); // TODO get drawPile
+        if (controller.avoidHit()) {
+            return false;
         }
-//        loseLife();
-        return false; // TODO implement bang (hit or miss)
+        loseLife();
+        return true; // hit
     }
 
+    /**
+     * Removes the first card from the list and  adds it to the player's hand
+     * @param cards cards from which to draw
+     * @return card drawn
+     */
     public PlayingCard drawCard(List<PlayingCard> cards) {
         PlayingCard draw = cards.remove(0);
         hand.add(draw); // TODO handle shuffling and rebuilding deck
@@ -108,13 +116,29 @@ public class Player {
         return draw;
     }
 
+    /**
+     * Accept a card into the player's hand
+     * @param card new card
+     * @return true if added to the player's hand
+     */
+    public boolean acceptCard(PlayingCard card) {
+        if (card instanceof JailCard) { // TODO better way?
+            return board.addCard(card);
+        }
+        return hand.add(card);
+    }
+
+    /**
+     * Starts the player's turn and resets any turn specific data
+     */
     public void startTurn() {
         cardsToDraw = getDrawsPerTurn();
         isTurn = true;
+        // TODO handle green cards
     }
 
-    private final int getDrawsPerTurn() {
-        return drawsPerTurn; // TODO handle others
+    private int getDrawsPerTurn() {
+        return drawsPerTurn; // TODO handle other characters
     }
 
     public boolean canDraw() {
@@ -123,6 +147,7 @@ public class Player {
 
     /**
      * Returns whether the player can play cards
+     *
      * @return true if the player has started his/her turn and has drawn
      */
     public boolean canPlay() {
@@ -136,6 +161,7 @@ public class Player {
 
     /**
      * Returns whether the player can pass
+     *
      * @return true if this player has started his/her turn and is not passing and can or is under attack
      */
     public boolean canPass() {
@@ -144,12 +170,17 @@ public class Player {
 
     /**
      * Returns whether the player can discard
+     *
      * @return true if this player has started his/her turn and has cards to discard
      */
     public boolean canDiscard() {
         return isTurn && isPassing && cardsToDiscard() > 0;
     }
 
+    /**
+     * Player is passing (i.e. ending his/her turn)
+     * @return number of cards to discard to end the turn
+     */
     public int pass() {
         isPassing = true;
         isUnderAttack = false;
@@ -158,29 +189,22 @@ public class Player {
 
     /**
      * Return the number of cards to discard in order to pass
+     *
      * @return
      */
     public int cardsToDiscard() {
         return Math.max(hand.size() - getMaxCards(), 0);
     }
 
+    /**
+     * Player is ending his/her turn (after passing)
+     */
     public void endTurn() {
         if (!canPass()) {
             throw new IllegalStateException("Cannot pass yet ending turn");
         }
         isTurn = false;
         isPassing = false;
-    }
-
-    /**
-     *
-     * @param card
-     * @param player
-     */
-    public void playAndDiscardCard(PlayingCard card, Consumer<PlayingCard> player) {
-        player.accept(card);
-        hand.remove(card);
-        // TODO finish this
     }
 
     /**
@@ -218,18 +242,38 @@ public class Player {
                 + (character != null ? character.getIncrease() : 0);
     }
 
+    /**
+     * Discards a card from hand and adds it to the discard pile
+     * @param card discard
+     * @param discardPile pile
+     * @return true if successfully removed from hand and added to the discard pile
+     */
     public boolean discardCard(PlayingCard card, List<PlayingCard> discardPile) {
         return hand.remove(card) && discardPile.add(card);
     }
 
+    /**
+     * Discards a card from the player's board and adds it to the discard pile
+     * @param card discard
+     * @param discardPile pile
+     * @return true if successfully removed from the player's board and added to the discard pile
+     */
     public boolean discardFromBoard(PlayingCard card, List<PlayingCard> discardPile) {
         return board.removeCard(card) && discardPile.add(card);
     }
 
+    /**
+     * Returns a copy of the player's hand
+     * @return mutable copy of the player's hand
+     */
     public List<PlayingCard> getHand() {
         return new ArrayList<>(hand);
     }
-    
+
+    /**
+     * Returns a new list of cards in the player's hand and on the player's board
+     * @return mutable copy of all player's cards
+     */
     public List<PlayingCard> getCards() {
         List<PlayingCard> cards = new ArrayList<>(hand);
         cards.addAll(board.getCards());
@@ -242,7 +286,6 @@ public class Player {
      * @return true if life added, false otherwise
      */
     public boolean regainLife() {
-        // TODO handle case when beer has no effect (2 players left)
         if (numLives == getMaxLives()) {
             return false;
         }
@@ -252,16 +295,12 @@ public class Player {
 
     /**
      * Loses one life point
+     *
      * @return true if still alive, false otherwise
      */
     public boolean loseLife() {
         numLives--;
         return numLives > 0;
-    }
-
-    public PlayingCard selectDiscard() {
-        // TODO delegate to player controller (discard selector?)
-        return hand.get(0);
     }
 
     public List<BarrelCard> getBarrels() {
@@ -278,5 +317,35 @@ public class Player {
 
     public boolean hasDrawn() {
         return cardsToDraw < getDrawsPerTurn();
+    }
+
+    public PlayerController getController() {
+        return controller;
+    }
+
+    /**
+     * Force the player to discard a card of a certain type / class
+     * @param clazz type of card to discard
+     * @param discardPile pile onto which card is added
+     * @return true if a card is discarded, false if player does not have a card of that type
+     */
+    public boolean forceDiscard(Class<? extends PlayingCard> clazz, List<PlayingCard> discardPile) {
+        PlayingCard card = PlayingCard.findCard(clazz, hand);
+
+        if (card != null) {
+            return discardCard(card, discardPile);
+        }
+        return false;
+    }
+
+    /**
+     * Selects a card from the list and removes it from the list and adds it to the player's hand
+     * @param cards list of cards to take
+     * @return true if card added to hand
+     */
+    public boolean selectCard(List<PlayingCard> cards) {
+        PlayingCard card = controller.select(cards);
+        cards.remove(card);
+        return hand.add(card);
     }
 }

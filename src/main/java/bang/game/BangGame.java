@@ -9,6 +9,7 @@ import bang.game.cards.PlayingCard;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * BANG! is a shootout game, in Spaghetti Western style, between a group of
@@ -166,4 +167,11 @@ public class BangGame implements StandardGame {
         return source.getTargetDistance() >= getViewableDistance(source, target);
     }
 
+    /**
+     * Returns the list of active (i.e. not dead) players
+     * @return list of players left in the game
+     */
+    public List<Player> getActivePlayers() {
+        return players.stream().filter(p -> p.getNumLives() > 0).collect(Collectors.toList());
+    }
 }

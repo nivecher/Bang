@@ -103,7 +103,7 @@ public class PlayingBoard implements Consumer<PlayingCard> {
      * null if no instances found in object cards
      */
     public <C extends PlayingCard> C findObjectCard(Class<C> clazz) {
-        return (C) objectCards.stream().filter(clazz::isInstance).findAny().orElse(null);
+        return PlayingCard.findCard(clazz, objectCards);
     }
 
     /**

@@ -16,23 +16,12 @@ import java.util.List;
  */
 public class BarrelCard extends PlayingCard implements IPlayerEffect {
 
-    private List<PlayingCard> drawPile;
-    private List<PlayingCard> discardPile;
-
     public BarrelCard(Suit suit, Face face) {
         super("Barrel", Color.Blue, suit, face);
     }
 
     public BarrelCard() {
         this(null, null);
-    }
-
-    public void setDrawPile(List<PlayingCard> drawPile) {
-        this.drawPile = drawPile;
-    }
-
-    public void setDiscardPile(List<PlayingCard> discardPile) {
-        this.discardPile = discardPile;
     }
 
     /**
@@ -42,9 +31,7 @@ public class BarrelCard extends PlayingCard implements IPlayerEffect {
      */
     @Override
     public boolean apply(Player p) {
-        PlayingCard draw = p.drawCard(drawPile);
-        p.discardCard(draw, discardPile); // flip = draw + discard
-        return (draw.getSuit() == Suit.Hearts);
+        return (context.flipCard().getSuit() == Suit.Hearts);
     }
 
 }

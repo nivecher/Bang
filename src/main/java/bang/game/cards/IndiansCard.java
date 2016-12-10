@@ -6,14 +6,27 @@
 
 package bang.game.cards;
 
+import bang.game.IAllPlayersEffect;
+import bang.game.Player;
+
+import java.util.List;
+
 /**
  *
  * @author Morgan
  */
-public class IndiansCard extends PlayingCard {
+public class IndiansCard extends PlayingCard implements IAllPlayersEffect {
     public IndiansCard(Suit suit, Face face) {
         super("Indians!", Color.Brown, suit, face);
     }
 
-    // TODO implement
+    @Override
+    public boolean apply(Player p) {
+        if (!p.forceDiscard(BangCard.class, context.getDiscardPile())) {
+            p.loseLife();
+            return true; // hit
+        }
+        return false; // miss
+    }
+
 }

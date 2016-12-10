@@ -1,5 +1,6 @@
 package bang.ui.controller;
 
+import bang.PlayerController;
 import bang.game.Ability;
 import bang.game.BangGame;
 import bang.game.Character;
@@ -58,7 +59,8 @@ public class DefaultPlayerControllerTest {
 
     @Test
     public void takeTurn() throws Exception {
-
+        playerController.takeTurn();
+        verify(mockPlayer, times(1)).startTurn();
     }
 
     @Test
