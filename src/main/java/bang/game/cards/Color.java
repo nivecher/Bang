@@ -12,5 +12,4 @@ package bang.game.cards;
  */
 public enum Color {
     Blue, Brown
-    
 }

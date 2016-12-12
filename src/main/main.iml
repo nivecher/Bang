@@ -17,5 +17,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="org.springframework.boot:spring-boot-starter:1.4.2.RELEASE" level="project" />
   </component>
 </module>

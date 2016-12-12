@@ -126,14 +126,14 @@ public class PlayingCard {
     public boolean play() {
         if (this instanceof IAllPlayersEffect) {
             ((IAllPlayersEffect) this).apply(context.getActivePlayers());
-            return true; // TODO always true?
+            return true;
         } else if (this instanceof IPlayerEffect) {
             ISelector<Player> playerSelector = context.getPlayerSelector();
             return ((IPlayerEffect) this).apply(playerSelector.select(context.getActivePlayers()));
         } else if (color == Color.Blue) {
             Player player = context.getPlayer();
             return player.playCardOnBoard(this);
-            // TODO support green cards
+            // TODO DodgeCity: support green cards
 //        } else if (card.getColor() == Color.Brown) {
         } else {
             throw new IllegalArgumentException("Card has no effect: " + this);

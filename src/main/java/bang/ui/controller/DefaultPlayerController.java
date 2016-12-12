@@ -104,7 +104,7 @@ public class DefaultPlayerController implements PlayerController {
     @Override
     public PlayingCard select(List<PlayingCard> cards) {
         PlayingCard card = cardSelector.select(cards);
-        player.acceptCard(card);
+        player.accept(card);
         cards.remove(card);
         return card;
     }

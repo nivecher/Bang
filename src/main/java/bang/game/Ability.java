@@ -6,7 +6,7 @@
 package bang.game;
 
 /**
- * 
+ * Special ability of a player
  * @author Morgan
  */
 public enum Ability {

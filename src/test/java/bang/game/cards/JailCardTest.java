@@ -5,9 +5,8 @@ import bang.game.PlayingContext;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 /**
@@ -29,9 +28,8 @@ public class JailCardTest {
 
     @Test
     public void testApply() throws Exception {
-        when(mockPlayer.acceptCard(cut)).thenReturn(true);
         assertTrue(cut.apply(mockPlayer));
-        verify(mockPlayer, times(1)).acceptCard(cut);
+        verify(mockPlayer, times(1)).accept(cut);
     }
 
     @Test

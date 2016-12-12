@@ -21,23 +21,21 @@ public class JailCard extends PlayingCard implements IPlayerEffect {
     }
 
     /**
-     *
+     * Play the jail card and remain in jail (i.e. skip turn) unless a heart is drawn
      * @return true if player remains in jail
      */
     public boolean play() {
-        boolean heart = (context.flipCard().getSuit() == Suit.Hearts);
-        // TODO handle ending turn?
-        return !heart; // remain in jail (skip turn) unless a heart is drawn
+        return (context.flipCard().getSuit() != Suit.Hearts);
     }
 
     /**
      * Draws a card from the draw pile and
      * @param p player being put in jail
-     * @return true if the player remains in jail
      */
     @Override
     public boolean apply(Player p) { // draw a card
-        return p.acceptCard(this);
+        p.accept(this);
+        return true; // player is in jail
     }
     
 }

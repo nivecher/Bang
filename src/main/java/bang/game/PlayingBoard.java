@@ -19,7 +19,7 @@ import java.util.function.Consumer;
  *
  * @author Morgan
  */
-public class PlayingBoard implements Consumer<PlayingCard> {
+public class PlayingBoard {
 
     /**
      * Cards played on the board. Only one of each type can be played.
@@ -131,12 +131,14 @@ public class PlayingBoard implements Consumer<PlayingCard> {
         this.effectCards.clear();
     }
 
-    @Override
-    public void accept(PlayingCard c) {
-        addCard(c);
-    }
-    
+    /**
+     * Returns a new list of the object cards on the board
+     * @return new list of object cards
+     */
     public List<PlayingCard> getCards() {
-        return new ArrayList<>(objectCards);
+        List<PlayingCard> cards = new ArrayList<>(objectCards);
+        cards.addAll(effectCards);
+        return cards;
     }
+
 }
