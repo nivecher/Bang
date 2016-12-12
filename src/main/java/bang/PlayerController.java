@@ -54,6 +54,13 @@ public interface PlayerController {
     PlayingCard select(List<PlayingCard> cards);
 
     /**
+     * Select a card to discard of a certain type
+     * @param clazz type of card to discard
+     * @return true if card discarded, false otherwise (i.e. pass)
+     */
+    boolean forceDiscard(Class<? extends PlayingCard> clazz);
+
+    /**
      * Attempt to avoid a hit (i.e. bang) from an opponent
      * @return true if avoided
      */

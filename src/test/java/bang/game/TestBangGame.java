@@ -9,12 +9,14 @@ import bang.game.cards.*;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
 import static bang.game.BangGame.MAX_PLAYERS;
 import static bang.game.BangGame.MIN_PLAYERS;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 /**
  *
@@ -111,41 +113,47 @@ public class TestBangGame {
         assertEquals(1, game.getPositionDistance(p2, p1));
         assertEquals(2, game.getViewableDistance(p2, p1));
         assertFalse(game.canReach(p2, p1)); // based on char mod to target
-        
-        p2.playCardOnBoard(gun2);
+
+        drawAndPlay(p2, gun2);
         assertEquals(2, p2.getTargetDistance());
         assertEquals(2, game.getViewableDistance(p2, p1));
         assertTrue(game.canReach(p2, p1)); // based on weapon mod
-        
+
         // verify no change based on object mod to increase target reach
         assertEquals(1, p1.getTargetDistance());
-        p1.playCardOnBoard(scope1);
+        drawAndPlay(p1, scope1);
         assertEquals(2, p1.getTargetDistance());
         // scope applied, no change to viewable distance
         assertEquals(1, game.getViewableDistance(p1, p2));
         assertEquals(2, game.getViewableDistance(p2, p1)); // no effect
         assertTrue(game.canReach(p2, p1));
-        
+
         assertEquals(2, game.getViewableDistance(p1, p3)); // can now reach
         assertTrue(game.canReach(p1, p3));
-        
-        p1.playCardOnBoard(mustang);
+
+        drawAndPlay(p1, mustang);
         assertEquals(3, game.getViewableDistance(p2, p1)); // scope + char
         assertFalse(game.canReach(p2, p1)); // based on char mod to target
-        
-        p2.playCardOnBoard(gun4); // can more than reach
+
+        drawAndPlay(p2, gun4); // can more than reach
         assertEquals(3, game.getViewableDistance(p2, p1)); // scope + char
         assertTrue(game.canReach(p2, p1)); // based on weapon mod
-        
+
         assertEquals(2, p4.getTargetDistance()); // based on char
-        p4.playCardOnBoard(scope2);
+        drawAndPlay(p4, scope2);
         assertEquals(3, p4.getTargetDistance()); // plus scope
-        p4.playCardOnBoard(gun3); // dist 3 weapon
+        drawAndPlay(p4, gun3); // dist 3 weapon
         assertEquals(5, p4.getTargetDistance()); // new weapon
         assertTrue(p4.discardFromBoard(gun3, discardPile)); // default weapon
         assertEquals(3, p4.getTargetDistance()); // default weapon
         assertTrue(p4.discardFromBoard(scope2, discardPile)); // discard scope
         assertEquals(2, p4.getTargetDistance()); // minus scope
         
+    }
+
+    private void drawAndPlay(Player p, PlayingCard card) {
+        card.setContext(new PlayingContext(mock(BangGame.class), p));
+        assertEquals(card, p.drawCard(new ArrayList(Arrays.asList(card))));
+        assertTrue(card.play());
     }
 }

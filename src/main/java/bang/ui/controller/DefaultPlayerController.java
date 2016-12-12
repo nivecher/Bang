@@ -110,16 +110,36 @@ public class DefaultPlayerController implements PlayerController {
     }
 
     @Override
+    public boolean forceDiscard(Class<? extends PlayingCard> clazz) {
+        PlayingCard card = PlayingCard.findCard(clazz, player.getHand());
+
+        if (card != null) {
+            return player.discardCard(card, game.getDiscardPile());
+        }
+
+        card = PlayingCard.findCard(clazz, player.getCards());
+        if (card != null) {
+            return player.discardFromBoard(card, game.getDiscardPile());
+        }
+
+        return false; // does not have a card of that type
+    }
+
+    /**
+     * Try to avoid a hit (AI)
+     * @return true if hit avoided, false if hit
+     */
+    @Override
     public boolean avoidHit() {
         if (player.getCharacter().getAbility() == Ability.DRAW_ON_BANG_FOR_HEART_TO_MISS) {
             BarrelCard barrel = new BarrelCard();
-            if(barrel.apply(player)) {
+            if(barrel.play()) {
                 return true; // avoided
             }
         }
 
         // Try all barrels
-        if (player.getBarrels().stream().peek(b -> {
+        if (player.getBarrelsInPlay().stream().peek(b -> {
                 b.setContext(new PlayingContext(game, player));
             }).anyMatch(b -> b.play())) {
             return true; // avoided

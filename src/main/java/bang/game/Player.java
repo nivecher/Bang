@@ -38,6 +38,8 @@ public class Player implements Consumer<PlayingCard> {
         this.role = role;
         this.hand = new ArrayList<>();
         this.board = new PlayingBoard();
+        // TODO move to set role?
+        if (role == Role.Sheriff) this.isTurn = true; // sheriff starts
     }
 
     /**
@@ -67,6 +69,10 @@ public class Player implements Consumer<PlayingCard> {
         return lives;
     }
 
+    /**
+     * Get player's role
+     * @return player role
+     */
     public Role getRole() {
         return role;
     }
@@ -104,8 +110,6 @@ public class Player implements Consumer<PlayingCard> {
     public void setCharacter(Character character) {
         this.character = character;
         this.abiityActivated = false;
-        // TODO move to set role?
-        if (role == Role.Sheriff) this.isTurn = true; // sheriff starts
         this.numLives = getMaxLives(); // reset lives
     }
 
@@ -170,7 +174,7 @@ public class Player implements Consumer<PlayingCard> {
     public void startTurn() {
         cardsToDraw = getDrawsPerTurn();
         isTurn = true;
-        // TODO DodgeCity: handle green cards
+        // TODO DodgeCity: handle green cards being playable
     }
 
     /**
@@ -265,6 +269,7 @@ public class Player implements Consumer<PlayingCard> {
         isPassing = false;
         isUnderAttack = false;
         abiityActivated = false;
+        cardsToDraw = getDrawsPerTurn();
     }
 
     /**
@@ -274,8 +279,7 @@ public class Player implements Consumer<PlayingCard> {
      * @return true if card added to board, false otherwise
      */
     public boolean playCardOnBoard(PlayingCard card) {
-        hand.remove(card);
-        return board.addCard(card);
+        return (hand.remove(card) && board.addCard(card));
     }
 
     /**
@@ -371,16 +375,12 @@ public class Player implements Consumer<PlayingCard> {
         return numLives > 0;
     }
 
-    public List<BarrelCard> getBarrels() {
-        List<BarrelCard> barrels = new ArrayList<>();
-        if (character.getAbility() == Ability.DRAW_ON_BANG_FOR_HEART_TO_MISS) {
-            barrels.add(new BarrelCard());
-        }
-        BarrelCard bInPlay = board.findObjectCard(BarrelCard.class);
-        if (bInPlay != null) {
-            barrels.add(bInPlay);
-        }
-        return barrels;
+    /**
+     * Returns a new list of all the barrel cards in play on the player's board
+     * @return list of barrel cards in effect
+     */
+    public List<PlayingCard> getBarrelsInPlay() {
+        return board.findObjectCardsByType(BarrelCard.class);
     }
 
     /**
@@ -397,26 +397,25 @@ public class Player implements Consumer<PlayingCard> {
     }
 
     /**
-     * Force the player to discard a card of a certain type / class
+     * Force the player to discard a card of a certain type / class or lose a life
      *
      * @param clazz       type of card to discard
      * @param discardPile pile onto which card is added
-     * @return true if a card is discarded, false if player does not have a card of that type
+     * @return true if a card is discarded, false if player does not have a card of that type and loses a life
      */
     public boolean forceDiscard(Class<? extends PlayingCard> clazz, List<PlayingCard> discardPile) {
-        PlayingCard card = PlayingCard.findCard(clazz, hand);
 
-        // TODO allow user selection, abilities, etc.
-
-        if (card != null) {
-            return discardCard(card, discardPile);
+        if (controller.forceDiscard(clazz)) {
+            return true;
         }
-        return false;
+
+        loseLife();
+        return false; // hit
     }
 
     /**
      * Selects a card from the list and removes it from the list and adds it to the player's hand
-     *
+     * (similar to accept but with a choice)
      * @param cards list of cards to take
      * @return true if card added to hand
      */
@@ -440,6 +439,7 @@ public class Player implements Consumer<PlayingCard> {
      */
     public void activateAbility() {
         abiityActivated = true;
+        // TODO improve ability handling
     }
 
     public int getMaxCards() {

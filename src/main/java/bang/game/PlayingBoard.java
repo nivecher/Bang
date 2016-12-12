@@ -5,6 +5,7 @@
  */
 package bang.game;
 
+import bang.game.cards.BarrelCard;
 import bang.game.cards.PlayingCard;
 import bang.game.cards.WeaponCard;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 /**
  * Player's board where cards are played. Each player has a Colt .45 weapon by
@@ -41,11 +43,12 @@ public class PlayingBoard {
      */
     public boolean addCard(PlayingCard card) {
         if (card instanceof WeaponCard) {
-            setWeapon((WeaponCard) card);
+            setWeapon((WeaponCard) card); // TODO replace weapon (discard previous)
+            return true;
         } else if (card instanceof IPlayerEffect) {
             return effectCards.add(card);
         }
-        return objectCards.add(card); // object card
+        return objectCards.add(card); // object cards (including weapons)
     }
 
     /**
@@ -141,4 +144,13 @@ public class PlayingBoard {
         return cards;
     }
 
+    /**
+     * Find all object cards of a certain type
+     * @param clazz type of card
+     * @return new list of containing all object cards of a certain type on the board
+     */
+    public List<PlayingCard> findObjectCardsByType(Class<? extends PlayingCard> clazz) {
+        List<PlayingCard> cards = objectCards.stream().filter(clazz::isInstance).collect(Collectors.toList());
+        return cards;
+    }
 }

@@ -120,7 +120,7 @@ public class PlayingCard {
     /**
      * Plays the card within the established context
      *
-     * @return true if the play accomplished its intended goal, false otherwise
+     * @return true if the play accomplished its intended goal, false otherwise (i.e. discarded)
      * @throws NullPointerException if context is null
      */
     public boolean play() {
@@ -133,8 +133,10 @@ public class PlayingCard {
         } else if (color == Color.Blue) {
             Player player = context.getPlayer();
             return player.playCardOnBoard(this);
+        } else if (color == Color.Brown) { //
+            context.getPlayer().discardCard(this, context.getDiscardPile());
+            return false; // not played, discarded
             // TODO DodgeCity: support green cards
-//        } else if (card.getColor() == Color.Brown) {
         } else {
             throw new IllegalArgumentException("Card has no effect: " + this);
         }

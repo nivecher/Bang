@@ -52,6 +52,11 @@ public class CommandLinePlayerController implements PlayerController {
     }
 
     @Override
+    public boolean forceDiscard(Class<? extends PlayingCard> clazz) {
+        return false;
+    }
+
+    @Override
     public boolean avoidHit() {
         return false; // TODO implement
     }

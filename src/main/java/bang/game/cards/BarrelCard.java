@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * @author Morgan
  */
-public class BarrelCard extends PlayingCard implements IPlayerEffect {
+public class BarrelCard extends PlayingCard {
 
     public BarrelCard(Suit suit, Face face) {
         super("Barrel", Color.Blue, suit, face);
@@ -25,12 +25,10 @@ public class BarrelCard extends PlayingCard implements IPlayerEffect {
     }
 
     /**
-     * Returns true if the player drew a heart
-     * @param p player to which affect is applied
-     * @return
+     * Play the barrel card by flipping a card to see if it is a heart
+     * @return true if a heart is flipped
      */
-    @Override
-    public boolean apply(Player p) {
+    public boolean play() {
         return (context.flipCard().getSuit() == Suit.Hearts);
     }
 

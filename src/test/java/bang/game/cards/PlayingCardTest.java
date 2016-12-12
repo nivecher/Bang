@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -23,6 +24,7 @@ public class PlayingCardTest {
     private Player mockPlayer3 = mock(Player.class);
     private Player mockPlayer4 = mock(Player.class);
     private ISelector<Player> mockPlayerSelector = mock(ISelector.class);
+    private List<PlayingCard> mockDiscardPile = mock(List.class);
 
     @Before
     public void setUp() throws Exception {
@@ -31,7 +33,9 @@ public class PlayingCardTest {
         reset(mockPlayer3);
         reset(mockPlayer4);
         reset(mockPlayerSelector);
+        reset(mockDiscardPile);
         when(mockContext.getPlayer()).thenReturn(mockPlayer1);
+        when(mockContext.getDiscardPile()).thenReturn(mockDiscardPile);
         when(mockContext.getActivePlayers()).thenReturn(Arrays.asList(mockPlayer1, mockPlayer2, mockPlayer3));
         when(mockContext.getActiveOpponents()).thenReturn(Arrays.asList(mockPlayer2, mockPlayer3));
         when(mockContext.getPlayerSelector()).thenReturn(mockPlayerSelector);
@@ -73,12 +77,6 @@ public class PlayingCardTest {
         cut.setContext(mock(PlayingContext.class));
     }
 
-    @Test
-    public void playBlue() throws Exception {
-        when(mockPlayer1.playCardOnBoard(cut)).thenReturn(true);
-        assertTrue(cut.play());
-        verify(mockPlayer1).playCardOnBoard(cut);
-    }
 
     @Test
     public void testPlayerEffect() throws Exception {
@@ -91,15 +89,17 @@ public class PlayingCardTest {
     }
 
     @Test
-    public void playBrown() throws Exception {
+    public void testPlayBrown() throws Exception {
         PlayingCard card = new MissedCard(Suit.Spades, Face.Five);
-        try {
-            card.play();
-            fail("Exception not caught");
-        } catch (IllegalArgumentException ex) {
-            // exception caught
-            assertNotNull(ex.getMessage());
-        }
+        card.setContext(mockContext);
+        assertFalse(card.play());
+        verify(mockPlayer1).discardCard(card, mockDiscardPile);
     }
 
+    @Test
+    public void testPlayBlue() throws Exception {
+        when(mockPlayer1.playCardOnBoard(cut)).thenReturn(true);
+        assertTrue(cut.play());
+        verify(mockPlayer1).playCardOnBoard(cut);
+    }
 }

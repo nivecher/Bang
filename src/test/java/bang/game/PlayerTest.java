@@ -6,6 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -88,7 +90,7 @@ public class PlayerTest {
         try {
             sheriffPlayer.accept(new JailCard(Suit.Diamonds, Face.King));
             fail("Allowed sheriff to be put in jail!");
-        } catch(IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             assertNotNull(ex.getMessage());
         }
     }
@@ -175,8 +177,11 @@ public class PlayerTest {
     @Test
     public void testPlayAndDiscardFromBoard() throws Exception {
         PlayingCard card = mock(PlayingCard.class);
-        when(mockDiscardPile.add(card)).thenReturn(true);
+        when(mockDrawPile.remove(0)).thenReturn(card);
+        assertEquals(card, sheriffPlayer.drawCard(mockDrawPile));
+        assertTrue(sheriffPlayer.getHand().contains(card));
 
+        when(mockDiscardPile.add(card)).thenReturn(true);
         assertTrue(sheriffPlayer.playCardOnBoard(card));
         assertFalse(sheriffPlayer.getHand().contains(card));
         assertTrue(sheriffPlayer.getCards().contains(card));
@@ -207,21 +212,26 @@ public class PlayerTest {
     }
 
     @Test
-    public void testCanDraw() throws Exception {
+    public void testDrawing() throws Exception {
         assertEquals(2, renegadePlayer.getCardsToDraw());
         assertFalse(renegadePlayer.isTurn());
         assertFalse(renegadePlayer.canDraw()); // not turn
+        assertFalse(renegadePlayer.hasDrawn());
         renegadePlayer.startTurn();
+        assertFalse(renegadePlayer.hasDrawn());
         assertTrue(renegadePlayer.isTurn());
         assertTrue(renegadePlayer.canDraw()); // is turn, has cards to draw
         renegadePlayer.drawCard(mockDrawPile);
+        assertTrue(renegadePlayer.hasDrawn());
         assertEquals(1, renegadePlayer.getCardsToDraw());
         assertTrue(renegadePlayer.canDraw()); // still turn, has more cards to draw
         renegadePlayer.drawCard(mockDrawPile);
+        assertTrue(renegadePlayer.hasDrawn());
         assertEquals(0, renegadePlayer.getCardsToDraw());
         assertFalse(renegadePlayer.canDraw()); // still turn, has no cards to draw
         renegadePlayer.endTurn();
         assertFalse(renegadePlayer.isTurn());
+        assertFalse(renegadePlayer.hasDrawn());
         assertFalse(renegadePlayer.canDraw()); // not turn
     }
 
@@ -238,14 +248,14 @@ public class PlayerTest {
         assertFalse(renegadePlayer.canPlay()); // not finished drawing
         renegadePlayer.drawCard(mockDrawPile);
         assertEquals(0, renegadePlayer.getCardsToDraw());
-        assertTrue(renegadePlayer.canPlay()); // can player
+        assertTrue(renegadePlayer.canPlay()); // can play
         renegadePlayer.endTurn();
         assertFalse(renegadePlayer.isTurn());
         assertFalse(renegadePlayer.canPlay()); // turn over
     }
 
     @Test
-    public void testCanDiscard() throws Exception {
+    public void testDiscarding() throws Exception {
         assertFalse(renegadePlayer.isTurn());
         assertFalse(renegadePlayer.canDiscard()); // not turn
         renegadePlayer.startTurn();
@@ -286,7 +296,27 @@ public class PlayerTest {
     }
 
     @Test
-    public void testCanPass() throws Exception {
+    public void testForceDiscard() throws Exception {
+        PlayerController mockController = mock(PlayerController.class);
+        sheriffPlayer.setController(mockController);
+        when(mockController.forceDiscard(any())).thenReturn(true).thenReturn(false);
+        assertTrue(sheriffPlayer.forceDiscard(BangCard.class, mockDiscardPile));
+        assertFalse(sheriffPlayer.forceDiscard(BangCard.class, mockDiscardPile));
+    }
+
+    @Test
+    public void testSelectCard() throws Exception {
+        PlayerController mockController = mock(PlayerController.class);
+        outlawPlayer.setController(mockController);
+
+        PlayingCard card = createCard();
+        when(mockController.select(any())).thenReturn(card);
+        assertTrue(outlawPlayer.selectCard(new ArrayList<>(Arrays.asList(createCard(), card))));
+
+    }
+
+    @Test
+    public void testPassing() throws Exception {
 
         // given player has not started turn -> cannot pass
         assertFalse(deputyPlayer.isTurn());
@@ -311,10 +341,17 @@ public class PlayerTest {
     }
 
     @Test
-    public void testCanEndTurn() throws Exception {
+    public void testEndingTurn() throws Exception {
 
         assertFalse(outlawPlayer.isTurn());
         assertFalse(outlawPlayer.canEndTurn()); // not turn
+
+        try {
+            outlawPlayer.endTurn();
+            fail("Did not throw exception when failing turn when invalid");
+        } catch (IllegalStateException ex) {
+            assertNotNull(ex.getMessage());
+        }
 
         outlawPlayer.startTurn(); // turn started
         assertFalse(outlawPlayer.canEndTurn()); // not drawn
@@ -328,14 +365,15 @@ public class PlayerTest {
         givenPlayerHasMaxCards(outlawPlayer);
         assertTrue(outlawPlayer.canEndTurn()); // finished drawing, not cards to discard
 
-        outlawPlayer.drawCard(mockDrawPile); // too many cards
+        PlayingCard extraCard = createCard();
+        outlawPlayer.accept(extraCard); // too many cards
         assertFalse(outlawPlayer.canEndTurn()); // need to discard
 
-        // TODO start here
+        assertTrue(outlawPlayer.discardCard(extraCard, mockDiscardPile));
+        assertTrue(outlawPlayer.canEndTurn()); // finished discarding, can end turn
 
-        // given player has max cards
-//        assertEquals(outlawPlayer.getMaxCards(), outlawPlayer.getHand().size());
-
+        outlawPlayer.endTurn();
+        assertFalse(outlawPlayer.canEndTurn()); // turn already ended
     }
 
     @Test
@@ -345,8 +383,39 @@ public class PlayerTest {
     }
 
     @Test
-    public void getBarrels() throws Exception {
-        outlawPlayer.getBarrels(); // TODO
+    public void testBarrelsInPlay() throws Exception {
+        // given normal player with no barrels in his/her hand
+        assertEquals(0, outlawPlayer.getBarrelsInPlay().size());
+
+        PlayingCard barrelCard = new BarrelCard();
+        when(mockDrawPile.remove(0)).thenReturn(barrelCard).thenReturn(new BarrelCard());
+        assertEquals(barrelCard, outlawPlayer.drawCard(mockDrawPile));
+        assertTrue(outlawPlayer.getHand().contains(barrelCard));
+        assertEquals(0, outlawPlayer.getBarrelsInPlay().size()); // in hand, not in play
+
+        assertTrue(outlawPlayer.playCardOnBoard(barrelCard));
+        assertEquals(1, outlawPlayer.getBarrelsInPlay().size()); // one barrel in play
+
+        // TODO cannot have two of the same card in play
+        assertTrue(outlawPlayer.playCardOnBoard(outlawPlayer.drawCard(mockDrawPile)));
+        assertEquals(2, outlawPlayer.getBarrelsInPlay().size()); // multiple barrels in play
+
+        assertTrue(outlawPlayer.discardFromBoard(barrelCard, mockDiscardPile));
+        assertEquals(1, outlawPlayer.getBarrelsInPlay().size()); // one barrel in play
+    }
+
+    @Test
+    public void testController() throws Exception {
+        PlayerController mockController = mock(PlayerController.class);
+        sheriffPlayer.setController(mockController);
+        assertEquals(mockController, sheriffPlayer.getController());
+
+    }
+
+    @Test
+    public void testAbilities() throws Exception {
+        renegadePlayer.activateAbility();
+        // TODO test abilities
     }
 
     private void givenPlayerHasMaxCards(Player p) {

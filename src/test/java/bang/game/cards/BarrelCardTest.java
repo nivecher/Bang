@@ -33,20 +33,20 @@ public class BarrelCardTest {
         cut = new BarrelCard();
         setUp();
         when(mockContext.flipCard()).thenReturn(diamondCard);
-        assertFalse(cut.apply(mockPlayer));
+        assertFalse(cut.play());
     }
 
     @Test
     public void testApplyHeart() throws Exception {
         when(mockContext.flipCard()).thenReturn(heartCard);
-        assertTrue(cut.apply(mockPlayer));
+        assertTrue(cut.play());
         verify(mockContext).flipCard();
     }
 
     @Test
     public void testApplyDiamond() throws Exception {
         when(mockContext.flipCard()).thenReturn(diamondCard);
-        assertFalse(cut.apply(mockPlayer));
+        assertFalse(cut.play());
         verify(mockContext).flipCard();
     }
 
