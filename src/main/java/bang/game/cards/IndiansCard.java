@@ -9,8 +9,6 @@ package bang.game.cards;
 import bang.game.IAllPlayersEffect;
 import bang.game.Player;
 
-import java.util.List;
-
 /**
  *
  * @author Morgan

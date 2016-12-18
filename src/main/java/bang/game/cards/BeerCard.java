@@ -27,10 +27,8 @@ public class BeerCard extends PlayingCard implements IPlayerEffect {
     @Override
     public boolean apply(Player p) {
         int activePlayers = context.getActivePlayers().size();
-        if(activePlayers <= 2) {
-            return false; // beer has no effect when 2 players are left
-        }
-        return p.regainLife();
+        // beer has no effect when 2 players are left
+        return activePlayers > 2 && p.regainLife();
     }
     
 }

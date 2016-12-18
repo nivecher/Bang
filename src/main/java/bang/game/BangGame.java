@@ -6,6 +6,7 @@
 package bang.game;
 
 import bang.game.cards.PlayingCard;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +31,7 @@ public class BangGame implements StandardGame {
     /**
      * Maximum number of players in the game
      */
-    public static final int MAX_PLAYERS = 7; // TODO support 8 players
+    public static final int MAX_PLAYERS = 7; // TODO DodgeCity: support 8 players
 
     /**
      * List of players
@@ -96,7 +97,7 @@ public class BangGame implements StandardGame {
         Collections.shuffle(players);
         Collections.shuffle(drawPile);
 
-        players.stream().forEach((p) -> {
+        players.forEach((p) -> {
             p.setCharacter(characters.remove(0));
             for (int i = 0; i < p.getMaxLives(); i++) {
                 p.drawCard(drawPile);

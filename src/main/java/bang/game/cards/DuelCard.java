@@ -22,8 +22,8 @@ public class DuelCard extends PlayingCard implements IPlayerEffect {
     @Override
     public boolean apply(Player p) {
 
-        boolean opponentHasBang = false;
-        boolean playerHasBang = false;
+        boolean opponentHasBang;
+        boolean playerHasBang;
 
         do {
             opponentHasBang = p.forceDiscard(BangCard.class, context.getDiscardPile());

@@ -2,7 +2,7 @@ package bang.game;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Morgan on 12/6/2016.

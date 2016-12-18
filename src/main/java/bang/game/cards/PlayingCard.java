@@ -131,14 +131,12 @@ public class PlayingCard {
             ISelector<Player> playerSelector = context.getPlayerSelector();
             return ((IPlayerEffect) this).apply(playerSelector.select(context.getActivePlayers()));
         } else if (color == Color.Blue) {
+            // TODO DodgeCity: support green cards
             Player player = context.getPlayer();
             return player.playCardOnBoard(this);
-        } else if (color == Color.Brown) { //
+        } else {
             context.getPlayer().discardCard(this, context.getDiscardPile());
             return false; // not played, discarded
-            // TODO DodgeCity: support green cards
-        } else {
-            throw new IllegalArgumentException("Card has no effect: " + this);
         }
     }
 }

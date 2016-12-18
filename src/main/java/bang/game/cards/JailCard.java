@@ -8,7 +8,6 @@ package bang.game.cards;
 
 import bang.game.IPlayerEffect;
 import bang.game.Player;
-import java.util.List;
 
 /**
  * Jail card

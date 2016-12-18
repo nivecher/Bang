@@ -5,14 +5,11 @@
  */
 package bang.game;
 
-import bang.game.cards.BarrelCard;
+import bang.game.cards.DynamiteCard;
 import bang.game.cards.PlayingCard;
 import bang.game.cards.WeaponCard;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -150,7 +147,24 @@ public class PlayingBoard {
      * @return new list of containing all object cards of a certain type on the board
      */
     public List<PlayingCard> findObjectCardsByType(Class<? extends PlayingCard> clazz) {
-        List<PlayingCard> cards = objectCards.stream().filter(clazz::isInstance).collect(Collectors.toList());
+        return objectCards.stream().filter(clazz::isInstance).collect(Collectors.toList());
+    }
+
+    /**
+     * Return a new list of effect cards in order
+     * @return
+     */
+    public List<PlayingCard> getEffectCards() {
+        List<PlayingCard> cards = new ArrayList<>(effectCards);
+        cards.sort((o1, o2) -> { // order by precedence
+            if (o1.getClass().equals(o2.getClass())) {
+                return 0;
+            }
+            if (o1 instanceof DynamiteCard) {
+                return -1;
+            }
+            return 1;
+        });
         return cards;
     }
 }

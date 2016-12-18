@@ -24,7 +24,7 @@ public class Bang {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new Bang();
+        new Bang().init();
     }
 
     public void init() {
@@ -32,11 +32,13 @@ public class Bang {
         BangGame game = new BangGame(4);
         game.setup();
 
-        game.getPlayers().forEach(p -> {
-            controllers.add(new DefaultPlayerController(p, game));
-        });
+        game.getPlayers().forEach(p -> controllers.add(new DefaultPlayerController(p, game)));
 
         // TODO code application logic here
     }
-    
+
+    public void play() {
+        // TODO implement play
+    }
+
 }

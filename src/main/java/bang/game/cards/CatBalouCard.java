@@ -8,8 +8,6 @@ package bang.game.cards;
 
 import bang.game.IPlayerEffect;
 import bang.game.Player;
-import bang.ui.controller.ISelector;
-import java.util.List;
 
 /**
  * 

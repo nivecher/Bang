@@ -22,25 +22,16 @@ public class DefaultPlayerController implements PlayerController {
 
     private final Player player;
     private final BangGame game;
-    private ISelector<PlayingCard> discardSelector = new ISelector<PlayingCard>() {
-        @Override
-        public PlayingCard select(List<PlayingCard> list) {
-            return list.get(0); // default implementation
-        }
+    private ISelector<PlayingCard> discardSelector = list -> {
+        return list.get(0); // default implementation
     };
 
-    private ISelector<PlayingCard> cardSelector = new ISelector<PlayingCard>() {
-        @Override
-        public PlayingCard select(List<PlayingCard> list) {
-            return list.get(0); // default implementation
-        }
+    private ISelector<PlayingCard> cardSelector = list -> {
+        return list.get(0); // default implementation
     };
 
-    private ISelector<Player> playerSelector = new ISelector<Player>() {
-        @Override
-        public Player select(List<Player> list) {
-            return list.get(0); // default implementation
-        }
+    private ISelector<Player> playerSelector = list -> {
+        return list.get(0); // default implementation
     };
 
     public DefaultPlayerController(Player player, BangGame game) {
@@ -58,17 +49,16 @@ public class DefaultPlayerController implements PlayerController {
     }
 
     private List<PlayingCard> selectDrawPile() {
-        List<PlayingCard> optPile = null;
+        List<PlayingCard> optPile = game.getDrawPile();
         if (!player.hasDrawn()) { // first draw
             if (player.getCharacter().getAbility() == Ability.DRAW_FIRST_FROM_DISCARD) {
                 optPile = game.getDiscardPile();
             } else if (player.getCharacter().getAbility() == Ability.DRAW_FIRST_FROM_PLAYER) {
-                // TODO select player
-                optPile = game.getPlayers().get(0).getCards();
+              optPile = playerSelector.select(game.getActivePlayers()).getCards();
             }
         }
         // TODO support discard pile and other's hands
-        return game.getDrawPile();
+        return optPile;
     }
 
     @Override
@@ -118,11 +108,9 @@ public class DefaultPlayerController implements PlayerController {
         }
 
         card = PlayingCard.findCard(clazz, player.getCards());
-        if (card != null) {
-            return player.discardFromBoard(card, game.getDiscardPile());
-        }
 
-        return false; // does not have a card of that type
+        // discard if player has a card of that type
+        return card != null && player.discardFromBoard(card, game.getDiscardPile());
     }
 
     /**
@@ -139,9 +127,7 @@ public class DefaultPlayerController implements PlayerController {
         }
 
         // Try all barrels
-        if (player.getBarrelsInPlay().stream().peek(b -> {
-                b.setContext(new PlayingContext(game, player));
-            }).anyMatch(b -> b.play())) {
+        if (player.getBarrelsInPlay().stream().peek(b -> b.setContext(new PlayingContext(game, player))).anyMatch(PlayingCard::play)) {
             return true; // avoided
         }
 

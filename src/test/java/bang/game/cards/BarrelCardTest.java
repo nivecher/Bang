@@ -2,7 +2,6 @@ package bang.game.cards;
 
 import bang.game.Player;
 import bang.game.PlayingContext;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 

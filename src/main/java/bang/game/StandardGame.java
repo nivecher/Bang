@@ -124,7 +124,7 @@ public interface StandardGame {
         // scope card
         deck.add(new ScopeCard(Suit.Spades, Face.Ace));
 
-        // stagecoarch cards
+        // stagecoach cards
         deck.add(new StagecoachCard(Suit.Spades, Face.Nine));
         deck.add(new StagecoachCard(Suit.Spades, Face.Nine));
 

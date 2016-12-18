@@ -6,7 +6,7 @@
 package bang.game;
 
 import bang.game.cards.*;
-import org.junit.*;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;

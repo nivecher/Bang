@@ -4,7 +4,6 @@ import bang.game.IPlayerEffect;
 import bang.game.Player;
 
 import java.util.EnumSet;
-import java.util.List;
 
 /**
  * Created by Morgan on 11/22/2016.

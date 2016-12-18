@@ -6,8 +6,8 @@
 
 package bang.game.cards;
 
-import bang.game.Player;
 import bang.game.IPlayerEffect;
+import bang.game.Player;
 
 /**
  * BANG! card is played to reduce other player's life points

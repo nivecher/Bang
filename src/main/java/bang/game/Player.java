@@ -27,7 +27,7 @@ public class Player implements Consumer<PlayingCard> {
     private boolean isTurn = false;
     private boolean isPassing = false;
     private boolean isUnderAttack = false;
-    private boolean abiityActivated = false;
+    private boolean abilityActivated = false;
 
     /**
      * Construct a new player with a specific role
@@ -51,7 +51,7 @@ public class Player implements Consumer<PlayingCard> {
         isTurn = false;
         isPassing = false;
         character = null;
-        abiityActivated = false;
+        abilityActivated = false;
         cardsToDraw = getDrawsPerTurn();
     }
 
@@ -109,7 +109,7 @@ public class Player implements Consumer<PlayingCard> {
      */
     public void setCharacter(Character character) {
         this.character = character;
-        this.abiityActivated = false;
+        this.abilityActivated = false;
         this.numLives = getMaxLives(); // reset lives
     }
 
@@ -171,10 +171,12 @@ public class Player implements Consumer<PlayingCard> {
     /**
      * Starts the player's turn and resets any turn specific data
      */
-    public void startTurn() {
+    public boolean startTurn() {
         cardsToDraw = getDrawsPerTurn();
-        isTurn = true;
+        isTurn = true; // initially turn unless effect cards change it
         // TODO DodgeCity: handle green cards being playable
+        board.getEffectCards().forEach(c -> c.play());
+        return isTurn;
     }
 
     /**
@@ -268,7 +270,7 @@ public class Player implements Consumer<PlayingCard> {
         isTurn = false;
         isPassing = false;
         isUnderAttack = false;
-        abiityActivated = false;
+        abilityActivated = false;
         cardsToDraw = getDrawsPerTurn();
     }
 
@@ -438,7 +440,7 @@ public class Player implements Consumer<PlayingCard> {
      * Sets the player's ability (if any to activated)
      */
     public void activateAbility() {
-        abiityActivated = true;
+        abilityActivated = true;
         // TODO improve ability handling
     }
 
