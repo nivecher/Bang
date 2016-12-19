@@ -1,5 +1,8 @@
-package bang.game;
+package bang.game.dodgecity;
 
+import bang.game.Character;
+import bang.game.Role;
+import bang.game.StandardGameBuilder;
 import bang.game.cards.PlayingCard;
 
 import java.util.ArrayList;
@@ -52,11 +55,11 @@ public class DodgeCityGameBuilder extends StandardGameBuilder {
     @Override
     public List<Role> generateRoles() {
         if (numPlayers == MIN_PLAYERS) {
-            return new ArrayList<>(Arrays.asList(Role.Sheriff, Role.Renegade, Role.Outlaw));
+            return new ArrayList<>(Arrays.asList(Role.Deputy, Role.Renegade, Role.Outlaw));
         }
         List<Role> roles = super.generateRoles();
         if (numPlayers == MAX_PLAYERS) {
-            roles.add(Role.Deputy);
+            roles.add(Role.Renegade);
         }
         return roles;
     }
@@ -68,7 +71,12 @@ public class DodgeCityGameBuilder extends StandardGameBuilder {
             characters.addAll(super.generateCharacters());
         }
 
-        // TODO DodgeCity: add characters
+        characters.add(new DodgeCityCharacter("Apache Kid",
+                DodgeCityAbility.UNAFFECTED_BY_DIAMONDS, 4));
+        characters.add(new DodgeCityCharacter("Belle Star",
+                DodgeCityAbility.UNAFFECTED_BY_CARDS_IN_FRONT, 4));
+
+        // TODO DodgeCity: add characters (and check bullets)
 
         return characters;
     }

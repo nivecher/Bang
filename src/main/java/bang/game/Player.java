@@ -456,9 +456,13 @@ public class Player implements Consumer<PlayingCard> {
         // TODO improve ability handling
     }
 
+    /**
+     * Determine the maximum number of cards the player can hold in his/her hand
+     * (based on his/her character)
+     * @return number of chards player can hold
+     */
     public int getMaxCards() {
-        if (character.getAbility() == Ability.CAN_KEEP_TEN_CARDS) return 10;
-        return numLives;
+        return character.getMaxCards();
     }
 
 }

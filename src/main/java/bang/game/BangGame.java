@@ -54,21 +54,24 @@ public class BangGame {
      * @throws IllegalArgumentException if numPlayers is out of range
      */
     /*package*/ BangGame(int numPlayers) {
-        // TODO do not set player roles in constructor
         players = new ArrayList<>(numPlayers);
-        players.add(new Player(Role.Sheriff));
-        players.add(new Player(Role.Renegade));
-        players.add(new Player(Role.Outlaw));
-        players.add(new Player(Role.Outlaw));
-        if (players.size() < numPlayers) { // 5 players
-            players.add(new Player(Role.Deputy));
+        for (int i =  0; i < numPlayers; i++) {
+            players.add(new Player());
         }
-        if (players.size() < numPlayers) { // 6 players
-            players.add(new Player(Role.Outlaw));
-        }
-        if (players.size() < numPlayers) { // 7 players
-            players.add(new Player(Role.Deputy));
-        }
+        // TODO remove
+//        players.add(new Player(Role.Sheriff));
+//        players.add(new Player(Role.Renegade));
+//        players.add(new Player(Role.Outlaw));
+//        players.add(new Player(Role.Outlaw));
+//        if (players.size() < numPlayers) { // 5 players
+//            players.add(new Player(Role.Deputy));
+//        }
+//        if (players.size() < numPlayers) { // 6 players
+//            players.add(new Player(Role.Outlaw));
+//        }
+//        if (players.size() < numPlayers) { // 7 players
+//            players.add(new Player(Role.Deputy));
+//        }
     }
 
     /**
@@ -90,6 +93,10 @@ public class BangGame {
         players.forEach((p) -> {
             p.setRole(roles.remove(0));
             p.setCharacter(characters.remove(0));
+            p.setController(controllers.remove(0));
+            // register player and game with controlller
+            p.getController().setPlayer(p);
+            p.getController().setGame(this);
             for (int i = 0; i < p.getMaxLives(); i++) {
                 p.drawCard(drawPile);
             }

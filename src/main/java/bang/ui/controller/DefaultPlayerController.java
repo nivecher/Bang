@@ -20,8 +20,9 @@ public class DefaultPlayerController implements PlayerController {
 
     private static final Logger logger = Logger.getLogger(DefaultPlayerController.class.getName());
 
-    private final Player player;
-    private final BangGame game;
+    private Player player;
+    private BangGame game;
+
     private ISelector<PlayingCard> discardSelector = list -> {
         return list.get(0); // default implementation
     };
@@ -34,6 +35,16 @@ public class DefaultPlayerController implements PlayerController {
         return list.get(0); // default implementation
     };
 
+    public DefaultPlayerController() {
+    }
+
+    /**
+     * TODO delete this
+     * @param player
+     * @param game
+     * @deprecated use default constructor and setters
+     */
+    @Deprecated
     public DefaultPlayerController(Player player, BangGame game) {
         this.player = player;
         this.game = game;
@@ -54,7 +65,7 @@ public class DefaultPlayerController implements PlayerController {
             if (player.getCharacter().getAbility() == Ability.DRAW_FIRST_FROM_DISCARD) {
                 optPile = game.getDiscardPile();
             } else if (player.getCharacter().getAbility() == Ability.DRAW_FIRST_FROM_PLAYER) {
-              optPile = playerSelector.select(game.getActivePlayers()).getCards();
+                optPile = playerSelector.select(game.getActivePlayers()).getCards();
             }
         }
         // TODO support discard pile and other's hands
@@ -113,13 +124,14 @@ public class DefaultPlayerController implements PlayerController {
 
     /**
      * Try to avoid a hit (AI)
+     *
      * @return true if hit avoided, false if hit
      */
     @Override
     public boolean avoidHit() {
         if (player.getCharacter().getAbility() == Ability.DRAW_ON_BANG_FOR_HEART_TO_MISS) {
             BarrelCard barrel = new BarrelCard();
-            if(barrel.play()) {
+            if (barrel.play()) {
                 return true; // avoided
             }
         }
@@ -147,5 +159,25 @@ public class DefaultPlayerController implements PlayerController {
             discards.add(discard());
         }
         return discards;
+    }
+
+    @Override
+    public Player getPlayer() {
+        return player;
+    }
+
+    @Override
+    public BangGame getGame() {
+        return game;
+    }
+
+    @Override
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    @Override
+    public void setGame(BangGame game) {
+        this.game = game;
     }
 }

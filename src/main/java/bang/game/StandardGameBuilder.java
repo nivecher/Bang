@@ -35,6 +35,11 @@ public class StandardGameBuilder implements GameBuilder {
     protected final int numPlayers;
 
     /**
+     * Game being built
+     */
+    protected final BangGame game;
+
+    /**
      * Create a game builder
      *
      * @param numPlayers number of players / controllers
@@ -42,6 +47,7 @@ public class StandardGameBuilder implements GameBuilder {
     public StandardGameBuilder(int numPlayers) {
         this.numPlayers = numPlayers;
         validatePlayers();
+        this.game = new BangGame(numPlayers);
         controllers = new ArrayList<>(numPlayers);
     }
 
@@ -98,42 +104,42 @@ public class StandardGameBuilder implements GameBuilder {
      */
     @Override
     public List<Character> generateCharacters() {
-        List<Character> charList = new ArrayList<>(16);
+        List<Character> characters = new ArrayList<>(16);
 
-        charList.add(new Character("Bart Cassidy",
+        characters.add(new Character("Bart Cassidy",
                 Ability.DRAW_ON_HIT, 4));
-        charList.add(new Character("Black Jack",
+        characters.add(new Character("Black Jack",
                 Ability.SHOW_2ND_DRAW_EXTRA_ON_HEART_OR_DIAMOND, 4));
-        charList.add(new Character("Calamity Janet",
+        characters.add(new Character("Calamity Janet",
                 Ability.BANGS_ARE_MISSED, 4));
-        charList.add(new Character("El Gringo",
+        characters.add(new Character("El Gringo",
                 Ability.DRAW_FROM_PLAYER_ON_HIT, 3));
-        charList.add(new Character("Jesse Jones",
+        characters.add(new Character("Jesse Jones",
                 Ability.DRAW_FIRST_FROM_PLAYER, 4));
-        charList.add(new Character("Jourdonnais",
+        characters.add(new Character("Jourdonnais",
                 Ability.DRAW_ON_BANG_FOR_HEART_TO_MISS, 4));
-        charList.add(new Character("Kit Carlson",
+        characters.add(new Character("Kit Carlson",
                 Ability.LOOK_AT_THREE_DRAW_TWO, 4));
-        charList.add(new Character("Lucky Duke",
+        characters.add(new Character("Lucky Duke",
                 Ability.FLIP_TWO_DRAW_ONE, 4));
-        charList.add(new Character("Paul Regret",
+        characters.add(new Character("Paul Regret",
                 Ability.SEEN_AT_DISTANCE_PLUS_ONE, 3));
-        charList.add(new Character("Pedro Ramirez",
+        characters.add(new Character("Pedro Ramirez",
                 Ability.DRAW_FIRST_FROM_DISCARD, 4));
-        charList.add(new Character("Rose Doolan",
+        characters.add(new Character("Rose Doolan",
                 Ability.SEES_AT_DISTANCE_MINUS_ONE, 4));
-        charList.add(new Character("Sid Ketchum",
+        characters.add(new Character("Sid Ketchum",
                 Ability.MAY_DISCARD_TWO_CARDS_FOR_ONE_LIFE, 4));
-        charList.add(new Character("Slab the Killer",
+        characters.add(new Character("Slab the Killer",
                 Ability.NEED_TWO_MISSED_TO_CANCEL_BANG, 4));
-        charList.add(new Character("Suzy Lafayette",
+        characters.add(new Character("Suzy Lafayette",
                 Ability.DRAWS_WHEN_HAND_IS_EMPTY, 4));
-        charList.add(new Character("Vulture Sam",
+        characters.add(new Character("Vulture Sam",
                 Ability.TAKE_CARDS_ON_ELIMINATION, 4));
-        charList.add(new Character("Willy the Kid",
+        characters.add(new Character("Willy the Kid",
                 Ability.CAN_PLAY_ANY_NUMBER_OF_BANG_CARDS, 4));
 
-        return charList;
+        return characters;
     }
 
     /**
@@ -247,7 +253,8 @@ public class StandardGameBuilder implements GameBuilder {
             throw new IllegalStateException("Not enough controllers added");
         }
 
-        BangGame game = new BangGame(numPlayers);
+//        BangGame game = new BangGame(numPlayers);
+
         game.setup(this);
 
         return game;

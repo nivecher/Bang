@@ -5,6 +5,7 @@
  */
 package bang.game;
 
+import bang.PlayerController;
 import bang.game.cards.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +34,12 @@ public class TestBangGame {
     @Test
     public void testGameSetup() throws Exception {
         BangGame cut = new BangGame(4);
-        GameBuilder delegate = new StandardGameBuilder(4);
+        GameBuilder delegate = new StandardGameBuilder(4).
+                addController(mock(PlayerController.class)).
+                addController(mock(PlayerController.class)).
+                addController(mock(PlayerController.class)).
+                addController(mock(PlayerController.class));
+        when(mockGameBuilder.getControllers()).thenReturn(delegate.getControllers());
         when(mockGameBuilder.generateCharacters()).thenReturn(delegate.generateCharacters());
         when(mockGameBuilder.generateRoles()).thenReturn(delegate.generateRoles());
         when(mockGameBuilder.generatePlayingCards()).thenReturn(delegate.generatePlayingCards());

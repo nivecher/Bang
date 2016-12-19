@@ -6,6 +6,7 @@
 
 package bang;
 
+import bang.game.BangGame;
 import bang.game.Player;
 import bang.game.cards.PlayingCard;
 import bang.ui.controller.ISelector;
@@ -65,4 +66,12 @@ public interface PlayerController {
      * @return true if avoided
      */
     boolean avoidHit();
+
+    Player getPlayer();
+
+    BangGame getGame();
+
+    void setPlayer(Player player);
+
+    void setGame(BangGame game);
 }

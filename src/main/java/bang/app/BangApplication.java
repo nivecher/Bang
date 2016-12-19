@@ -1,6 +1,7 @@
 package bang.app;
 
 import bang.game.*;
+import bang.ui.controller.DefaultPlayerController;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +25,12 @@ public class BangApplication implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        BangGame game = new StandardGameBuilder(4).create();
+        BangGame game = new StandardGameBuilder(4).
+                addController(new DefaultPlayerController()).
+                addController(new DefaultPlayerController()).
+                addController(new DefaultPlayerController()).
+                addController(new DefaultPlayerController()).
+                create();
 
         LOG.info("Starting 4 player game");
         Player sheriff = game.getSheriff();
@@ -32,6 +38,8 @@ public class BangApplication implements CommandLineRunner {
         LOG.info("Sheriff is starting");
         assert sheriff != null;
         sheriff.startTurn();
+
+        sheriff.getController().draw();
 
         // TODO implement mock game
 

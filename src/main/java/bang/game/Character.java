@@ -5,6 +5,8 @@
  */
 package bang.game;
 
+import bang.game.cards.PlayingCard;
+
 /**
  * Western character with a special ability
  *
@@ -48,6 +50,20 @@ public class Character implements ViewableDistanceModifier, TargetDistanceModifi
             return 1;
         }
         return 0;
+    }
+
+    public boolean cardHasEffect(PlayingCard card) {
+        // TODO DodgeCity; check abilities
+        return true; // default
+    }
+
+    /**
+     * Determine the max number of cards the character can hold
+     * @return
+     */
+    public int getMaxCards() {
+        if (ability == Ability.CAN_KEEP_TEN_CARDS) return 10;
+        return numBullets;
     }
 
 }

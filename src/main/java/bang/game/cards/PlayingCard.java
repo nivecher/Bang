@@ -130,8 +130,7 @@ public class PlayingCard {
         } else if (this instanceof IPlayerEffect) {
             ISelector<Player> playerSelector = context.getPlayerSelector();
             return ((IPlayerEffect) this).apply(playerSelector.select(context.getActivePlayers()));
-        } else if (color == Color.Blue) {
-            // TODO DodgeCity: support green cards
+        } else if (color == Color.Blue || color == Color.Green) {
             Player player = context.getPlayer();
             return player.playCardOnBoard(this);
         } else {

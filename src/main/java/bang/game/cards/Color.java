@@ -11,5 +11,5 @@ package bang.game.cards;
  * @author Morgan
  */
 public enum Color {
-    Blue, Brown
+    Blue, Brown, Green
 }
