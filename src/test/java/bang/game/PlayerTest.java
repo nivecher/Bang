@@ -144,11 +144,6 @@ public class PlayerTest {
     }
 
     @Test
-    public void testPlayAndDiscardCard() throws Exception {
-        // TODO implement
-    }
-
-    @Test
     public void testTargetDistance() throws Exception {
         assertEquals(1, sheriffPlayer.getTargetDistance());
         Character mockCharacter = mock(Character.class);
@@ -327,7 +322,7 @@ public class PlayerTest {
         assertFalse(deputyPlayer.canPass()); // not drawn
 
         deputyPlayer.drawCard(mockDrawPile);
-        assertFalse(deputyPlayer.canPass()); // not finished drawning
+        assertFalse(deputyPlayer.canPass()); // not finished drawing
 
         deputyPlayer.drawCard(mockDrawPile);
         assertTrue(deputyPlayer.canPass()); // ready to play or pass

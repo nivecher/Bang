@@ -1,8 +1,6 @@
 package bang.app;
 
-import bang.game.BangGame;
-import bang.game.Player;
-import bang.game.Role;
+import bang.game.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,18 +24,10 @@ public class BangApplication implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        BangGame game = new BangGame(4); // TODO make option
-
-        game.setup();
-
-        Player sheriff = null;
+        BangGame game = new StandardGameBuilder(4).create();
 
         LOG.info("Starting 4 player game");
-        for (Player p : game.getPlayers()) {
-            if (p.getRole() == Role.Sheriff) {
-                sheriff = p;
-            }
-        }
+        Player sheriff = game.getSheriff();
 
         LOG.info("Sheriff is starting");
         assert sheriff != null;

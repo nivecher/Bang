@@ -35,7 +35,7 @@ public class DynamiteCardTest {
     }
 
     @Test
-    public void testDynamiteDoesntExplode() throws Exception {
+    public void testDynamiteDoesNotExplode() throws Exception {
         PlayingCard lowSpade = new PlayingCard("10 of spades", Color.Brown, Suit.Spades, Face.Ten);
         when(mockContext.flipCard()).thenReturn(lowSpade);
 

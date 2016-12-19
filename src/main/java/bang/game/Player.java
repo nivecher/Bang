@@ -16,10 +16,10 @@ import java.util.function.Consumer;
  */
 public class Player implements Consumer<PlayingCard> {
 
-    private final Role role;
     private final List<PlayingCard> hand; // cards hidden from other players
     private final PlayingBoard board; // cards in play (on the table)
     private PlayerController controller;
+    private Role role;
     private Character character;
     private int numLives; // bullets / life-points
     private int drawsPerTurn = 2; // default
@@ -35,10 +35,21 @@ public class Player implements Consumer<PlayingCard> {
      * @param role
      */
     public Player(Role role) {
-        this.role = role;
+        this();
+        setRole(role);
+    }
+
+    public Player() {
         this.hand = new ArrayList<>();
         this.board = new PlayingBoard();
-        // TODO move to set role?
+    }
+
+    /**
+     * Sets the players role and adjusts any values accordingly
+     * @param role
+     */
+    public final void setRole(Role role) {
+        this.role = role;
         if (role == Role.Sheriff) this.isTurn = true; // sheriff starts
     }
 
@@ -51,6 +62,7 @@ public class Player implements Consumer<PlayingCard> {
         isTurn = false;
         isPassing = false;
         character = null;
+        role = null;
         abilityActivated = false;
         cardsToDraw = getDrawsPerTurn();
     }
@@ -175,7 +187,7 @@ public class Player implements Consumer<PlayingCard> {
         cardsToDraw = getDrawsPerTurn();
         isTurn = true; // initially turn unless effect cards change it
         // TODO DodgeCity: handle green cards being playable
-        board.getEffectCards().forEach(c -> c.play());
+        board.getEffectCards().forEach(PlayingCard::play);
         return isTurn;
     }
 

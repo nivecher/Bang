@@ -9,7 +9,10 @@ import bang.game.cards.DynamiteCard;
 import bang.game.cards.PlayingCard;
 import bang.game.cards.WeaponCard;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -40,7 +43,7 @@ public class PlayingBoard {
      */
     public boolean addCard(PlayingCard card) {
         if (card instanceof WeaponCard) {
-            setWeapon((WeaponCard) card); // TODO replace weapon (discard previous)
+            setWeapon((WeaponCard) card); // replace weapon (discard previous)
             return true;
         } else if (card instanceof IPlayerEffect) {
             return effectCards.add(card);

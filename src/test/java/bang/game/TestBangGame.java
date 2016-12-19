@@ -6,17 +6,16 @@
 package bang.game;
 
 import bang.game.cards.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static bang.game.BangGame.MAX_PLAYERS;
-import static bang.game.BangGame.MIN_PLAYERS;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 /**
  *
@@ -24,26 +23,21 @@ import static org.mockito.Mockito.mock;
  */
 public class TestBangGame {
 
-    @Test
-    public void testConstructors() throws Exception {
-        try {
-            new BangGame(-1);
-            fail("Did not throw exception for -1 players");
-        } catch (IllegalArgumentException ex) {
-            assertNotNull(ex.getMessage());
-        }
-        try {
-            new BangGame(9);
-            fail("Did not throw exception for 9 players");
-        } catch (IllegalArgumentException ex) {
-            assertNotNull(ex.getMessage());
-        }
+    private GameBuilder mockGameBuilder = mock(GameBuilder.class);
+
+    @Before
+    public void setUp() throws Exception {
+        reset(mockGameBuilder);
     }
 
     @Test
     public void testGameSetup() throws Exception {
         BangGame cut = new BangGame(4);
-        cut.setup();
+        GameBuilder delegate = new StandardGameBuilder(4);
+        when(mockGameBuilder.generateCharacters()).thenReturn(delegate.generateCharacters());
+        when(mockGameBuilder.generateRoles()).thenReturn(delegate.generateRoles());
+        when(mockGameBuilder.generatePlayingCards()).thenReturn(delegate.generatePlayingCards());
+        cut.setup(mockGameBuilder);
         assertEquals(4, cut.getActivePlayers().size());
         assertTrue(cut.getDiscardPile().isEmpty());
         assertFalse(cut.getDrawPile().isEmpty());
@@ -59,7 +53,7 @@ public class TestBangGame {
 
     @Test
     public void testDistance() {
-        IntStream.rangeClosed(MIN_PLAYERS, MAX_PLAYERS).forEach(i -> {
+        IntStream.rangeClosed(4, 7).forEach(i -> { // TODO use constants
             BangGame game = new BangGame(i);
             System.out.println("Num Players: " + i);
             List<Player> player1List = game.getPlayers();
@@ -77,7 +71,7 @@ public class TestBangGame {
 
     @Test
     public void testCanReach() {
-        BangGame game = new BangGame(MIN_PLAYERS);
+        BangGame game = new BangGame(4); // use constants
         List<Player> players = game.getPlayers();
                 
         Player p1 = players.get(0);
@@ -153,7 +147,7 @@ public class TestBangGame {
 
     private void drawAndPlay(Player p, PlayingCard card) {
         card.setContext(new PlayingContext(mock(BangGame.class), p));
-        assertEquals(card, p.drawCard(new ArrayList(Arrays.asList(card))));
+        assertEquals(card, p.drawCard(new ArrayList(Collections.singletonList(card))));
         assertTrue(card.play());
     }
 }

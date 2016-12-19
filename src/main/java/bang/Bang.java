@@ -7,6 +7,8 @@
 package bang;
 
 import bang.game.BangGame;
+import bang.game.GameBuilder;
+import bang.game.StandardGameBuilder;
 import bang.ui.controller.DefaultPlayerController;
 
 import java.util.ArrayList;
@@ -28,9 +30,10 @@ public class Bang {
     }
 
     public void init() {
+        GameBuilder gameBuilder = new StandardGameBuilder(4);
+
         controllers.clear();
-        BangGame game = new BangGame(4);
-        game.setup();
+        BangGame game = gameBuilder.create(); // TODO finish this
 
         game.getPlayers().forEach(p -> controllers.add(new DefaultPlayerController(p, game)));
 

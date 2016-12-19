@@ -2,7 +2,6 @@ package bang.game.cards;
 
 import bang.game.Player;
 import bang.game.PlayingContext;
-import bang.ui.controller.ISelector;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,12 +35,7 @@ public class CatBalouCardTest {
 
         final PlayingCard card = new PlayingCard("Fake card", Color.Blue, Suit.Hearts, Face.Four);
 
-        when(mockContext.getCardSelector()).thenReturn(new ISelector<PlayingCard>() {
-            @Override
-            public PlayingCard select(List<PlayingCard> list) {
-                return card;
-            }
-        });
+        when(mockContext.getCardSelector()).thenReturn(list -> card);
         when(mockPlayer.discardCard(card, mockDiscardPile)).thenReturn(true);
         assertTrue(cut.apply(mockPlayer));
 

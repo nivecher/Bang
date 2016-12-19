@@ -70,16 +70,14 @@ public class DefaultPlayerController implements PlayerController {
         logger.info("Drew card: " + card);
     }
 
-    @Override
     public void setDiscardSelector(ISelector<PlayingCard> selector) {
         this.discardSelector = selector;
-    }    @Override
+    }
 
     public void setCardSelector(ISelector<PlayingCard> selector) {
         this.cardSelector = selector;
     }
 
-    @Override
     public void setPlayerSelector(ISelector<Player> selector) {
         this.playerSelector = selector;
     }

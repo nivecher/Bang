@@ -5,6 +5,7 @@
  */
 package bang.game;
 
+import bang.PlayerController;
 import bang.game.cards.PlayingCard;
 
 import java.util.ArrayList;
@@ -21,17 +22,7 @@ import java.util.stream.Collectors;
  *
  * @author Morgan
  */
-public class BangGame implements StandardGame {
-
-    /**
-     * Minimum number of players in the game
-     */
-    public static final int MIN_PLAYERS = 4;
-
-    /**
-     * Maximum number of players in the game
-     */
-    public static final int MAX_PLAYERS = 7; // TODO DodgeCity: support 8 players
+public class BangGame {
 
     /**
      * List of players
@@ -62,13 +53,8 @@ public class BangGame implements StandardGame {
      * @param numPlayers number of players
      * @throws IllegalArgumentException if numPlayers is out of range
      */
-    public BangGame(int numPlayers) {
-
-        if (numPlayers < MIN_PLAYERS || numPlayers > MAX_PLAYERS) {
-            throw new IllegalArgumentException("Number of players must be "
-                    + "[" + MIN_PLAYERS + " - " + MAX_PLAYERS + "]");
-        }
-
+    /*package*/ BangGame(int numPlayers) {
+        // TODO do not set player roles in constructor
         players = new ArrayList<>(numPlayers);
         players.add(new Player(Role.Sheriff));
         players.add(new Player(Role.Renegade));
@@ -88,22 +74,30 @@ public class BangGame implements StandardGame {
     /**
      * Reset and setup the game
      */
-    public void setup() {
-        List<Character> characters = buildCharacterList();
-        drawPile = buildPlayingDeck();
+    public void setup(GameBuilder builder) {
+        List<Role> roles = builder.generateRoles();
+        List<Character> characters = builder.generateCharacters();
+        List<PlayerController> controllers = builder.getControllers();
+        drawPile = builder.generatePlayingCards();
         discardPile.clear();
 
+        Collections.shuffle(roles);
         Collections.shuffle(characters);
-        Collections.shuffle(players);
         Collections.shuffle(drawPile);
 
+        assert characters.size() >= players.size();
+
         players.forEach((p) -> {
+            p.setRole(roles.remove(0));
             p.setCharacter(characters.remove(0));
             for (int i = 0; i < p.getMaxLives(); i++) {
                 p.drawCard(drawPile);
             }
         });
 
+        // verify all elements are passed out
+        assert roles.isEmpty();
+        assert controllers.isEmpty();
     }
 
     /**
@@ -123,10 +117,10 @@ public class BangGame implements StandardGame {
      * @return relative distance (by position) of player 2 from player 1
      * representing the shortest distance between the two players (clockwise or
      * counter-clockwise); zero if player 1 is the same as player 2
-     *
+     * <p>
      * See Figure below for distances from player A (seven players shown) A,A ->
      * 0; A,B -> 1; A,C -> 2; A,D -> 3; A,E -> 3; A,F -> 2; A,G -> 1
-     *
+     * <p>
      * D_ _E ^ C / \ F ^ | | | | \ B \ _ _ / G / A
      */
     public int getPositionDistance(Player p1, Player p2) {
@@ -173,9 +167,19 @@ public class BangGame implements StandardGame {
 
     /**
      * Returns the list of active (i.e. not dead) players
+     *
      * @return list of players left in the game
      */
     public List<Player> getActivePlayers() {
         return players.stream().filter(p -> p.getNumLives() > 0).collect(Collectors.toList());
+    }
+
+    /**
+     * Returns reference the sheriff
+     * @return Sheriff player
+     */
+    public Player getSheriff() {
+        return players.stream().filter(p -> p.getRole() == Role.Sheriff).findAny().orElseThrow(
+                () -> new IllegalStateException("No Sheriff defined"));
     }
 }

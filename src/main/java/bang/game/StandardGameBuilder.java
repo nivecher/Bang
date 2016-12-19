@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package bang.game;
 
+import bang.PlayerController;
 import bang.game.cards.*;
 
 import java.util.ArrayList;
@@ -12,17 +8,96 @@ import java.util.EnumSet;
 import java.util.List;
 
 /**
- *
- * @author Morgan
+ * Standard BANG! game builder
+ * <p>
+ * Created by Morgan on 12/18/2016.
  */
-public interface StandardGame {
+public class StandardGameBuilder implements GameBuilder {
+
+    /**
+     * Minimum number of controllers in the game
+     */
+    public static final int MIN_PLAYERS = 4;
+
+    /**
+     * Maximum number of controllers in the game
+     */
+    public static final int MAX_PLAYERS = 7; // TODO DodgeCity: support 8 controllers
+
+    /**
+     * Player controllers
+     */
+    protected final List<PlayerController> controllers;
+
+    /**
+     * Number of players / controllers
+     */
+    protected final int numPlayers;
+
+    /**
+     * Create a game builder
+     *
+     * @param numPlayers number of players / controllers
+     */
+    public StandardGameBuilder(int numPlayers) {
+        this.numPlayers = numPlayers;
+        validatePlayers();
+        controllers = new ArrayList<>(numPlayers);
+    }
+
+    /**
+     * Validates the number of players
+     */
+    protected void validatePlayers() {
+        if (numPlayers < MIN_PLAYERS || numPlayers > MAX_PLAYERS) {
+            throw new IllegalArgumentException("Number of controllers must be "
+                    + "[" + MIN_PLAYERS + " - " + MAX_PLAYERS + "]");
+        }
+    }
+
+    /**
+     * Get the list of controllers
+     *
+     * @return new list of controllers
+     */
+    @Override
+    public List<PlayerController> getControllers() {
+        return new ArrayList<>(controllers);
+    }
+
+    /**
+     * Generate the standard roles based on the number of players
+     *
+     * @return list of generated roles
+     */
+    @Override
+    public List<Role> generateRoles() {
+        List<Role> roles = new ArrayList<>(numPlayers);
+        roles.add(Role.Sheriff);
+        roles.add(Role.Renegade);
+        roles.add(Role.Outlaw);
+        roles.add(Role.Outlaw);
+        // 4 players
+        if (roles.size() < numPlayers) {
+            roles.add(Role.Deputy); // 5 players
+        }
+        if (roles.size() < numPlayers) {
+            roles.add(Role.Outlaw); // 6 players
+        }
+        if (roles.size() < numPlayers) {
+            roles.add(Role.Deputy); // 7 players
+        }
+
+        return roles;
+    }
 
     /**
      * Builds the standard list of characters
      *
      * @return list of characters
      */
-    default List<Character> buildCharacterList() {
+    @Override
+    public List<Character> generateCharacters() {
         List<Character> charList = new ArrayList<>(16);
 
         charList.add(new Character("Bart Cassidy",
@@ -63,9 +138,11 @@ public interface StandardGame {
 
     /**
      * Builds a standard deck of playing cards
+     *
      * @return list of cards
      */
-    default List<PlayingCard> buildPlayingDeck() {
+    @Override
+    public List<PlayingCard> generatePlayingCards() {
         List<PlayingCard> deck = new ArrayList<>();
 
         // BANG! cards
@@ -91,6 +168,7 @@ public interface StandardGame {
 
         // dynamite card
         deck.add(new DynamiteCard(Suit.Hearts, Face.Two));
+
 
         // gatling cards
         deck.add(new GatlingCard(Suit.Hearts, Face.Ten));
@@ -141,5 +219,37 @@ public interface StandardGame {
         deck.add(new WeaponCard("Winchester", 5, Suit.Spades, Face.Eight));
         return deck;
     }
-    
+
+    /**
+     * Add a player controller to the builder
+     *
+     * @param c controller
+     * @return this
+     */
+    @Override
+    public GameBuilder addController(PlayerController c) {
+        if (controllers.size() == numPlayers) {
+            throw new IllegalStateException("Too many controllers added to game");
+        }
+        controllers.add(c);
+        return this;
+    }
+
+    /**
+     * Create the bang game
+     *
+     * @return new BangGame
+     */
+    @Override
+    public BangGame create() {
+
+        if (controllers.size() != numPlayers) {
+            throw new IllegalStateException("Not enough controllers added");
+        }
+
+        BangGame game = new BangGame(numPlayers);
+        game.setup(this);
+
+        return game;
+    }
 }

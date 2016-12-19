@@ -13,7 +13,7 @@ public class CommandLinePlayerController implements PlayerController {
     @Override
     public void takeTurn() {
         System.out.println("It's your turn.  Please draw a card");
-        // TODO
+        // TODO prompt for options
     }
 
     @Override

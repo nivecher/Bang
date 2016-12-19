@@ -65,10 +65,10 @@ public class PlayingCardTest {
     @Test
     public void findCard() throws Exception {
         PlayingCard bangCard = new BangCard(Suit.Hearts, Face.Four);
-        PlayingCard barrellCard = new BarrelCard(Suit.Diamonds, Face.Three);
-        Collection<PlayingCard> cards = Arrays.asList(barrellCard, bangCard);
+        PlayingCard barrelCard = new BarrelCard(Suit.Diamonds, Face.Three);
+        Collection<PlayingCard> cards = Arrays.asList(barrelCard, bangCard);
         assertEquals(bangCard, PlayingCard.findCard(BangCard.class, cards));
-        assertEquals(barrellCard, PlayingCard.findCard(BarrelCard.class, cards));
+        assertEquals(barrelCard, PlayingCard.findCard(BarrelCard.class, cards));
         assertNull(PlayingCard.findCard(PanicCard.class, cards));
     }
 

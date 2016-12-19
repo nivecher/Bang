@@ -13,14 +13,14 @@ import bang.ui.controller.ISelector;
 import java.util.List;
 
 /**
- *
+ * Controller's player's decisions
  * @author Morgan
  */
 public interface PlayerController {
 
     void takeTurn();
 
-    // TODO remove these selectors
+    // TODO remove these selectors?
 
     void setDiscardSelector(ISelector<PlayingCard> selector);
 
