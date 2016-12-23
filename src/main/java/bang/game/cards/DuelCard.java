@@ -8,6 +8,7 @@ package bang.game.cards;
 
 import bang.game.IPlayerEffect;
 import bang.game.Player;
+import bang.game.PlayerDistance;
 
 /**
  *
@@ -17,6 +18,11 @@ public class DuelCard extends PlayingCard implements IPlayerEffect {
 
     public DuelCard(Suit suit, Face face) {
         super("Duel", Color.Brown, suit, face);
+    }
+
+    @Override
+    public PlayerDistance distance() {
+        return PlayerDistance.ANY_PLAYER;
     }
 
     @Override

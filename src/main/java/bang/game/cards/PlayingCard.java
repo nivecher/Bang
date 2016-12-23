@@ -10,7 +10,6 @@ import bang.game.IAllPlayersEffect;
 import bang.game.IPlayerEffect;
 import bang.game.Player;
 import bang.game.PlayingContext;
-import bang.ui.controller.ISelector;
 
 import java.util.Collection;
 
@@ -108,10 +107,14 @@ public class PlayingCard {
         return (C) cards.stream().filter(clazz::isInstance).findAny().orElse(null);
     }
 
+    public PlayingContext getContext() {
+        return context;
+    }
+
     /**
      * Sets the playing context
      *
-     * @param context
+     * @param context new context if being played, null if being received
      */
     public void setContext(PlayingContext context) {
         this.context = context;
@@ -128,8 +131,9 @@ public class PlayingCard {
             ((IAllPlayersEffect) this).apply(context.getActivePlayers());
             return true;
         } else if (this instanceof IPlayerEffect) {
-            ISelector<Player> playerSelector = context.getPlayerSelector();
-            return ((IPlayerEffect) this).apply(playerSelector.select(context.getActivePlayers()));
+            IPlayerEffect effect = (IPlayerEffect) this;
+            Player targetPlayer = context.getTargetPlayer(effect.distance());
+            return (effect.apply(targetPlayer));
         } else if (color == Color.Blue || color == Color.Green) {
             Player player = context.getPlayer();
             return player.playCardOnBoard(this);
@@ -138,4 +142,5 @@ public class PlayingCard {
             return false; // not played, discarded
         }
     }
+
 }

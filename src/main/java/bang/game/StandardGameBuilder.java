@@ -254,7 +254,6 @@ public class StandardGameBuilder implements GameBuilder {
         }
 
 //        BangGame game = new BangGame(numPlayers);
-
         game.setup(this);
 
         return game;

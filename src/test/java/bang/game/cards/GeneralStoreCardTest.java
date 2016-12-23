@@ -41,9 +41,9 @@ public class GeneralStoreCardTest {
     @Test
     public void testPlay() throws Exception {
         assertTrue(cut.play());
-        verify(mockPlayer1, times(1)).selectCard(any());
-        verify(mockPlayer2, times(1)).selectCard(any());
-        verify(mockPlayer3, times(1)).selectCard(any());
+        verify(mockPlayer1, times(1)).takeCard(any());
+        verify(mockPlayer2, times(1)).takeCard(any());
+        verify(mockPlayer3, times(1)).takeCard(any());
         verify(mockPlayer4, never()).drawCard(mockDrawPile);
     }
 }

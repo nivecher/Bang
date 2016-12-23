@@ -6,14 +6,11 @@
 
 package bang.game.cards;
 
-import bang.game.IPlayerEffect;
-import bang.game.Player;
-
 /**
  * Beer card that has the effect of regaining a life point
  * @author Morgan
  */
-public class BeerCard extends PlayingCard implements IPlayerEffect {
+public class BeerCard extends PlayingCard {
 
     public BeerCard(Suit suit, Face face) {
         super("Beer", Color.Brown, suit, face);
@@ -25,10 +22,10 @@ public class BeerCard extends PlayingCard implements IPlayerEffect {
      * @return true if player regained a life point
      */
     @Override
-    public boolean apply(Player p) {
+    public boolean play() {
         int activePlayers = context.getActivePlayers().size();
         // beer has no effect when 2 players are left
-        return activePlayers > 2 && p.regainLife();
+        return activePlayers > 2 && context.getPlayer().regainLife();
     }
     
 }

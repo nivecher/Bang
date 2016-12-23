@@ -36,13 +36,13 @@ public class JailCardTest {
     public void testHeart() throws Exception {
         PlayingCard card = new PlayingCard("Heart", Color.Blue, Suit.Hearts, Face.Ace);
         when(mockContext.flipCard()).thenReturn(card);
-        assertFalse(cut.play());
+        assertFalse(cut.onTurn());
     }
 
     @Test
     public void testNotHeart() throws Exception {
         PlayingCard card = new PlayingCard("Not Heart", Color.Blue, Suit.Spades, Face.Ace);
         when(mockContext.flipCard()).thenReturn(card);
-        assertTrue(cut.play());
+        assertTrue(cut.onTurn());
     }
 }

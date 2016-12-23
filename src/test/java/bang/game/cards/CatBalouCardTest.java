@@ -35,7 +35,7 @@ public class CatBalouCardTest {
 
         final PlayingCard card = new PlayingCard("Fake card", Color.Blue, Suit.Hearts, Face.Four);
 
-        when(mockContext.getCardSelector()).thenReturn(list -> card);
+        when(mockContext.getTargetDiscard(mockPlayer.getCards())).thenReturn(card);
         when(mockPlayer.discardCard(card, mockDiscardPile)).thenReturn(true);
         assertTrue(cut.apply(mockPlayer));
 

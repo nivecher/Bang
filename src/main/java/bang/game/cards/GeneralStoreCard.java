@@ -36,7 +36,7 @@ public class GeneralStoreCard extends PlayingCard implements IAllPlayersEffect {
 
     @Override
     public boolean apply(Player p) {
-        return p.selectCard(cards);
+        return p.takeCard(cards) != null;
     }
 
 }

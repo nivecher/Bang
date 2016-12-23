@@ -11,7 +11,12 @@ package bang.game;
  * @author Morgan
  */
 public interface IPlayerEffect {
-    
+
+    /**
+     * Returns any distance restrictions on the affect
+     */
+    PlayerDistance distance();
+
     /**
      * Apply the affect to the specified player
      * @param p player to which affect is applied

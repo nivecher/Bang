@@ -9,7 +9,6 @@ package bang;
 import bang.game.BangGame;
 import bang.game.Player;
 import bang.game.cards.PlayingCard;
-import bang.ui.controller.ISelector;
 
 import java.util.List;
 
@@ -20,14 +19,6 @@ import java.util.List;
 public interface PlayerController {
 
     void takeTurn();
-
-    // TODO remove these selectors?
-
-    void setDiscardSelector(ISelector<PlayingCard> selector);
-
-    void setCardSelector(ISelector<PlayingCard> selector);
-
-    void setPlayerSelector(ISelector<Player> selector);
 
     /**
      * Draw the appropriate number of cards to start phase 1 of turn
@@ -52,10 +43,27 @@ public interface PlayerController {
      * @param cards list of cards from which card is selected
      * @return selected card
      */
-    PlayingCard select(List<PlayingCard> cards);
+    PlayingCard selectCard(List<PlayingCard> cards);
+
+    // TODO selectCard from player vs. list of cards?
 
     /**
-     * Select a card to discard of a certain type
+     * Select the opponent's discard
+     * @param cards opponents cards
+     * @return selected discard from opponents hand or board
+     */
+    PlayingCard selectTargetDiscard(List<PlayingCard> cards);
+
+    /**
+     * Select player to target for the current play
+     * @param opponents list of active opponents
+     * @return targetted player or null if cancelled
+     */
+    Player selectTargetPlayer(List<Player> opponents);
+
+    /**
+     * Select a card to discard of a certain type from this player's hand
+     * (player's choice due to special abilities or choice to not give up a card and take a hit instead)
      * @param clazz type of card to discard
      * @return true if card discarded, false otherwise (i.e. pass)
      */

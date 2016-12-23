@@ -8,12 +8,13 @@ package bang.game.cards;
 
 import bang.game.IPlayerEffect;
 import bang.game.Player;
+import bang.game.PlayerDistance;
 
 /**
  * Jail card
  * @author Morgan
  */
-public class JailCard extends PlayingCard implements IPlayerEffect {
+public class JailCard extends PlayingCard implements IPlayerEffect, ITurnEffect {
     
     public JailCard(Suit suit, Face face) {
         super("Jail", Color.Blue, suit, face);
@@ -23,8 +24,19 @@ public class JailCard extends PlayingCard implements IPlayerEffect {
      * Play the jail card and remain in jail (i.e. skip turn) unless a heart is drawn
      * @return true if player remains in jail
      */
-    public boolean play() {
+    @Override
+    public boolean onTurn() {
         return (context.flipCard().getSuit() != Suit.Hearts);
+    }
+
+    @Override
+    public PlayerDistance distance() {
+        return PlayerDistance.ANY_PLAYER;
+    }
+
+    @Override
+    public int compareTo(ITurnEffect o) {
+        return 1; // process jail cards after higher precedent cards
     }
 
     /**
@@ -34,7 +46,7 @@ public class JailCard extends PlayingCard implements IPlayerEffect {
     @Override
     public boolean apply(Player p) { // draw a card
         p.accept(this);
-        return true; // player is in jail
+        return true; // player is in jail (at least until turn starts)
     }
-    
+
 }

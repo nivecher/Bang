@@ -30,6 +30,7 @@ public class PlayerTest {
 
     private List<PlayingCard> mockDrawPile = mock(List.class);
     private List<PlayingCard> mockDiscardPile = mock(List.class);
+    private BangGame mockGame = mock(BangGame.class);
 
     /**
      * Fake card that acts as a scope and mustang
@@ -53,6 +54,9 @@ public class PlayerTest {
 
     @Before
     public void setUp() throws Exception {
+        reset(mockDiscardPile);
+        reset(mockDrawPile);
+        reset(mockGame);
         when(mockDrawPile.remove(0)).thenReturn(createCard());
         when(mockDiscardPile.add(any())).thenReturn(true);
         deputyPlayer.setController(mock(PlayerController.class));
@@ -85,10 +89,20 @@ public class PlayerTest {
     @Test
     public void testInJail() throws Exception {
         assertFalse(outlawPlayer.isInJail());
-        outlawPlayer.accept(new JailCard(Suit.Diamonds, Face.King));
+        JailCard jailCard = new JailCard(Suit.Diamonds, Face.King);
+        outlawPlayer.accept(jailCard); // accepted but not from another player
+        assertFalse(outlawPlayer.isInJail());
+        jailCard.setContext(new PlayingContext(mockGame, sheriffPlayer));
+        outlawPlayer.accept(jailCard);
         assertTrue(outlawPlayer.isInJail());
+    }
+
+    @Test
+    public void testSheriffInJail() throws Exception {
+        JailCard jailCard = new JailCard(Suit.Diamonds, Face.King);
+        jailCard.setContext(new PlayingContext(mockGame, deputyPlayer));
         try {
-            sheriffPlayer.accept(new JailCard(Suit.Diamonds, Face.King));
+            sheriffPlayer.accept(jailCard);
             fail("Allowed sheriff to be put in jail!");
         } catch (IllegalArgumentException ex) {
             assertNotNull(ex.getMessage());
@@ -305,8 +319,8 @@ public class PlayerTest {
         outlawPlayer.setController(mockController);
 
         PlayingCard card = createCard();
-        when(mockController.select(any())).thenReturn(card);
-        assertTrue(outlawPlayer.selectCard(new ArrayList<>(Arrays.asList(createCard(), card))));
+        when(mockController.selectCard(any())).thenReturn(card);
+        assertEquals(card, outlawPlayer.takeCard(new ArrayList<>(Arrays.asList(createCard(), card))));
 
     }
 

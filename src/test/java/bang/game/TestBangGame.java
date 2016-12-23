@@ -152,8 +152,8 @@ public class TestBangGame {
     }
 
     private void drawAndPlay(Player p, PlayingCard card) {
-        card.setContext(new PlayingContext(mock(BangGame.class), p));
         assertEquals(card, p.drawCard(new ArrayList(Collections.singletonList(card))));
+        card.setContext(new PlayingContext(mock(BangGame.class), p));
         assertTrue(card.play());
     }
 }

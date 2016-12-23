@@ -5,14 +5,11 @@
  */
 package bang.game;
 
-import bang.game.cards.DynamiteCard;
+import bang.game.cards.ITurnEffect;
 import bang.game.cards.PlayingCard;
 import bang.game.cards.WeaponCard;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -29,24 +26,22 @@ public class PlayingBoard {
     private final Set<PlayingCard> objectCards = new HashSet<>();
 
     /**
-     * Cards placed on the board that have an effect on the player (perhaps on
-     * the next turn).
+     * Cards placed on the board that have an effect on the player on their next turn).
      */
-    private final Set<PlayingCard> effectCards = new HashSet<>();
+    private final Set<PlayingCard> turnCards = new TreeSet<>();
 
     /**
      * Add the playing card to the playing board
      *
      * @param card PlayingCard to Add
      * @return true if board changed
-     * @throws IllegalArgumentException if card is an effect card
      */
     public boolean addCard(PlayingCard card) {
         if (card instanceof WeaponCard) {
             setWeapon((WeaponCard) card); // replace weapon (discard previous)
-            return true;
-        } else if (card instanceof IPlayerEffect) {
-            return effectCards.add(card);
+            return true; // new weapon
+        } else if (card instanceof ITurnEffect) {
+            return turnCards.add(card); // do not clear context until turn
         }
         return objectCards.add(card); // object cards (including weapons)
     }
@@ -131,7 +126,7 @@ public class PlayingBoard {
      */
     public void reset() {
         this.objectCards.clear();
-        this.effectCards.clear();
+        this.turnCards.clear();
     }
 
     /**
@@ -140,7 +135,7 @@ public class PlayingBoard {
      */
     public List<PlayingCard> getCards() {
         List<PlayingCard> cards = new ArrayList<>(objectCards);
-        cards.addAll(effectCards);
+        cards.addAll(turnCards);
         return cards;
     }
 
@@ -154,20 +149,10 @@ public class PlayingBoard {
     }
 
     /**
-     * Return a new list of effect cards in order
-     * @return
+     * Return a new list of turn cards in precedence order
+     * @return new ordered list of turn cards
      */
-    public List<PlayingCard> getEffectCards() {
-        List<PlayingCard> cards = new ArrayList<>(effectCards);
-        cards.sort((o1, o2) -> { // order by precedence
-            if (o1.getClass().equals(o2.getClass())) {
-                return 0;
-            }
-            if (o1 instanceof DynamiteCard) {
-                return -1;
-            }
-            return 1;
-        });
-        return cards;
+    public List<PlayingCard> getTurnCards() {
+        return new ArrayList<>(turnCards); // TODO discarded?
     }
 }

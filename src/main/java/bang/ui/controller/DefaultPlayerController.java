@@ -18,10 +18,12 @@ import java.util.logging.Logger;
  */
 public class DefaultPlayerController implements PlayerController {
 
-    private static final Logger logger = Logger.getLogger(DefaultPlayerController.class.getName());
+    private static final Logger LOG = Logger.getLogger(DefaultPlayerController.class.getName());
 
     private Player player;
     private BangGame game;
+
+    // TODO add advanced selection
 
     private ISelector<PlayingCard> discardSelector = list -> {
         return list.get(0); // default implementation
@@ -40,6 +42,7 @@ public class DefaultPlayerController implements PlayerController {
 
     /**
      * TODO delete this
+     *
      * @param player
      * @param game
      * @deprecated use default constructor and setters
@@ -54,7 +57,9 @@ public class DefaultPlayerController implements PlayerController {
     public List<PlayingCard> draw() {
         List<PlayingCard> cards = new ArrayList<>();
         while (player.canDraw()) {
-            cards.add(player.drawCard(selectDrawPile()));
+            PlayingCard card = player.drawCard(selectDrawPile());
+            card.setContext(new PlayingContext(game, player));
+            cards.add(card);
         }
         return cards;
     }
@@ -63,9 +68,12 @@ public class DefaultPlayerController implements PlayerController {
         List<PlayingCard> optPile = game.getDrawPile();
         if (!player.hasDrawn()) { // first draw
             if (player.getCharacter().getAbility() == Ability.DRAW_FIRST_FROM_DISCARD) {
+                LOG.info(player.getName() + " is drawing from the discard pile");
                 optPile = game.getDiscardPile();
             } else if (player.getCharacter().getAbility() == Ability.DRAW_FIRST_FROM_PLAYER) {
-                optPile = playerSelector.select(game.getActivePlayers()).getCards();
+                Player p = playerSelector.select(game.getActivePlayers()); // TODO change to opponents
+                LOG.info(player.getName() + " is drawing from player: " + p);
+                optPile = p.getCards();
             }
         }
         // TODO support discard pile and other's hands
@@ -78,19 +86,17 @@ public class DefaultPlayerController implements PlayerController {
         // TODO do something here?
 
         PlayingCard card = player.drawCard(game.getDrawPile());
-        logger.info("Drew card: " + card);
+        LOG.info("Drew card: " + card);
     }
 
-    public void setDiscardSelector(ISelector<PlayingCard> selector) {
-        this.discardSelector = selector;
+    @Override
+    public Player selectTargetPlayer(List<Player> opponents) {
+        return playerSelector.select(opponents);
     }
 
-    public void setCardSelector(ISelector<PlayingCard> selector) {
-        this.cardSelector = selector;
-    }
-
-    public void setPlayerSelector(ISelector<Player> selector) {
-        this.playerSelector = selector;
+    @Override
+    public PlayingCard selectTargetDiscard(List<PlayingCard> cards) {
+        return discardSelector.select(cards);
     }
 
     @Override
@@ -101,7 +107,7 @@ public class DefaultPlayerController implements PlayerController {
     }
 
     @Override
-    public PlayingCard select(List<PlayingCard> cards) {
+    public PlayingCard selectCard(List<PlayingCard> cards) {
         PlayingCard card = cardSelector.select(cards);
         player.accept(card);
         cards.remove(card);
@@ -180,4 +186,17 @@ public class DefaultPlayerController implements PlayerController {
     public void setGame(BangGame game) {
         this.game = game;
     }
+
+    public void setDiscardSelector(ISelector<PlayingCard> selector) {
+        this.discardSelector = selector;
+    }
+
+    public void setCardSelector(ISelector<PlayingCard> selector) {
+        this.cardSelector = selector;
+    }
+
+    public void setPlayerSelector(ISelector<Player> selector) {
+        this.playerSelector = selector;
+    }
+
 }

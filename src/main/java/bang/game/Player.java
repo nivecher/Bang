@@ -2,6 +2,7 @@ package bang.game;
 
 import bang.PlayerController;
 import bang.game.cards.BarrelCard;
+import bang.game.cards.ITurnEffect;
 import bang.game.cards.JailCard;
 import bang.game.cards.PlayingCard;
 
@@ -147,10 +148,11 @@ public class Player implements Consumer<PlayingCard> {
      * @return card drawn
      */
     public PlayingCard drawCard(List<PlayingCard> cards) {
-        PlayingCard draw = cards.remove(0);
-        hand.add(draw); // TODO handle shuffling and rebuilding deck
+        PlayingCard card = cards.remove(0);
+        hand.add(card); // TODO handle shuffling and rebuilding deck
+        card.setContext(null); // clear context
         cardsToDraw--;
-        return draw;
+        return card;
     }
 
     /**
@@ -163,13 +165,16 @@ public class Player implements Consumer<PlayingCard> {
      */
     @Override
     public void accept(PlayingCard card) {
-        if (card instanceof JailCard) { // TODO handle accepting a card vs. being put in jail
-            if (role == Role.Sheriff) {
+        // Determine if this is a card that affects this player's next turn played by another player
+        if (card instanceof ITurnEffect && card.getContext() != null) {
+          if (card instanceof JailCard && role == Role.Sheriff) {
                 throw new IllegalArgumentException("The Sheriff cannot be put in Jail!");
             }
             board.addCard(card);
+        } else {
+            hand.add(card);
         }
-        hand.add(card);
+        card.setContext(null); // clears the playing context after received by the player
     }
 
     /**
@@ -187,7 +192,7 @@ public class Player implements Consumer<PlayingCard> {
         cardsToDraw = getDrawsPerTurn();
         isTurn = true; // initially turn unless effect cards change it
         // TODO DodgeCity: handle green cards being playable
-        board.getEffectCards().forEach(PlayingCard::play);
+        board.getTurnCards().forEach(PlayingCard::play);
         return isTurn;
     }
 
@@ -329,6 +334,7 @@ public class Player implements Consumer<PlayingCard> {
      */
     public boolean discardCard(PlayingCard card, List<PlayingCard> discardPile) {
         boolean discarded = (hand.remove(card) && discardPile.add(card));
+        card.setContext(null);
         if (isPassing && canEndTurn()) {
             endTurn(); // TODO automatically end turn if this is the last move?
         }
@@ -433,10 +439,12 @@ public class Player implements Consumer<PlayingCard> {
      * @param cards list of cards to take
      * @return true if card added to hand
      */
-    public boolean selectCard(List<PlayingCard> cards) {
-        PlayingCard card = controller.select(cards);
+    public PlayingCard takeCard(List<PlayingCard> cards) {
+        PlayingCard card = controller.selectCard(cards);
         cards.remove(card);
-        return hand.add(card);
+        hand.add(card);
+        card.setContext(null); // clear context
+        return card;
     }
 
     /**
@@ -465,4 +473,20 @@ public class Player implements Consumer<PlayingCard> {
         return character.getMaxCards();
     }
 
+    /**
+     * Returns the player's character name
+     * @return
+     */
+    public String getName() {
+        return character.getName();
+    }
+
+    /**
+     * Player loses this card from player's hand or board (board takes precedence since it is seen by others
+     * @param card lost card
+     * @return true if card removed from board or hand
+     */
+    public boolean loseCard(PlayingCard card) {
+        return board.removeCard(card) || hand.remove(card);
+    }
 }

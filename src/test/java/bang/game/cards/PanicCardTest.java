@@ -32,7 +32,6 @@ public class PanicCardTest {
         reset(mockOpponentCards);
         reset(mockCardSelector);
         reset(mockPlayerHand);
-        when(mockContext.getCardSelector()).thenReturn(mockCardSelector);
         when(mockOpponent.getCards()).thenReturn(mockOpponentCards);
         when(mockContext.getPlayer()).thenReturn(mockPlayer);
         when(mockPlayer.getHand()).thenReturn(mockPlayerHand);
@@ -43,9 +42,11 @@ public class PanicCardTest {
     public void testApply() throws Exception {
         final PlayingCard card = new PlayingCard("Test", Color.Blue, Suit.Diamonds, Face.Two);
         when(mockCardSelector.select(mockOpponentCards)).thenReturn(card);
-        when(mockOpponent.discardCard(card, mockPlayerHand)).thenReturn(true);
+        when(mockPlayer.takeCard(mockOpponentCards)).thenReturn(card);
+        when(mockOpponent.loseCard(card)).thenReturn(true);
         assertTrue(cut.apply(mockOpponent));
-        verify(mockOpponent).discardCard(card, mockPlayerHand); // TODO change from discard to take?
+        verify(mockPlayer).takeCard(mockOpponentCards);
+        verify(mockOpponent).loseCard(card);
     }
 
 }

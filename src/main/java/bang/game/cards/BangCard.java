@@ -8,6 +8,7 @@ package bang.game.cards;
 
 import bang.game.IPlayerEffect;
 import bang.game.Player;
+import bang.game.PlayerDistance;
 
 /**
  * BANG! card is played to reduce other player's life points
@@ -36,7 +37,12 @@ public class BangCard extends PlayingCard implements IPlayerEffect {
     public void setStrength(int strength) {
         this.strength = strength;
     }
-    
+
+    @Override
+    public PlayerDistance distance() {
+        return PlayerDistance.REACHABLE;
+    }
+
     /**
      * Remove one life point from the specified player
      * @param p player affected

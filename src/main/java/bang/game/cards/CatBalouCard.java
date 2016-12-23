@@ -8,6 +8,7 @@ package bang.game.cards;
 
 import bang.game.IPlayerEffect;
 import bang.game.Player;
+import bang.game.PlayerDistance;
 
 /**
  * 
@@ -20,8 +21,13 @@ public class CatBalouCard extends PlayingCard implements IPlayerEffect {
     }
 
     @Override
+    public PlayerDistance distance() {
+        return PlayerDistance.ANY_PLAYER;
+    }
+
+    @Override
     public boolean apply(Player p) {
-        PlayingCard card = context.getCardSelector().select(p.getCards());
+        PlayingCard card = context.getTargetDiscard(p.getCards());
         return p.discardCard(card, context.getDiscardPile());
     }
 

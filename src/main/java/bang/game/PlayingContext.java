@@ -1,8 +1,8 @@
 package bang.game;
 
 import bang.game.cards.PlayingCard;
-import bang.ui.controller.ISelector;
 
+import javax.swing.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,10 +25,6 @@ public class PlayingContext {
     private List<PlayingCard> drawPile;
 
     private List<PlayingCard> discardPile;
-
-    private ISelector<PlayingCard> cardSelector;
-
-    private ISelector<Player> playerSelector;
 
     protected BangGame getGame() {
         return game;
@@ -53,20 +49,36 @@ public class PlayingContext {
         return game.getActivePlayers().stream().filter(p -> !p.equals(player)).collect(Collectors.toList());
     }
 
-    public ISelector<PlayingCard> getCardSelector() {
-        return cardSelector;
+    /**
+     * List of active opponents given a distance restriction
+     * @return list of active players within the distance restriction of the current player
+     */
+    public List<Player> getActiveOpponents(PlayerDistance distance) {
+        switch (distance) {
+            case ANY_PLAYER:
+                return getActiveOpponents();
+            case REACHABLE:
+                return getReachableOpponents();
+            case ONE_AWAY:
+                return getNeighboringOpponents();
+        }
+        throw new IllegalArgumentException("Invalid distance: " + distance);
     }
 
-    public ISelector<Player> getPlayerSelector() {
-        return playerSelector;
+    /**
+     * Returns this list of reachable (active) opponents
+     * @return list of reachable opponants or empty list if none
+     */
+    public List<Player> getReachableOpponents() {
+        return getActiveOpponents().stream().filter(p -> game.canReach(player, p)).collect(Collectors.toList());
     }
 
-    public void setPlayerSelector(ISelector<Player> playerSelector) {
-        this.playerSelector = playerSelector;
-    }
-
-    public void setCardSelector(ISelector<PlayingCard> cardSelector) {
-        this.cardSelector = cardSelector;
+    /**
+     * Returns this list of (active) opponents that are one away from this player
+     * @return list of neighboring opponents or empty list if none
+     */
+    public List<Player> getNeighboringOpponents() {
+        return getActiveOpponents().stream().filter(p -> game.getPositionDistance(player, p) == 1).collect(Collectors.toList());
     }
 
     public List<PlayingCard> getDiscardPile() {
@@ -90,6 +102,18 @@ public class PlayingContext {
     }
 
     /**
+     * Select a target player
+     * @return
+     */
+    public Player getTargetPlayer(PlayerDistance targetting) {
+        return player.getController().selectTargetPlayer(getActiveOpponents(targetting));
+    }
+
+    public PlayingCard getTargetDiscard(List<PlayingCard> cards) {
+        return player.getController().selectTargetDiscard(cards);
+    }
+
+    /**
      * Draws a and discards a card
      * @return card drawn / discarded
      */
@@ -97,6 +121,16 @@ public class PlayingContext {
         PlayingCard card = drawPile.remove(0);
         discardPile.add(card);
         return card;
+    }
+
+    /**
+     * Returns the active player whose turn is next
+     * @return next player
+     */
+    public Player getNextPlayer() {
+        List<Player> active = game.getActivePlayers();
+        int next = (active.indexOf(player) + 1) % active.size();
+        return active.get(next);
     }
 }
 

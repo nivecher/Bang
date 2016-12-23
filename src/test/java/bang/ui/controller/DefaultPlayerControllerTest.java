@@ -67,7 +67,9 @@ public class DefaultPlayerControllerTest {
     @Test
     public void testDiscard() throws Exception {
         PlayingCard c1 = new PlayingCard("Card 1", Color.Blue, Suit.Hearts, Face.Ace);
-        List<PlayingCard> hand = Collections.singletonList(c1);
+        PlayingCard c2 = new PlayingCard("Card 1", Color.Blue, Suit.Diamonds, Face.Four);
+        List<PlayingCard> hand = Arrays.asList(c1, c2);
+        // TODO assert selection
         List<PlayingCard> discardPile = mock(List.class);
         when(mockGame.getDiscardPile()).thenReturn(discardPile);
         when(mockPlayer.getHand()).thenReturn(hand);
@@ -82,16 +84,15 @@ public class DefaultPlayerControllerTest {
         PlayingCard c2 = new PlayingCard("Card 2", Color.Brown, Suit.Spades, Face.Three);
         PlayingCard c3 = new PlayingCard("Card 3", Color.Blue, Suit.Diamonds, Face.Queen);
         ISelector<PlayingCard> mockSelector = mock(ISelector.class);
-        cut.setDiscardSelector(mockSelector);
         List<PlayingCard> hand = Arrays.asList(c1, c2, c3);
         List<PlayingCard> discardPile = mock(List.class);
-        when(mockSelector.select(hand)).thenReturn(c2).thenReturn(c3); // AI to select c2 and c3
+        when(mockSelector.select(hand)).thenReturn(c2).thenReturn(c3); // AI to selectCard c2 and c3
         when(mockGame.getDiscardPile()).thenReturn(discardPile);
         when(mockPlayer.getHand()).thenReturn(hand);
         when(mockPlayer.discardCard(c2, discardPile)).thenReturn(true);
         when(mockPlayer.discardCard(c3, discardPile)).thenReturn(true);
         when(mockPlayer.pass()).thenReturn(2);
-        assertEquals(Arrays.asList(c2, c3), cut.pass());
+        assertEquals(Arrays.asList(c2, c3), cut.pass()); // verify automatic discard
         verify(mockPlayer).discardCard(c2, discardPile);
         verify(mockPlayer).discardCard(c3, discardPile);
     }

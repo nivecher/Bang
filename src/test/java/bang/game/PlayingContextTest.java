@@ -61,12 +61,6 @@ public class PlayingContextTest {
         List<PlayingCard> drawPile = mock(List.class);
         cut.setDrawPile(drawPile);
         assertEquals(drawPile, cut.getDrawPile());
-        ISelector<PlayingCard> cardSelector = mock(ISelector.class);
-        cut.setCardSelector(cardSelector);
-        assertEquals(cardSelector, cut.getCardSelector());
-        ISelector<Player> playerSelector = mock(ISelector.class);
-        cut.setPlayerSelector(playerSelector);
-        assertEquals(playerSelector, cut.getPlayerSelector());
     }
 
     @Test

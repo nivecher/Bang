@@ -2,7 +2,6 @@ package bang.game.cards;
 
 import bang.game.Player;
 import bang.game.PlayingContext;
-import bang.ui.controller.ISelector;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,7 +22,6 @@ public class PlayingCardTest {
     private Player mockPlayer2 = mock(Player.class);
     private Player mockPlayer3 = mock(Player.class);
     private Player mockPlayer4 = mock(Player.class);
-    private ISelector<Player> mockPlayerSelector = mock(ISelector.class);
     private List<PlayingCard> mockDiscardPile = mock(List.class);
 
     @Before
@@ -32,13 +30,12 @@ public class PlayingCardTest {
         reset(mockPlayer2);
         reset(mockPlayer3);
         reset(mockPlayer4);
-        reset(mockPlayerSelector);
         reset(mockDiscardPile);
         when(mockContext.getPlayer()).thenReturn(mockPlayer1);
         when(mockContext.getDiscardPile()).thenReturn(mockDiscardPile);
         when(mockContext.getActivePlayers()).thenReturn(Arrays.asList(mockPlayer1, mockPlayer2, mockPlayer3));
         when(mockContext.getActiveOpponents()).thenReturn(Arrays.asList(mockPlayer2, mockPlayer3));
-        when(mockContext.getPlayerSelector()).thenReturn(mockPlayerSelector);
+        when(mockContext.getTargetPlayer(any())).thenReturn(mockPlayer3);
         cut.setContext(mockContext);
     }
 
@@ -82,7 +79,7 @@ public class PlayingCardTest {
     public void testPlayerEffect() throws Exception {
         PlayingCard card = new BangCard(Suit.Clubs, Face.Three);
         card.setContext(mockContext);
-        when(mockPlayerSelector.select(any())).thenReturn(mockPlayer2);
+        when(mockContext.getTargetPlayer(any())).thenReturn(mockPlayer2);
         when(mockPlayer2.bang()).thenReturn(true);
         assertTrue(card.play());
         verify(mockPlayer2).bang();

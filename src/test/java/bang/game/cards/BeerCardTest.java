@@ -24,6 +24,7 @@ public class BeerCardTest {
     public void setUp() throws Exception {
         reset(mockContext);
         reset(mockPlayer);
+        when(mockContext.getPlayer()).thenReturn(mockPlayer);
         cut.setContext(mockContext);
     }
 
@@ -31,7 +32,7 @@ public class BeerCardTest {
     public void testBeer() throws Exception {
         when(mockContext.getActivePlayers()).thenReturn(Arrays.asList(mockPlayer, mock(Player.class), mock(Player.class)));
         when(mockPlayer.regainLife()).thenReturn(true);
-        assertTrue(cut.apply(mockPlayer));
+        assertTrue(cut.play());
         verify(mockPlayer, times(1)).regainLife();
     }
 
@@ -39,7 +40,7 @@ public class BeerCardTest {
     public void testTwoPlayersLeft() throws Exception {
         when(mockContext.getActivePlayers()).thenReturn(Arrays.asList(mockPlayer, mock(Player.class)));
         when(mockPlayer.regainLife()).thenReturn(true);
-        assertFalse(cut.apply(mockPlayer));
+        assertFalse(cut.play());
         verify(mockPlayer, never()).regainLife();
     }
 

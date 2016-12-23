@@ -14,6 +14,15 @@ import java.util.List;
 public interface IAllPlayersEffect extends IPlayerEffect {
 
     /**
+     * Applys to all players at any distance
+     * @return
+     */
+    @Override
+    default PlayerDistance distance() {
+        return PlayerDistance.ANY_PLAYER;
+    }
+
+    /**
      * Apply effect to all players
      * @param players left in the game
      */
